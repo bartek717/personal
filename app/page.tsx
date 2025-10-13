@@ -9,6 +9,7 @@ import HeroBio from './components/HeroBio';
 import ContactSection from './components/ContactSection';
 import ScrollArrow from './components/ScrollArrow';
 import EssaysSection from './components/EssaysSection';
+import FilmSection from './components/FilmSection';
 
 export default function Home() {
   const [currentScheme, setCurrentScheme] = useState<ColorSchemeKey>('gradient');
@@ -39,6 +40,9 @@ export default function Home() {
 
       {/* Essays Section */}
       <EssaysSection currentColors={currentColors} />
+
+      {/* Film Section */}
+      <FilmSection currentColors={currentColors} />
     </div>
   );
 }

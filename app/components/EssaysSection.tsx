@@ -59,23 +59,9 @@ export default function EssaysSection({ currentColors }: EssaysSectionProps) {
       className={`min-h-screen ${currentColors.background} relative`}
       style={currentColors.customGradient ? { background: currentColors.customGradient } : {}}
     >
-      {/* Large background "Words" - very faint */}
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none">
-        <span
-          className={`text-[25vw] ${textColor}`}
-          style={{
-            fontWeight: 100,
-            opacity: 0.015,
-            letterSpacing: '-0.05em'
-          }}
-        >
-          Words
-        </span>
-      </div>
-
       <div className="relative z-10 px-8 lg:px-16 py-16">
         {/* Header Section */}
-        <div className="max-w-7xl mx-auto ">
+        <div className="max-w-7xl mx-auto">
           <div className={`flex items-end justify-between border-b ${borderColor} border-opacity-20`}>
             <h2
               className={`${textColor} pb-8`}
