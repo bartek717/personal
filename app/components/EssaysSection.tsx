@@ -21,7 +21,7 @@ const essays: EssayItem[] = [
     id: 1,
     title: "On the Nature of Digital Creativity",
     date: "Dec 2024",
-    excerpt: "Exploring the intersection of technology and artistic expression in the modern age.",
+    excerpt: "Exploring the intersection of technology and artistic expression.",
     type: 'essay',
     readTime: "5 min"
   },
@@ -73,14 +73,14 @@ export default function EssaysSection({ currentColors }: EssaysSectionProps) {
         </span>
       </div>
 
-      <div className="relative z-10 px-8 lg:px-16 py-24">
+      <div className="relative z-10 px-8 lg:px-16 py-16">
         {/* Header Section */}
-        <div className="max-w-7xl mx-auto mb-20">
+        <div className="max-w-7xl mx-auto ">
           <div className={`flex items-end justify-between border-b ${borderColor} border-opacity-20`}>
             <h2
               className={`${textColor} pb-8`}
               style={{
-                fontSize: 'clamp(2.5rem, 5vw, 4rem)',
+                fontSize: 'clamp(2rem, 4vw, 3rem)',
                 fontWeight: 100,
                 letterSpacing: '-0.02em',
                 lineHeight: 1
@@ -88,7 +88,7 @@ export default function EssaysSection({ currentColors }: EssaysSectionProps) {
             >
               Essays & Opinions
             </h2>
-            <div className={`pb-8 ${lightTextColor} opacity-50`}>
+            <div className={`pb-4 ${lightTextColor} opacity-50`}>
               <span style={{ fontWeight: 200, fontSize: '0.875rem' }}>
                 {essays.length} pieces
               </span>
@@ -98,7 +98,7 @@ export default function EssaysSection({ currentColors }: EssaysSectionProps) {
 
         {/* Essays Grid - Modern Asymmetric Layout */}
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-1">
+          <div className="grid grid-cols-1 lg:grid-cols-12">
             {essays.map((essay, index) => (
               <article
                 key={essay.id}
@@ -111,7 +111,7 @@ export default function EssaysSection({ currentColors }: EssaysSectionProps) {
                 onMouseEnter={() => setHoveredId(essay.id)}
                 onMouseLeave={() => setHoveredId(null)}
               >
-                <div className="py-10 lg:py-12 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-start">
+                <div className="py-6 lg:py-8 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-start">
                   {/* Left Column - Meta */}
                   <div className="lg:col-span-2 flex lg:flex-col flex-row gap-4 lg:gap-2">
                     <div
@@ -148,13 +148,13 @@ export default function EssaysSection({ currentColors }: EssaysSectionProps) {
 
                     <h3
                       className={`
-                        ${textColor} mb-4
+                        ${textColor} mb-3
                         transition-all duration-300
                         ${hoveredId === essay.id ? 'translate-x-2' : ''}
                       `}
                       style={{
                         fontWeight: 200,
-                        fontSize: 'clamp(1.5rem, 3vw, 2rem)',
+                        fontSize: 'clamp(1.25rem, 2.5vw, 1.75rem)',
                         letterSpacing: '-0.01em',
                         lineHeight: 1.2
                       }}
@@ -202,7 +202,7 @@ export default function EssaysSection({ currentColors }: EssaysSectionProps) {
         </div>
 
         {/* Bottom Navigation */}
-        <div className="max-w-7xl mx-auto mt-20 flex justify-between items-center">
+        <div className="max-w-7xl mx-auto mt-12 flex justify-between items-center">
           <div className={`${lightTextColor} opacity-50`}>
             <span style={{ fontWeight: 200, fontSize: '0.875rem' }}>
               More writings coming soon
