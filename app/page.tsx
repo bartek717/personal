@@ -8,6 +8,7 @@ import Header from './components/Header';
 import HeroBio from './components/HeroBio';
 import ContactSection from './components/ContactSection';
 import ScrollArrow from './components/ScrollArrow';
+import EssaysSection from './components/EssaysSection';
 
 export default function Home() {
   const [currentScheme, setCurrentScheme] = useState<ColorSchemeKey>('gradient');
@@ -36,13 +37,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Next Section (Blank for now) */}
-      <section id="next-section" className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <h2 className="text-3xl font-serif text-gray-800 mb-4">Next Section</h2>
-          <p className="text-gray-600">This section is blank for now as requested.</p>
-        </div>
-      </section>
+      {/* Essays Section */}
+      <EssaysSection currentColors={currentColors} />
     </div>
   );
 }
