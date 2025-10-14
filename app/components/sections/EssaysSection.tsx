@@ -196,27 +196,22 @@ export default function EssaysSection({ currentColors }: EssaysSectionProps) {
         <div className="max-w-7xl mx-auto mt-12 flex justify-between items-center">
           <div className="opacity-50" style={{ color: currentColors.textSecondary }}>
             <span style={{ fontWeight: 200, fontSize: '0.875rem' }}>
-              More writings coming soon
+              {essays.length} pieces
             </span>
           </div>
 
           <button
-            className="group relative overflow-hidden px-10 py-4 transition-all duration-500 hover:border-opacity-60"
+            className="group relative overflow-hidden px-10 py-4 border transition-all duration-300 hover:opacity-70"
             style={{
               fontWeight: 200,
               fontSize: '0.875rem',
               letterSpacing: '0.05em',
               borderWidth: '0.5px',
               borderColor: currentColors.borderColor,
-              borderStyle: 'solid',
               color: currentColors.textPrimary
             }}
           >
-            <span className="relative z-10">VIEW ARCHIVE</span>
-            <div
-              className="absolute inset-0 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out opacity-5"
-              style={{ backgroundColor: currentColors.accentColor }}
-            />
+            VIEW ARCHIVE
           </button>
         </div>
       </div>

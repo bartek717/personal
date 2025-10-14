@@ -6,6 +6,7 @@ import ColorPaletteSelector from './components/ui/ColorPaletteSelector';
 import BackgroundGradient from './components/ui/BackgroundGradient';
 import Header from './components/ui/Header';
 import Footer from './components/ui/Footer';
+import KeyboardNavigation from './components/ui/KeyboardNavigation';
 import HeroBio from './components/sections/HeroBio';
 import EssaysSection from './components/sections/EssaysSection';
 import FilmSection from './components/sections/FilmSection';
@@ -18,6 +19,8 @@ export default function Home() {
 
   return (
     <div className="min-h-screen snap-y snap-mandatory overflow-y-scroll h-screen" style={{ scrollBehavior: 'smooth', scrollSnapType: 'y mandatory', backgroundColor: currentColors.secondaryBg }}>
+      <KeyboardNavigation />
+
       {/* Hero Wrapper - includes top spacing and snap point */}
       <div className="snap-start">
         {/* Top Spacer to show background color */}

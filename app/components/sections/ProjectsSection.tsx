@@ -328,31 +328,25 @@ export default function ProjectsSection({ currentColors }: ProjectsSectionProps)
         </div>
 
         {/* Bottom CTA */}
-        <div className="max-w-7xl mx-auto mt-6 text-center">
-          <div className="opacity-40 mb-5" style={{ color: currentColors.textSecondary }}>
-            <span style={{ fontWeight: 200, fontSize: '0.8rem', letterSpacing: '0.05em' }}>
-              More experiments & explorations on GitHub
+        <div className="max-w-7xl mx-auto mt-6 flex justify-between items-center">
+          <div className="opacity-50" style={{ color: currentColors.textSecondary }}>
+            <span style={{ fontWeight: 200, fontSize: '0.875rem' }}>
+              {projects.length} projects
             </span>
           </div>
 
           <button
-            className="group relative px-12 py-4 border border-opacity-30 overflow-hidden transition-all duration-500 hover:border-opacity-60 hover:scale-105"
+            className="px-10 py-4 border transition-all duration-300 hover:opacity-70"
             style={{
               fontWeight: 200,
-              fontSize: '0.8rem',
-              letterSpacing: '0.12em',
-              borderWidth: '1px',
+              fontSize: '0.875rem',
+              letterSpacing: '0.05em',
+              borderWidth: '0.5px',
               borderColor: currentColors.borderColor,
               color: currentColors.textPrimary
             }}
           >
-            <span className="relative z-10">VIEW FULL ARCHIVE</span>
-
-            {/* Animated background */}
-            <div
-              className="absolute inset-0 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left opacity-5"
-              style={{ backgroundColor: currentColors.accentColor }}
-            />
+            VIEW FULL ARCHIVE
           </button>
         </div>
       </div>
