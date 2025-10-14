@@ -10,6 +10,9 @@ import ContactSection from './components/ContactSection';
 import ScrollArrow from './components/ScrollArrow';
 import EssaysSection from './components/EssaysSection';
 import FilmSection from './components/FilmSection';
+import ProjectsSection from './components/ProjectsSection';
+import ExperienceSection from './components/ExperienceSection';
+import Footer from './components/Footer';
 
 export default function Home() {
   const [currentScheme, setCurrentScheme] = useState<ColorSchemeKey>('gradient');
@@ -43,6 +46,15 @@ export default function Home() {
 
       {/* Film Section */}
       <FilmSection currentColors={currentColors} />
+
+      {/* Projects Section */}
+      <ProjectsSection currentColors={currentColors} />
+
+      {/* Experience Section */}
+      <ExperienceSection currentColors={currentColors} />
+
+      {/* Footer */}
+      <Footer currentColors={currentColors} />
     </div>
   );
 }
