@@ -74,9 +74,9 @@ export default function ExperienceSection({ currentColors }: ExperienceSectionPr
         <div className="max-w-7xl mx-auto">
           <div className="flex items-end justify-between border-b border-opacity-20" style={{ borderColor: currentColors.borderColor }}>
             <h2
-              className="pb-4"
+              className="pb-8"
               style={{
-                fontSize: 'clamp(1.5rem, 3vw, 2.25rem)',
+                fontSize: 'clamp(2rem, 4vw, 3rem)',
                 fontWeight: 100,
                 letterSpacing: '-0.02em',
                 lineHeight: 1,

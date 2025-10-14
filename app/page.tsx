@@ -19,32 +19,40 @@ export default function Home() {
   const currentColors = colorSchemes[currentScheme];
 
   return (
-    <div className="min-h-screen snap-y snap-mandatory overflow-y-scroll h-screen p-8" style={{ scrollBehavior: 'smooth', scrollSnapType: 'y mandatory', backgroundColor: currentColors.secondaryBg }}>
-      {/* Main Homepage Section */}
-      <section id="hero" className="relative flex flex-col rounded-[4rem] overflow-hidden" style={{ height: 'calc(100vh - 4rem)' }}>
-        {/* Background with Noise */}
-        <BackgroundGradient currentColors={currentColors} />
+    <div className="min-h-screen snap-y snap-mandatory overflow-y-scroll h-screen" style={{ scrollBehavior: 'smooth', scrollSnapType: 'y mandatory', backgroundColor: currentColors.secondaryBg }}>
+      {/* Hero Wrapper - includes top spacing and snap point */}
+      <div className="snap-start">
+        {/* Top Spacer to show background color */}
+        <div className="h-8" />
 
-        {/* Color Palette Selector */}
-        <ColorPaletteSelector
-          currentScheme={currentScheme}
-          setCurrentScheme={setCurrentScheme}
-          currentColors={currentColors}
-        />
+        <div className="px-8">
+          {/* Main Homepage Section */}
+          <section id="hero" className="relative flex flex-col rounded-[4rem] overflow-hidden" style={{ height: 'calc(100vh - 4rem)' }}>
+          {/* Background with Noise */}
+          <BackgroundGradient currentColors={currentColors} />
 
-        {/* Content */}
-        <div className="relative z-10 flex flex-col min-h-full">
-          <Header currentColors={currentColors} />
-          <HeroBio currentColors={currentColors} />
-          <ContactSection currentColors={currentColors} />
+          {/* Color Palette Selector */}
+          <ColorPaletteSelector
+            currentScheme={currentScheme}
+            setCurrentScheme={setCurrentScheme}
+            currentColors={currentColors}
+          />
+
+          {/* Content */}
+          <div className="relative z-10 flex flex-col min-h-full">
+            <Header currentColors={currentColors} />
+            <HeroBio currentColors={currentColors} />
+            <ContactSection currentColors={currentColors} />
+          </div>
+
+          {/* Scroll Arrow */}
+          <ScrollArrow currentColors={currentColors} />
+          </section>
         </div>
-
-        {/* Scroll Arrow */}
-        <ScrollArrow currentColors={currentColors} />
-      </section>
+      </div>
 
       {/* Content Sections with Unified Background */}
-      <div className="relative rounded-[4rem] overflow-hidden mt-8" style={{ backgroundColor: currentColors.secondaryBg }}>
+      <div className="relative rounded-[4rem] overflow-hidden mt-8 snap-start px-8 mb-8" style={{ backgroundColor: currentColors.secondaryBg }}>
         {/* Essays Section */}
         <div id="essays" className="snap-start snap-always">
           <EssaysSection currentColors={currentColors} />
