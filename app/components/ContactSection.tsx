@@ -11,25 +11,32 @@ export default function ContactSection({ currentColors }: ContactSectionProps) {
         className="w-full h-px mb-8"
         style={{ backgroundColor: currentColors.borderColor }}
       />
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center flex-wrap gap-4">
         <span
           className="text-lg font-serif"
           style={{ color: currentColors.textPrimary }}
         >
-          contact
+          
         </span>
-        <a
-          href="mailto:bartekkowalski465@gmail.com"
-          className="text-lg font-serif transition-all duration-300"
-          style={{ color: currentColors.accentColor }}
-        >
-          bartekkowalski465@gmail.com →
-        </a>
+        <div className="flex gap-6 items-center">
+          <a
+            href="https://x.com/bartekkowalski_"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-lg font-serif transition-all duration-300 hover:opacity-70"
+            style={{ color: currentColors.accentColor }}
+          >
+            twitter →
+          </a>
+          <a
+            href="mailto:bartekkowalski465@gmail.com"
+            className="text-lg font-serif transition-all duration-300 hover:opacity-70"
+            style={{ color: currentColors.accentColor }}
+          >
+            email →
+          </a>
+        </div>
       </div>
-      <div
-        className="w-full h-px mt-8"
-        style={{ backgroundColor: currentColors.borderColor }}
-      />
     </div>
   );
 }

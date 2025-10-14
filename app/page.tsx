@@ -15,13 +15,13 @@ import ExperienceSection from './components/ExperienceSection';
 import Footer from './components/Footer';
 
 export default function Home() {
-  const [currentScheme, setCurrentScheme] = useState<ColorSchemeKey>('gradient');
+  const [currentScheme, setCurrentScheme] = useState<ColorSchemeKey>('sage');
   const currentColors = colorSchemes[currentScheme];
 
   return (
-    <div className="min-h-screen snap-y snap-mandatory overflow-y-scroll h-screen" style={{ scrollBehavior: 'smooth', scrollSnapType: 'y mandatory', backgroundColor: currentColors.secondaryBg }}>
+    <div className="min-h-screen snap-y snap-mandatory overflow-y-scroll h-screen p-8" style={{ scrollBehavior: 'smooth', scrollSnapType: 'y mandatory', backgroundColor: currentColors.secondaryBg }}>
       {/* Main Homepage Section */}
-      <section id="hero" className="relative min-h-screen flex flex-col snap-start snap-always rounded-b-[4rem] overflow-hidden">
+      <section id="hero" className="relative flex flex-col rounded-[4rem] overflow-hidden" style={{ height: 'calc(100vh - 4rem)' }}>
         {/* Background with Noise */}
         <BackgroundGradient currentColors={currentColors} />
 
@@ -33,16 +33,18 @@ export default function Home() {
         />
 
         {/* Content */}
-        <div className="relative z-10 flex flex-col min-h-screen">
+        <div className="relative z-10 flex flex-col min-h-full">
           <Header currentColors={currentColors} />
           <HeroBio currentColors={currentColors} />
           <ContactSection currentColors={currentColors} />
-          <ScrollArrow currentColors={currentColors} />
         </div>
+
+        {/* Scroll Arrow */}
+        <ScrollArrow currentColors={currentColors} />
       </section>
 
       {/* Content Sections with Unified Background */}
-      <div className="relative" style={{ backgroundColor: currentColors.secondaryBg }}>
+      <div className="relative rounded-[4rem] overflow-hidden mt-8" style={{ backgroundColor: currentColors.secondaryBg }}>
         {/* Essays Section */}
         <div id="essays" className="snap-start snap-always">
           <EssaysSection currentColors={currentColors} />

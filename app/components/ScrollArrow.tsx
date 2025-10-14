@@ -17,12 +17,13 @@ export default function ScrollArrow({ currentColors }: ScrollArrowProps) {
   return (
     <button
       onClick={scrollToNext}
-      className={`absolute bottom-8 left-8 ${currentColors.textColor} hover:opacity-70 transition-opacity cursor-pointer`}
+      className="absolute bottom-8 left-8 hover:opacity-70 transition-opacity cursor-pointer"
+      style={{ color: currentColors.accentColor }}
       aria-label="Scroll to next section"
     >
       <svg
-        width="24"
-        height="24"
+        width="32"
+        height="32"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
