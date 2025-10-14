@@ -11,10 +11,10 @@ export default function ContactSection({ currentColors }: ContactSectionProps) {
       <div className="flex justify-between items-center">
         <span className={`text-lg font-serif ${currentColors.textColor}`}>contact</span>
         <a
-          href="mailto:hello@ingahampton.com"
+          href="mailto:bartekkowalski465@gmail.com"
           className={`text-lg font-serif ${currentColors.textColor} hover:opacity-70 transition-opacity`}
         >
-          hello@ingahampton.com →
+          bartekkowalski465@gmail.com →
         </a>
       </div>
       <div className={`w-full h-px ${currentColors.borderColor} mt-8`}></div>

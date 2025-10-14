@@ -7,8 +7,13 @@ interface HeaderProps {
 export default function Header({ currentColors }: HeaderProps) {
   return (
     <div className="pt-16 px-8">
-      <h1 className={`text-4xl md:text-5xl font-serif ${currentColors.textColor} tracking-tight`}>
-        ingapng
+      <h1 className={`text-4xl md:text-5xl font-serif ${currentColors.textColor}`}
+          style={{
+            fontWeight: 300,
+            letterSpacing: '0.02em',
+            fontStyle: 'oblique 12deg'
+          }}>
+        moja droga
       </h1>
       <div className={`w-full h-px ${currentColors.borderColor} mt-8`}></div>
     </div>
