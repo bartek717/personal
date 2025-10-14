@@ -67,29 +67,25 @@ export default function ExperienceSection({ currentColors }: ExperienceSectionPr
   const [hoveredId, setHoveredId] = useState<number | null>(null);
   const [expandedId, setExpandedId] = useState<number | null>(null);
 
-  const needsDarkText = currentColors.textColor === 'text-gray-800';
-  const textColor = needsDarkText ? 'text-gray-900' : currentColors.textColor;
-  const lightTextColor = needsDarkText ? 'text-gray-600' : currentColors.textColor;
-  const borderColor = needsDarkText ? 'border-gray-300' : currentColors.borderColor;
-
   return (
     <section className="relative">
       <div className="relative z-10 px-8 lg:px-16 py-6">
         {/* Header Section */}
         <div className="max-w-7xl mx-auto">
-          <div className={`flex items-end justify-between border-b ${borderColor} border-opacity-20`}>
+          <div className="flex items-end justify-between border-b border-opacity-20" style={{ borderColor: currentColors.borderColor }}>
             <h2
-              className={`${textColor} pb-4`}
+              className="pb-4"
               style={{
                 fontSize: 'clamp(1.5rem, 3vw, 2.25rem)',
                 fontWeight: 100,
                 letterSpacing: '-0.02em',
-                lineHeight: 1
+                lineHeight: 1,
+                color: currentColors.textPrimary
               }}
             >
               Experience
             </h2>
-            <div className={`pb-3 ${lightTextColor} opacity-50`}>
+            <div className="pb-3 opacity-50" style={{ color: currentColors.textSecondary }}>
               <span style={{ fontWeight: 200, fontSize: '0.8rem' }}>
                 {experiences.length} positions
               </span>
@@ -102,8 +98,8 @@ export default function ExperienceSection({ currentColors }: ExperienceSectionPr
           <div className="relative">
             {/* Vertical Timeline Line */}
             <div
-              className={`absolute left-0 top-0 bottom-0 w-px ${borderColor} opacity-20 hidden lg:block`}
-              style={{ left: '2rem' }}
+              className="absolute left-0 top-0 bottom-0 w-px opacity-20 hidden lg:block"
+              style={{ left: '2rem', backgroundColor: currentColors.borderColor }}
             />
 
             {/* Experience Items */}
@@ -117,10 +113,14 @@ export default function ExperienceSection({ currentColors }: ExperienceSectionPr
                     key={exp.id}
                     className={`
                       group relative
-                      ${borderColor} border-b border-opacity-10
+                      border-b border-opacity-10
                       transition-all duration-500 ease-out
                       ${isHovered ? 'lg:pl-6' : ''}
                     `}
+                    style={{
+                      borderColor: currentColors.borderColor,
+                      backgroundColor: isHovered ? `${currentColors.primaryBg}25` : 'transparent'
+                    }}
                     onMouseEnter={() => setHoveredId(exp.id)}
                     onMouseLeave={() => setHoveredId(null)}
                   >
@@ -130,15 +130,15 @@ export default function ExperienceSection({ currentColors }: ExperienceSectionPr
                         className={`
                           absolute left-0 top-1/2 -translate-y-1/2
                           w-3 h-3 rounded-full
-                          ${borderColor} border-2
-                          ${currentColors.background}
+                          border-2
                           transition-all duration-300
                           ${isHovered ? 'scale-150 border-opacity-60' : 'border-opacity-30'}
                           hidden lg:block
                         `}
                         style={{
                           left: 'calc(2rem - 6px)',
-                          background: currentColors.customGradient || ''
+                          borderColor: currentColors.borderColor,
+                          backgroundColor: currentColors.accentColor
                         }}
                       />
 
@@ -147,15 +147,16 @@ export default function ExperienceSection({ currentColors }: ExperienceSectionPr
                         {/* Left Column - Period & Location */}
                         <div className="lg:col-span-3">
                           <div
-                            className={`${lightTextColor} transition-opacity duration-300 mb-2 ${
+                            className={`transition-opacity duration-300 mb-2 ${
                               isHovered ? 'opacity-70' : 'opacity-50'
                             }`}
+                            style={{ color: currentColors.textSecondary }}
                           >
                             <span style={{ fontWeight: 200, fontSize: '0.8rem', letterSpacing: '0.05em' }}>
                               {exp.period}
                             </span>
                           </div>
-                          <div className={`${lightTextColor} opacity-40`}>
+                          <div className="opacity-40" style={{ color: currentColors.textSecondary }}>
                             <span style={{ fontWeight: 200, fontSize: '0.75rem' }}>
                               {exp.location}
                             </span>
@@ -168,7 +169,7 @@ export default function ExperienceSection({ currentColors }: ExperienceSectionPr
                           <div className="mb-2">
                             <h3
                               className={`
-                                ${textColor} mb-1
+                                mb-1
                                 transition-all duration-300
                                 ${isHovered ? 'translate-x-2' : ''}
                               `}
@@ -176,14 +177,15 @@ export default function ExperienceSection({ currentColors }: ExperienceSectionPr
                                 fontWeight: 200,
                                 fontSize: 'clamp(1.1rem, 2vw, 1.4rem)',
                                 letterSpacing: '-0.01em',
-                                lineHeight: 1.2
+                                lineHeight: 1.2,
+                                color: currentColors.textPrimary
                               }}
                             >
                               {exp.role}
                             </h3>
                             <div
-                              className={`${lightTextColor} opacity-60`}
-                              style={{ fontWeight: 300, fontSize: '0.8rem' }}
+                              className="opacity-60"
+                              style={{ fontWeight: 300, fontSize: '0.8rem', color: currentColors.textSecondary }}
                             >
                               {exp.company}
                             </div>
@@ -192,7 +194,7 @@ export default function ExperienceSection({ currentColors }: ExperienceSectionPr
                           {/* Description */}
                           <p
                             className={`
-                              ${lightTextColor} mb-2
+                              mb-2
                               transition-all duration-300
                               ${isHovered ? 'opacity-80' : 'opacity-60'}
                             `}
@@ -200,7 +202,8 @@ export default function ExperienceSection({ currentColors }: ExperienceSectionPr
                               fontWeight: 300,
                               fontSize: '0.8rem',
                               lineHeight: 1.4,
-                              maxWidth: '70ch'
+                              maxWidth: '70ch',
+                              color: currentColors.textSecondary
                             }}
                           >
                             {exp.description}
@@ -218,8 +221,8 @@ export default function ExperienceSection({ currentColors }: ExperienceSectionPr
                               {exp.highlights.map((highlight, idx) => (
                                 <li
                                   key={idx}
-                                  className={`${lightTextColor} opacity-60 text-sm leading-relaxed`}
-                                  style={{ listStyleType: '—', paddingLeft: '0.5rem' }}
+                                  className="opacity-60 text-sm leading-relaxed"
+                                  style={{ listStyleType: '—', paddingLeft: '0.5rem', color: currentColors.textSecondary }}
                                 >
                                   {highlight}
                                 </li>
@@ -234,14 +237,14 @@ export default function ExperienceSection({ currentColors }: ExperienceSectionPr
                                 key={tag}
                                 className={`
                                   px-2.5 py-0.5
-                                  ${lightTextColor}
                                   transition-opacity duration-300
                                   ${isHovered ? 'opacity-50' : 'opacity-30'}
                                 `}
                                 style={{
                                   fontWeight: 200,
                                   fontSize: '0.65rem',
-                                  letterSpacing: '0.03em'
+                                  letterSpacing: '0.03em',
+                                  color: currentColors.textSecondary
                                 }}
                               >
                                 {tag}
@@ -253,12 +256,11 @@ export default function ExperienceSection({ currentColors }: ExperienceSectionPr
                               onClick={() => setExpandedId(isExpanded ? null : exp.id)}
                               className={`
                                 ml-auto
-                                ${lightTextColor}
                                 transition-all duration-300
                                 ${isHovered ? 'opacity-60' : 'opacity-30'}
                                 hover:opacity-80
                               `}
-                              style={{ fontWeight: 200, fontSize: '0.7rem', letterSpacing: '0.05em' }}
+                              style={{ fontWeight: 200, fontSize: '0.7rem', letterSpacing: '0.05em', color: currentColors.accentColor }}
                             >
                               {isExpanded ? '← LESS' : 'MORE →'}
                             </button>
@@ -280,31 +282,21 @@ export default function ExperienceSection({ currentColors }: ExperienceSectionPr
             href="https://drive.google.com/file/d/1iuQtqLn_bgixLeMDdDbBMLOVnINRVgLS/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
-            className={`
-              group relative overflow-hidden
-              px-10 py-4
-              ${borderColor}
-              ${textColor}
-              transition-all duration-500
-              hover:border-opacity-60
-              inline-block
-            `}
+            className="group relative overflow-hidden px-10 py-4 transition-all duration-500 hover:border-opacity-60 inline-block"
             style={{
               fontWeight: 200,
               fontSize: '0.875rem',
               letterSpacing: '0.05em',
-              borderWidth: '0.5px'
+              borderWidth: '0.5px',
+              borderColor: currentColors.borderColor,
+              borderStyle: 'solid',
+              color: currentColors.textPrimary
             }}
           >
             <span className="relative z-10">DOWNLOAD CV</span>
             <div
-              className={`
-                absolute inset-0
-                ${needsDarkText ? 'bg-gray-900' : 'bg-white'}
-                transform -translate-x-full group-hover:translate-x-0
-                transition-transform duration-500 ease-out
-                opacity-5
-              `}
+              className="absolute inset-0 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out opacity-5"
+              style={{ backgroundColor: currentColors.accentColor }}
             />
           </a>
         </div>

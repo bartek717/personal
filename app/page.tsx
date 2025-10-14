@@ -19,9 +19,9 @@ export default function Home() {
   const currentColors = colorSchemes[currentScheme];
 
   return (
-    <div className="min-h-screen snap-y snap-mandatory overflow-y-scroll h-screen" style={{ scrollBehavior: 'smooth', scrollSnapType: 'y mandatory' }}>
+    <div className="min-h-screen snap-y snap-mandatory overflow-y-scroll h-screen" style={{ scrollBehavior: 'smooth', scrollSnapType: 'y mandatory', backgroundColor: currentColors.secondaryBg }}>
       {/* Main Homepage Section */}
-      <section id="hero" className="relative min-h-screen flex flex-col snap-start snap-always">
+      <section id="hero" className="relative min-h-screen flex flex-col snap-start snap-always rounded-b-[4rem] overflow-hidden">
         {/* Background with Noise */}
         <BackgroundGradient currentColors={currentColors} />
 
@@ -41,11 +41,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Content Sections with Continuous Background */}
-      <div
-        className={`${currentColors.background} relative`}
-        style={currentColors.customGradient ? { background: currentColors.customGradient } : {}}
-      >
+      {/* Content Sections with Unified Background */}
+      <div className="relative" style={{ backgroundColor: currentColors.secondaryBg }}>
         {/* Essays Section */}
         <div id="essays" className="snap-start snap-always">
           <EssaysSection currentColors={currentColors} />
@@ -61,7 +58,7 @@ export default function Home() {
           <ProjectsSection currentColors={currentColors} />
         </div>
 
-        {/* Experience Section with Footer */}
+        {/* Experience Section */}
         <div id="experience" className="snap-start snap-always">
           <ExperienceSection currentColors={currentColors} />
           <Footer currentColors={currentColors} />

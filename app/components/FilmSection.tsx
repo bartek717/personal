@@ -40,11 +40,6 @@ export default function FilmSection({ currentColors }: FilmSectionProps) {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [showGallery, setShowGallery] = useState(false);
 
-  // Determine text colors based on background
-  const needsDarkText = currentColors.textColor === 'text-gray-800';
-  const textColor = needsDarkText ? 'text-gray-900' : currentColors.textColor;
-  const lightTextColor = needsDarkText ? 'text-gray-600' : currentColors.textColor;
-  const borderColor = needsDarkText ? 'border-gray-300' : currentColors.borderColor;
 
   // Show only 8 images in the preview
   const displayedImages = filmImages.slice(0, 8);
@@ -60,8 +55,8 @@ export default function FilmSection({ currentColors }: FilmSectionProps) {
               0deg,
               transparent,
               transparent 20px,
-              ${needsDarkText ? '#000' : '#fff'} 20px,
-              ${needsDarkText ? '#000' : '#fff'} 30px
+              ${currentColors.textPrimary} 20px,
+              ${currentColors.textPrimary} 30px
             )`
           }}
         />
@@ -74,8 +69,8 @@ export default function FilmSection({ currentColors }: FilmSectionProps) {
               0deg,
               transparent,
               transparent 20px,
-              ${needsDarkText ? '#000' : '#fff'} 20px,
-              ${needsDarkText ? '#000' : '#fff'} 30px
+              ${currentColors.textPrimary} 20px,
+              ${currentColors.textPrimary} 30px
             )`
           }}
         />
@@ -92,25 +87,27 @@ export default function FilmSection({ currentColors }: FilmSectionProps) {
       <div className="relative z-10 px-8 lg:px-16 py-16 h-full flex flex-col">
         {/* Header Section */}
         <div className="max-w-7xl mx-auto w-full mb-10">
-          <div className={`border-b ${borderColor} border-opacity-20 pb-6`}>
+          <div className="border-b border-opacity-20 pb-6" style={{ borderColor: currentColors.borderColor }}>
             <h2
-              className={`${textColor} mb-1`}
+              className="mb-1"
               style={{
                 fontSize: 'clamp(2rem, 4vw, 3rem)',
                 fontWeight: 100,
                 letterSpacing: '-0.02em',
-                lineHeight: 1
+                lineHeight: 1,
+                color: currentColors.textPrimary
               }}
             >
               Film
             </h2>
             <p
-              className={`${lightTextColor} opacity-60`}
+              className="opacity-60"
               style={{
                 fontWeight: 200,
                 fontSize: '0.9rem',
                 fontStyle: 'italic',
-                letterSpacing: '0.05em'
+                letterSpacing: '0.05em',
+                color: currentColors.textSecondary
               }}
             >
               perfectly imperfect
@@ -156,14 +153,14 @@ export default function FilmSection({ currentColors }: FilmSectionProps) {
                     {/* Film frame marking */}
                     <div className="absolute inset-0 flex items-end justify-between p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                       <span
-                        className={`${textColor} text-xs`}
-                        style={{ fontWeight: 100, letterSpacing: '0.1em' }}
+                        className="text-xs"
+                        style={{ fontWeight: 100, letterSpacing: '0.1em', color: currentColors.accentColor }}
                       >
                         {String(index + 1).padStart(2, '0')}
                       </span>
                       <span
-                        className={`${textColor} text-xs`}
-                        style={{ fontWeight: 100 }}
+                        className="text-xs"
+                        style={{ fontWeight: 100, color: currentColors.accentColor }}
                       >
                         ◦
                       </span>
@@ -177,7 +174,7 @@ export default function FilmSection({ currentColors }: FilmSectionProps) {
 
         {/* Bottom Navigation */}
         <div className="max-w-7xl mx-auto w-full mt-10 flex justify-between items-center">
-          <div className={`${lightTextColor} opacity-50`}>
+          <div className="opacity-50" style={{ color: currentColors.textSecondary }}>
             <span style={{ fontWeight: 200, fontSize: '0.875rem' }}>
               {filmImages.length} photos
             </span>
@@ -185,12 +182,14 @@ export default function FilmSection({ currentColors }: FilmSectionProps) {
 
           <button
             onClick={() => setShowGallery(true)}
-            className={`px-10 py-4 border ${borderColor} ${textColor} transition-all duration-300 hover:opacity-70`}
+            className="px-10 py-4 border transition-all duration-300 hover:opacity-70"
             style={{
               fontWeight: 200,
               fontSize: '0.875rem',
               letterSpacing: '0.05em',
-              borderWidth: '0.5px'
+              borderWidth: '0.5px',
+              borderColor: currentColors.borderColor,
+              color: currentColors.textPrimary
             }}
           >
             VIEW ALL PHOTOS
@@ -228,13 +227,13 @@ export default function FilmSection({ currentColors }: FilmSectionProps) {
             <div className="px-8 lg:px-16 py-12">
               <div className="max-w-7xl mx-auto">
                 <div className="flex items-center justify-between mb-8">
-                  <h3 className={`${textColor} text-2xl`} style={{ fontWeight: 100 }}>
+                  <h3 className="text-2xl" style={{ fontWeight: 100, color: currentColors.textPrimary }}>
                     All Photos
                   </h3>
                   <button
                     onClick={() => setShowGallery(false)}
-                    className={`text-3xl ${textColor} hover:opacity-70 transition-opacity`}
-                    style={{ fontWeight: 100 }}
+                    className="text-3xl hover:opacity-70 transition-opacity"
+                    style={{ fontWeight: 100, color: currentColors.textPrimary }}
                   >
                     ×
                   </button>

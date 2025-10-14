@@ -50,11 +50,6 @@ export default function ProjectsSection({ currentColors }: ProjectsSectionProps)
   const [hoveredId, setHoveredId] = useState<number | null>(null);
   const [expandedId, setExpandedId] = useState<number | null>(null);
 
-  const needsDarkText = currentColors.textColor === 'text-gray-800';
-  const textColor = needsDarkText ? 'text-gray-900' : currentColors.textColor;
-  const lightTextColor = needsDarkText ? 'text-gray-600' : currentColors.textColor;
-  const borderColor = needsDarkText ? 'border-gray-300' : currentColors.borderColor;
-
   const getStatusColor = (status: Project['status']) => {
     switch(status) {
       case 'live': return 'bg-green-500';
@@ -78,8 +73,8 @@ export default function ProjectsSection({ currentColors }: ProjectsSectionProps)
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: `repeating-linear-gradient(0deg, ${needsDarkText ? '#000' : '#fff'} 0px, transparent 1px, transparent 40px),
-                             repeating-linear-gradient(90deg, ${needsDarkText ? '#000' : '#fff'} 0px, transparent 1px, transparent 40px)`
+            backgroundImage: `repeating-linear-gradient(0deg, ${currentColors.textPrimary} 0px, transparent 1px, transparent 40px),
+                             repeating-linear-gradient(90deg, ${currentColors.textPrimary} 0px, transparent 1px, transparent 40px)`
           }}
         />
       </div>
@@ -87,19 +82,20 @@ export default function ProjectsSection({ currentColors }: ProjectsSectionProps)
       <div className="relative z-10 px-8 lg:px-16 py-6">
         {/* Header Section */}
         <div className="max-w-7xl mx-auto">
-          <div className={`flex items-end justify-between border-b ${borderColor} border-opacity-20`}>
+          <div className="flex items-end justify-between border-b border-opacity-20" style={{ borderColor: currentColors.borderColor }}>
             <h2
-              className={`${textColor} pb-4`}
+              className="pb-4"
               style={{
                 fontSize: 'clamp(1.5rem, 3vw, 2.25rem)',
                 fontWeight: 100,
                 letterSpacing: '-0.02em',
-                lineHeight: 1
+                lineHeight: 1,
+                color: currentColors.textPrimary
               }}
             >
               Projects
             </h2>
-            <div className={`pb-3 ${lightTextColor} opacity-50`}>
+            <div className="pb-3 opacity-50" style={{ color: currentColors.textSecondary }}>
               <span style={{ fontWeight: 200, fontSize: '0.8rem' }}>
                 {projects.length} projects
               </span>
@@ -135,23 +131,24 @@ export default function ProjectsSection({ currentColors }: ProjectsSectionProps)
                   <div
                     className={`
                       relative overflow-hidden
-                      border ${borderColor} border-opacity-20
+                      border border-opacity-20
                       transition-all duration-700 ease-out
                       ${isHovered ? 'border-opacity-40 shadow-2xl' : ''}
                       ${isExpanded ? 'border-opacity-50' : ''}
                     `}
                     style={{
                       minHeight: index === 0 ? '280px' : '240px',
-                      background: isHovered || isExpanded
-                        ? `linear-gradient(135deg, rgba(255,255,255,${needsDarkText ? '0.03' : '0.01'}) 0%, transparent 100%)`
-                        : 'transparent'
+                      borderColor: currentColors.borderColor,
+                      backgroundColor: `${currentColors.primaryBg}40`,
+                      backgroundImage: isHovered || isExpanded
+                        ? `linear-gradient(135deg, ${currentColors.primaryBg}60 0%, ${currentColors.primaryBg}30 100%)`
+                        : 'none'
                     }}
                   >
                     {/* Project Number - Large Format */}
                     <div
                       className={`
                         absolute top-0 right-0
-                        ${textColor}
                         transition-all duration-700
                         ${isHovered ? 'opacity-10 scale-110' : 'opacity-[0.03]'}
                       `}
@@ -160,7 +157,8 @@ export default function ProjectsSection({ currentColors }: ProjectsSectionProps)
                         fontWeight: 100,
                         lineHeight: 0.8,
                         transform: 'translate(10%, -10%)',
-                        pointerEvents: 'none'
+                        pointerEvents: 'none',
+                        color: currentColors.textPrimary
                       }}
                     >
                       {String(project.id).padStart(2, '0')}
@@ -175,15 +173,15 @@ export default function ProjectsSection({ currentColors }: ProjectsSectionProps)
                           <div className="flex items-center gap-2.5">
                             <div className={`w-1.5 h-1.5 rounded-full ${getStatusColor(project.status)}`} />
                             <span
-                              className={`${lightTextColor} opacity-50 uppercase`}
-                              style={{ fontWeight: 300, fontSize: '0.6rem', letterSpacing: '0.1em' }}
+                              className="opacity-50 uppercase"
+                              style={{ fontWeight: 300, fontSize: '0.6rem', letterSpacing: '0.1em', color: currentColors.textSecondary }}
                             >
                               {getStatusLabel(project.status)}
                             </span>
                           </div>
                           <span
-                            className={`${lightTextColor} opacity-40`}
-                            style={{ fontWeight: 200, fontSize: '0.75rem', letterSpacing: '0.05em' }}
+                            className="opacity-40"
+                            style={{ fontWeight: 200, fontSize: '0.75rem', letterSpacing: '0.05em', color: currentColors.textSecondary }}
                           >
                             {project.year}
                           </span>
@@ -192,7 +190,7 @@ export default function ProjectsSection({ currentColors }: ProjectsSectionProps)
                         {/* Project Title */}
                         <h3
                           className={`
-                            ${textColor} mb-2
+                            mb-2
                             transition-all duration-500
                             ${isHovered ? 'translate-x-2' : ''}
                           `}
@@ -200,7 +198,8 @@ export default function ProjectsSection({ currentColors }: ProjectsSectionProps)
                             fontWeight: 200,
                             fontSize: index === 0 ? 'clamp(1.35rem, 3vw, 2rem)' : 'clamp(1.15rem, 2.5vw, 1.65rem)',
                             letterSpacing: '-0.02em',
-                            lineHeight: 1.1
+                            lineHeight: 1.1,
+                            color: currentColors.textPrimary
                           }}
                         >
                           {project.title}
@@ -209,7 +208,6 @@ export default function ProjectsSection({ currentColors }: ProjectsSectionProps)
                         {/* Project Description */}
                         <p
                           className={`
-                            ${lightTextColor}
                             transition-all duration-500
                             ${isHovered ? 'opacity-80' : 'opacity-60'}
                           `}
@@ -217,7 +215,8 @@ export default function ProjectsSection({ currentColors }: ProjectsSectionProps)
                             fontWeight: 300,
                             fontSize: '0.8rem',
                             lineHeight: 1.4,
-                            maxWidth: '55ch'
+                            maxWidth: '55ch',
+                            color: currentColors.textSecondary
                           }}
                         >
                           {project.description}
@@ -231,7 +230,7 @@ export default function ProjectsSection({ currentColors }: ProjectsSectionProps)
                             ${isExpanded ? 'max-h-40 opacity-100 mt-6' : 'max-h-0 opacity-0'}
                           `}
                         >
-                          <div className={`${lightTextColor} opacity-50 text-sm leading-relaxed`}>
+                          <div className="opacity-50 text-sm leading-relaxed" style={{ color: currentColors.textSecondary }}>
                             Additional project details and outcomes would go here when you expand the card.
                             This could include metrics, technologies in depth, or project outcomes.
                           </div>
@@ -247,15 +246,16 @@ export default function ProjectsSection({ currentColors }: ProjectsSectionProps)
                               key={tag}
                               className={`
                                 px-2.5 py-1
-                                ${lightTextColor}
-                                border ${borderColor} border-opacity-20
+                                border border-opacity-20
                                 transition-all duration-500
                                 ${isHovered ? 'opacity-60 border-opacity-40' : 'opacity-40'}
                               `}
                               style={{
                                 fontWeight: 200,
                                 fontSize: '0.65rem',
-                                letterSpacing: '0.04em'
+                                letterSpacing: '0.04em',
+                                color: currentColors.textSecondary,
+                                borderColor: currentColors.borderColor
                               }}
                             >
                               {tag}
@@ -275,22 +275,21 @@ export default function ProjectsSection({ currentColors }: ProjectsSectionProps)
                             {project.link && (
                               <span
                                 className={`
-                                  ${textColor} uppercase
+                                  uppercase
                                   transition-opacity duration-300
                                   ${isHovered ? 'opacity-70' : 'opacity-40'}
                                 `}
-                                style={{ fontWeight: 300, fontSize: '0.7rem', letterSpacing: '0.1em' }}
+                                style={{ fontWeight: 300, fontSize: '0.7rem', letterSpacing: '0.1em', color: currentColors.accentColor }}
                               >
                                 EXPLORE
                               </span>
                             )}
                             <span
                               className={`
-                                ${textColor}
                                 transition-all duration-500
                                 ${isHovered ? 'opacity-100 translate-x-2' : 'opacity-30'}
                               `}
-                              style={{ fontSize: '1.5rem', fontWeight: 100 }}
+                              style={{ fontSize: '1.5rem', fontWeight: 100, color: currentColors.accentColor }}
                             >
                               →
                             </span>
@@ -299,11 +298,10 @@ export default function ProjectsSection({ currentColors }: ProjectsSectionProps)
                           {/* Expand Indicator */}
                           <div
                             className={`
-                              ${lightTextColor}
                               transition-all duration-500
                               ${isExpanded ? 'rotate-180 opacity-60' : 'opacity-20'}
                             `}
-                            style={{ fontSize: '1.25rem' }}
+                            style={{ fontSize: '1.25rem', color: currentColors.textSecondary }}
                           >
                             ↓
                           </div>
@@ -319,7 +317,7 @@ export default function ProjectsSection({ currentColors }: ProjectsSectionProps)
                         ${isHovered ? 'opacity-100' : 'opacity-0'}
                       `}
                       style={{
-                        background: `linear-gradient(135deg, transparent 0%, rgba(255,255,255,${needsDarkText ? '0.02' : '0.01'}) 100%)`
+                        background: `linear-gradient(135deg, transparent 0%, ${currentColors.primaryBg}15 100%)`
                       }}
                     />
                   </div>
@@ -331,40 +329,29 @@ export default function ProjectsSection({ currentColors }: ProjectsSectionProps)
 
         {/* Bottom CTA */}
         <div className="max-w-7xl mx-auto mt-6 text-center">
-          <div className={`${lightTextColor} opacity-40 mb-5`}>
+          <div className="opacity-40 mb-5" style={{ color: currentColors.textSecondary }}>
             <span style={{ fontWeight: 200, fontSize: '0.8rem', letterSpacing: '0.05em' }}>
               More experiments & explorations on GitHub
             </span>
           </div>
 
           <button
-            className={`
-              group relative
-              px-12 py-4
-              border ${borderColor} border-opacity-30
-              ${textColor}
-              overflow-hidden
-              transition-all duration-500
-              hover:border-opacity-60 hover:scale-105
-            `}
+            className="group relative px-12 py-4 border border-opacity-30 overflow-hidden transition-all duration-500 hover:border-opacity-60 hover:scale-105"
             style={{
               fontWeight: 200,
               fontSize: '0.8rem',
               letterSpacing: '0.12em',
-              borderWidth: '1px'
+              borderWidth: '1px',
+              borderColor: currentColors.borderColor,
+              color: currentColors.textPrimary
             }}
           >
             <span className="relative z-10">VIEW FULL ARCHIVE</span>
 
             {/* Animated background */}
             <div
-              className={`
-                absolute inset-0
-                ${needsDarkText ? 'bg-gray-900' : 'bg-white'}
-                transform scale-x-0 group-hover:scale-x-100
-                transition-transform duration-500 ease-out origin-left
-                opacity-5
-              `}
+              className="absolute inset-0 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left opacity-5"
+              style={{ backgroundColor: currentColors.accentColor }}
             />
           </button>
         </div>

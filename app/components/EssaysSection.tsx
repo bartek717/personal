@@ -46,32 +46,28 @@ const essays: EssayItem[] = [
 export default function EssaysSection({ currentColors }: EssaysSectionProps) {
   const [hoveredId, setHoveredId] = useState<number | null>(null);
 
-  // All gradients have light areas, so we'll use darker text for better contrast
-  // Only use the original text color if it's already dark enough
-  const needsDarkText = currentColors.textColor === 'text-gray-800';
-
-  const textColor = needsDarkText ? 'text-gray-900' : currentColors.textColor;
-  const lightTextColor = needsDarkText ? 'text-gray-600' : currentColors.textColor;
-  const borderColor = needsDarkText ? 'border-gray-300' : currentColors.borderColor;
-
   return (
     <section className="min-h-screen relative">
       <div className="relative z-10 px-8 lg:px-16 py-16">
         {/* Header Section */}
         <div className="max-w-7xl mx-auto">
-          <div className={`flex items-end justify-between border-b ${borderColor} border-opacity-20`}>
+          <div
+            className="flex items-end justify-between border-b border-opacity-20"
+            style={{ borderColor: currentColors.borderColor }}
+          >
             <h2
-              className={`${textColor} pb-8`}
+              className="pb-8"
               style={{
                 fontSize: 'clamp(2rem, 4vw, 3rem)',
                 fontWeight: 100,
                 letterSpacing: '-0.02em',
-                lineHeight: 1
+                lineHeight: 1,
+                color: currentColors.textPrimary
               }}
             >
               Essays & Opinions
             </h2>
-            <div className={`pb-4 ${lightTextColor} opacity-50`}>
+            <div className="pb-4 opacity-50" style={{ color: currentColors.textSecondary }}>
               <span style={{ fontWeight: 200, fontSize: '0.875rem' }}>
                 {essays.length} pieces
               </span>
@@ -87,10 +83,14 @@ export default function EssaysSection({ currentColors }: EssaysSectionProps) {
                 key={essay.id}
                 className={`
                   lg:col-span-12 group cursor-pointer
-                  ${borderColor} border-b border-opacity-10
+                  border-b border-opacity-10
                   transition-all duration-500 ease-out
                   ${hoveredId === essay.id ? 'lg:pl-4' : ''}
                 `}
+                style={{
+                  borderColor: currentColors.borderColor,
+                  backgroundColor: hoveredId === essay.id ? `${currentColors.primaryBg}30` : 'transparent'
+                }}
                 onMouseEnter={() => setHoveredId(essay.id)}
                 onMouseLeave={() => setHoveredId(null)}
               >
@@ -98,15 +98,16 @@ export default function EssaysSection({ currentColors }: EssaysSectionProps) {
                   {/* Left Column - Meta */}
                   <div className="lg:col-span-2 flex lg:flex-col flex-row gap-4 lg:gap-2">
                     <div
-                      className={`${lightTextColor} transition-opacity duration-300 ${
+                      className={`transition-opacity duration-300 ${
                         hoveredId === essay.id ? 'opacity-70' : 'opacity-50'
                       }`}
+                      style={{ color: currentColors.textSecondary }}
                     >
                       <span style={{ fontWeight: 200, fontSize: '0.8rem', letterSpacing: '0.05em' }}>
                         {essay.date}
                       </span>
                     </div>
-                    <div className={`${lightTextColor} opacity-40`}>
+                    <div className="opacity-40" style={{ color: currentColors.textSecondary }}>
                       <span style={{ fontWeight: 200, fontSize: '0.8rem' }}>
                         {essay.readTime}
                       </span>
@@ -119,11 +120,14 @@ export default function EssaysSection({ currentColors }: EssaysSectionProps) {
                       <span
                         className={`
                           inline-block text-xs uppercase tracking-wider
-                          ${lightTextColor}
                           transition-all duration-300
                           ${hoveredId === essay.id ? 'opacity-70 tracking-widest' : 'opacity-50'}
                         `}
-                        style={{ fontWeight: 300, fontSize: '0.65rem' }}
+                        style={{
+                          fontWeight: 300,
+                          fontSize: '0.65rem',
+                          color: currentColors.textSecondary
+                        }}
                       >
                         {essay.type}
                       </span>
@@ -131,7 +135,7 @@ export default function EssaysSection({ currentColors }: EssaysSectionProps) {
 
                     <h3
                       className={`
-                        ${textColor} mb-3
+                        mb-3
                         transition-all duration-300
                         ${hoveredId === essay.id ? 'translate-x-2' : ''}
                       `}
@@ -139,7 +143,8 @@ export default function EssaysSection({ currentColors }: EssaysSectionProps) {
                         fontWeight: 200,
                         fontSize: 'clamp(1.25rem, 2.5vw, 1.75rem)',
                         letterSpacing: '-0.01em',
-                        lineHeight: 1.2
+                        lineHeight: 1.2,
+                        color: currentColors.textPrimary
                       }}
                     >
                       {essay.title}
@@ -147,7 +152,6 @@ export default function EssaysSection({ currentColors }: EssaysSectionProps) {
 
                     <p
                       className={`
-                        ${lightTextColor}
                         transition-all duration-300
                         ${hoveredId === essay.id ? 'opacity-80' : 'opacity-60'}
                       `}
@@ -155,7 +159,8 @@ export default function EssaysSection({ currentColors }: EssaysSectionProps) {
                         fontWeight: 300,
                         fontSize: '0.95rem',
                         lineHeight: 1.6,
-                        maxWidth: '60ch'
+                        maxWidth: '60ch',
+                        color: currentColors.textSecondary
                       }}
                     >
                       {essay.excerpt}
@@ -166,14 +171,17 @@ export default function EssaysSection({ currentColors }: EssaysSectionProps) {
                   <div className="lg:col-span-2 flex justify-start lg:justify-end items-start mt-4 lg:mt-0">
                     <span
                       className={`
-                        ${textColor}
                         transition-all duration-500 ease-out
                         ${hoveredId === essay.id
                           ? 'translate-x-2 opacity-100'
                           : 'translate-x-0 opacity-0 lg:opacity-30'
                         }
                       `}
-                      style={{ fontWeight: 100, fontSize: '1.5rem' }}
+                      style={{
+                        fontWeight: 100,
+                        fontSize: '1.5rem',
+                        color: currentColors.accentColor
+                      }}
                     >
                       →
                     </span>
@@ -186,37 +194,28 @@ export default function EssaysSection({ currentColors }: EssaysSectionProps) {
 
         {/* Bottom Navigation */}
         <div className="max-w-7xl mx-auto mt-12 flex justify-between items-center">
-          <div className={`${lightTextColor} opacity-50`}>
+          <div className="opacity-50" style={{ color: currentColors.textSecondary }}>
             <span style={{ fontWeight: 200, fontSize: '0.875rem' }}>
               More writings coming soon
             </span>
           </div>
 
           <button
-            className={`
-              group relative overflow-hidden
-              px-10 py-4
-              ${borderColor}
-              ${textColor}
-              transition-all duration-500
-              hover:border-opacity-60
-            `}
+            className="group relative overflow-hidden px-10 py-4 transition-all duration-500 hover:border-opacity-60"
             style={{
               fontWeight: 200,
               fontSize: '0.875rem',
               letterSpacing: '0.05em',
-              borderWidth: '0.5px'
+              borderWidth: '0.5px',
+              borderColor: currentColors.borderColor,
+              borderStyle: 'solid',
+              color: currentColors.textPrimary
             }}
           >
             <span className="relative z-10">VIEW ARCHIVE</span>
             <div
-              className={`
-                absolute inset-0
-                ${needsDarkText ? 'bg-gray-900' : 'bg-white'}
-                transform -translate-x-full group-hover:translate-x-0
-                transition-transform duration-500 ease-out
-                opacity-5
-              `}
+              className="absolute inset-0 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out opacity-5"
+              style={{ backgroundColor: currentColors.accentColor }}
             />
           </button>
         </div>
