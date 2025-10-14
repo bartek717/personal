@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
-import { type ColorScheme } from './colorSchemes';
+import { type ColorScheme } from '../config/colorSchemes';
 
 interface ScrollArrowProps {
   currentColors: ColorScheme;

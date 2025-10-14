@@ -1,4 +1,4 @@
-import { type ColorScheme } from './colorSchemes';
+import { type ColorScheme } from '../config/colorSchemes';
 
 interface ContactSectionProps {
   currentColors: ColorScheme;
@@ -6,7 +6,7 @@ interface ContactSectionProps {
 
 export default function ContactSection({ currentColors }: ContactSectionProps) {
   return (
-    <div className="px-8 pb-16">
+    <div className="px-16 pb-16">
       <div
         className="w-full h-px mb-8"
         style={{ backgroundColor: currentColors.borderColor }}

@@ -1,18 +1,18 @@
 'use client';
 
 import { useState } from 'react';
-import { colorSchemes, type ColorSchemeKey } from './components/colorSchemes';
-import ColorPaletteSelector from './components/ColorPaletteSelector';
-import BackgroundGradient from './components/BackgroundGradient';
-import Header from './components/Header';
-import HeroBio from './components/HeroBio';
-import ContactSection from './components/ContactSection';
-import ScrollArrow from './components/ScrollArrow';
-import EssaysSection from './components/EssaysSection';
-import FilmSection from './components/FilmSection';
-import ProjectsSection from './components/ProjectsSection';
-import ExperienceSection from './components/ExperienceSection';
-import Footer from './components/Footer';
+import { colorSchemes, type ColorSchemeKey } from './components/config/colorSchemes';
+import ColorPaletteSelector from './components/ui/ColorPaletteSelector';
+import BackgroundGradient from './components/ui/BackgroundGradient';
+import Header from './components/ui/Header';
+import Footer from './components/ui/Footer';
+import ScrollArrow from './components/ui/ScrollArrow';
+import HeroBio from './components/sections/HeroBio';
+import ContactSection from './components/sections/ContactSection';
+import EssaysSection from './components/sections/EssaysSection';
+import FilmSection from './components/sections/FilmSection';
+import ProjectsSection from './components/sections/ProjectsSection';
+import ExperienceSection from './components/sections/ExperienceSection';
 
 export default function Home() {
   const [currentScheme, setCurrentScheme] = useState<ColorSchemeKey>('sage');
@@ -23,11 +23,11 @@ export default function Home() {
       {/* Hero Wrapper - includes top spacing and snap point */}
       <div className="snap-start">
         {/* Top Spacer to show background color */}
-        <div className="h-8" />
+        <div className="h-12" />
 
         <div className="px-8">
           {/* Main Homepage Section */}
-          <section id="hero" className="relative flex flex-col rounded-[4rem] overflow-hidden" style={{ height: 'calc(100vh - 4rem)' }}>
+          <section id="hero" className="relative flex flex-col rounded-[4rem] overflow-hidden" style={{ height: 'calc(100vh - 6rem)' }}>
           {/* Background with Noise */}
           <BackgroundGradient currentColors={currentColors} />
 

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef, Dispatch, SetStateAction } from 'react';
-import { colorSchemes, type ColorSchemeKey, type ColorScheme } from './colorSchemes';
+import { colorSchemes, type ColorSchemeKey, type ColorScheme } from '../config/colorSchemes';
 
 interface ColorPaletteSelectorProps {
   currentScheme: ColorSchemeKey;
@@ -35,7 +35,7 @@ export default function ColorPaletteSelector({
   }, [isPaletteOpen]);
 
   return (
-    <div className="absolute top-8 right-8 z-20" ref={paletteRef}>
+    <div className="absolute top-16 right-12 z-20" ref={paletteRef}>
       <button
         onClick={() => setIsPaletteOpen(!isPaletteOpen)}
         className={`${currentColors.textColor} hover:opacity-80 transition-all duration-200 p-2 rounded-lg hover:bg-white/10`}

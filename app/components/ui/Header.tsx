@@ -1,4 +1,4 @@
-import { type ColorScheme } from './colorSchemes';
+import { type ColorScheme } from '../config/colorSchemes';
 
 interface HeaderProps {
   currentColors: ColorScheme;
@@ -6,11 +6,11 @@ interface HeaderProps {
 
 export default function Header({ currentColors }: HeaderProps) {
   return (
-    <div className="pt-16 px-8">
+    <div className="pt-16 px-16">
       <h1
         className="text-4xl md:text-5xl font-serif"
         style={{
-          fontWeight: 300,
+          fontWeight: 500,
           letterSpacing: '0.02em',
           fontStyle: 'oblique 12deg',
           color: currentColors.textPrimary

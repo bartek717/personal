@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { type ColorScheme } from './colorSchemes';
+import { type ColorScheme } from '../config/colorSchemes';
 
 interface FilmSectionProps {
   currentColors: ColorScheme;

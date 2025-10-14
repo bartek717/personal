@@ -1,6 +1,6 @@
 'use client';
 
-import { type ColorScheme } from './colorSchemes';
+import { type ColorScheme } from '../config/colorSchemes';
 
 interface FooterProps {
   currentColors: ColorScheme;

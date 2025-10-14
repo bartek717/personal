@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { type ColorScheme } from './colorSchemes';
+import { type ColorScheme } from '../config/colorSchemes';
 
 interface Project {
   id: number;

@@ -1,4 +1,4 @@
-import { type ColorScheme } from './colorSchemes';
+import { type ColorScheme } from '../config/colorSchemes';
 
 interface HeroBioProps {
   currentColors: ColorScheme;
@@ -6,10 +6,10 @@ interface HeroBioProps {
 
 export default function HeroBio({ currentColors }: HeroBioProps) {
   return (
-    <div className="flex-1 flex items-center px-8 py-16">
+    <div className="flex-1 flex items-center px-16 py-16">
       <div className="max-w-4xl">
         <h1
-          className="text-4xl md:text-5xl font-serif mb-6"
+          className="text-6xl md:text-6xl font-serif mb-6"
           style={{
             fontWeight: 300,
             letterSpacing: '-0.02em',

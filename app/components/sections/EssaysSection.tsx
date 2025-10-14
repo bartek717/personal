@@ -1,6 +1,6 @@
 'use client';
 
-import { type ColorScheme } from './colorSchemes';
+import { type ColorScheme } from '../config/colorSchemes';
 import { useState } from 'react';
 
 interface EssayItem {
