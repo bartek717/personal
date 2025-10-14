@@ -137,7 +137,7 @@ export default function ProjectsSection({ currentColors }: ProjectsSectionProps)
                       ${isExpanded ? 'border-opacity-50' : ''}
                     `}
                     style={{
-                      minHeight: index === 0 ? '280px' : '240px',
+                      height: index === 0 ? '320px' : '280px',
                       borderColor: currentColors.borderColor,
                       backgroundColor: `${currentColors.primaryBg}40`,
                       backgroundImage: isHovered || isExpanded
@@ -336,17 +336,22 @@ export default function ProjectsSection({ currentColors }: ProjectsSectionProps)
           </div>
 
           <button
-            className="px-10 py-4 border transition-all duration-300 hover:opacity-70"
+            className="group relative overflow-hidden px-10 py-4 transition-all duration-500 hover:border-opacity-60 cursor-pointer"
             style={{
               fontWeight: 200,
               fontSize: '0.875rem',
               letterSpacing: '0.05em',
               borderWidth: '0.5px',
               borderColor: currentColors.borderColor,
+              borderStyle: 'solid',
               color: currentColors.textPrimary
             }}
           >
-            VIEW FULL ARCHIVE
+            <span className="relative z-10">VIEW FULL ARCHIVE</span>
+            <div
+              className="absolute inset-0 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out opacity-5"
+              style={{ backgroundColor: currentColors.accentColor }}
+            />
           </button>
         </div>
       </div>

@@ -115,6 +115,7 @@ export default function ExperienceSection({ currentColors }: ExperienceSectionPr
                       group relative
                       border-b border-opacity-10
                       transition-all duration-500 ease-out
+                      overflow-hidden
                       ${isHovered ? 'lg:pl-6' : ''}
                     `}
                     style={{
