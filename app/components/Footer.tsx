@@ -16,7 +16,7 @@ export default function Footer({ currentColors }: FooterProps) {
     <footer className="relative">
       <div className="relative z-10 px-8 lg:px-16 pb-12">
         <div className="max-w-7xl mx-auto">
-          <div className={`border-t ${borderColor} border-opacity-20 pt-8`}>
+          <div className="pt-8">
             <div className="text-center">
               <p
                 className={`${lightTextColor} opacity-50`}
