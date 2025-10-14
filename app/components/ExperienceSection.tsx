@@ -73,18 +73,15 @@ export default function ExperienceSection({ currentColors }: ExperienceSectionPr
   const borderColor = needsDarkText ? 'border-gray-300' : currentColors.borderColor;
 
   return (
-    <section
-      className={`min-h-screen ${currentColors.background} relative`}
-      style={currentColors.customGradient ? { background: currentColors.customGradient } : {}}
-    >
-      <div className="relative z-10 px-8 lg:px-16 py-16">
+    <section className="relative">
+      <div className="relative z-10 px-8 lg:px-16 py-6">
         {/* Header Section */}
         <div className="max-w-7xl mx-auto">
           <div className={`flex items-end justify-between border-b ${borderColor} border-opacity-20`}>
             <h2
-              className={`${textColor} pb-8`}
+              className={`${textColor} pb-4`}
               style={{
-                fontSize: 'clamp(2rem, 4vw, 3rem)',
+                fontSize: 'clamp(1.5rem, 3vw, 2.25rem)',
                 fontWeight: 100,
                 letterSpacing: '-0.02em',
                 lineHeight: 1
@@ -92,8 +89,8 @@ export default function ExperienceSection({ currentColors }: ExperienceSectionPr
             >
               Experience
             </h2>
-            <div className={`pb-4 ${lightTextColor} opacity-50`}>
-              <span style={{ fontWeight: 200, fontSize: '0.875rem' }}>
+            <div className={`pb-3 ${lightTextColor} opacity-50`}>
+              <span style={{ fontWeight: 200, fontSize: '0.8rem' }}>
                 {experiences.length} positions
               </span>
             </div>
@@ -101,7 +98,7 @@ export default function ExperienceSection({ currentColors }: ExperienceSectionPr
         </div>
 
         {/* Experience Timeline */}
-        <div className="max-w-7xl mx-auto mt-8">
+        <div className="max-w-7xl mx-auto mt-4">
           <div className="relative">
             {/* Vertical Timeline Line */}
             <div
@@ -127,7 +124,7 @@ export default function ExperienceSection({ currentColors }: ExperienceSectionPr
                     onMouseEnter={() => setHoveredId(exp.id)}
                     onMouseLeave={() => setHoveredId(null)}
                   >
-                    <div className="py-8 lg:py-10 lg:pl-20">
+                    <div className="py-4 lg:py-6 lg:pl-20">
                       {/* Timeline Dot */}
                       <div
                         className={`
@@ -168,7 +165,7 @@ export default function ExperienceSection({ currentColors }: ExperienceSectionPr
                         {/* Right Column - Main Content */}
                         <div className="lg:col-span-9">
                           {/* Company & Role */}
-                          <div className="mb-4">
+                          <div className="mb-2">
                             <h3
                               className={`
                                 ${textColor} mb-1
@@ -177,7 +174,7 @@ export default function ExperienceSection({ currentColors }: ExperienceSectionPr
                               `}
                               style={{
                                 fontWeight: 200,
-                                fontSize: 'clamp(1.25rem, 2.5vw, 1.75rem)',
+                                fontSize: 'clamp(1.1rem, 2vw, 1.4rem)',
                                 letterSpacing: '-0.01em',
                                 lineHeight: 1.2
                               }}
@@ -186,7 +183,7 @@ export default function ExperienceSection({ currentColors }: ExperienceSectionPr
                             </h3>
                             <div
                               className={`${lightTextColor} opacity-60`}
-                              style={{ fontWeight: 300, fontSize: '0.95rem' }}
+                              style={{ fontWeight: 300, fontSize: '0.8rem' }}
                             >
                               {exp.company}
                             </div>
@@ -195,14 +192,14 @@ export default function ExperienceSection({ currentColors }: ExperienceSectionPr
                           {/* Description */}
                           <p
                             className={`
-                              ${lightTextColor} mb-4
+                              ${lightTextColor} mb-2
                               transition-all duration-300
                               ${isHovered ? 'opacity-80' : 'opacity-60'}
                             `}
                             style={{
                               fontWeight: 300,
-                              fontSize: '0.9rem',
-                              lineHeight: 1.6,
+                              fontSize: '0.8rem',
+                              lineHeight: 1.4,
                               maxWidth: '70ch'
                             }}
                           >
@@ -231,19 +228,19 @@ export default function ExperienceSection({ currentColors }: ExperienceSectionPr
                           </div>
 
                           {/* Tags & Actions */}
-                          <div className="flex flex-wrap items-center gap-3 mt-4">
+                          <div className="flex flex-wrap items-center gap-1.5 mt-2">
                             {exp.tags.map(tag => (
                               <span
                                 key={tag}
                                 className={`
-                                  px-3 py-1
+                                  px-2.5 py-0.5
                                   ${lightTextColor}
                                   transition-opacity duration-300
                                   ${isHovered ? 'opacity-50' : 'opacity-30'}
                                 `}
                                 style={{
                                   fontWeight: 200,
-                                  fontSize: '0.7rem',
+                                  fontSize: '0.65rem',
                                   letterSpacing: '0.03em'
                                 }}
                               >
@@ -277,7 +274,7 @@ export default function ExperienceSection({ currentColors }: ExperienceSectionPr
         </div>
 
         {/* Bottom Section */}
-        <div className="max-w-7xl mx-auto mt-12 flex justify-end items-center">
+        <div className="max-w-7xl mx-auto mt-6 flex justify-end items-center">
 
           <a
             href="https://drive.google.com/file/d/1iuQtqLn_bgixLeMDdDbBMLOVnINRVgLS/view?usp=sharing"

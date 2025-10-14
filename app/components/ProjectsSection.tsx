@@ -72,10 +72,7 @@ export default function ProjectsSection({ currentColors }: ProjectsSectionProps)
   };
 
   return (
-    <section
-      className={`min-h-screen ${currentColors.background} relative overflow-hidden`}
-      style={currentColors.customGradient ? { background: currentColors.customGradient } : {}}
-    >
+    <section className="relative overflow-hidden">
       {/* Decorative Background Pattern */}
       <div className="absolute inset-0 opacity-[0.02] pointer-events-none">
         <div
@@ -87,14 +84,14 @@ export default function ProjectsSection({ currentColors }: ProjectsSectionProps)
         />
       </div>
 
-      <div className="relative z-10 px-8 lg:px-16 py-16">
+      <div className="relative z-10 px-8 lg:px-16 py-6">
         {/* Header Section */}
         <div className="max-w-7xl mx-auto">
           <div className={`flex items-end justify-between border-b ${borderColor} border-opacity-20`}>
             <h2
-              className={`${textColor} pb-8`}
+              className={`${textColor} pb-4`}
               style={{
-                fontSize: 'clamp(2rem, 4vw, 3rem)',
+                fontSize: 'clamp(1.5rem, 3vw, 2.25rem)',
                 fontWeight: 100,
                 letterSpacing: '-0.02em',
                 lineHeight: 1
@@ -102,8 +99,8 @@ export default function ProjectsSection({ currentColors }: ProjectsSectionProps)
             >
               Projects
             </h2>
-            <div className={`pb-4 ${lightTextColor} opacity-50`}>
-              <span style={{ fontWeight: 200, fontSize: '0.875rem' }}>
+            <div className={`pb-3 ${lightTextColor} opacity-50`}>
+              <span style={{ fontWeight: 200, fontSize: '0.8rem' }}>
                 {projects.length} projects
               </span>
             </div>
@@ -111,7 +108,7 @@ export default function ProjectsSection({ currentColors }: ProjectsSectionProps)
         </div>
 
         {/* Projects Grid - Asymmetric & Dynamic */}
-        <div className="max-w-7xl mx-auto mt-8">
+        <div className="max-w-7xl mx-auto mt-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-6">
             {projects.map((project, index) => {
               const isExpanded = expandedId === project.id;
@@ -144,7 +141,7 @@ export default function ProjectsSection({ currentColors }: ProjectsSectionProps)
                       ${isExpanded ? 'border-opacity-50' : ''}
                     `}
                     style={{
-                      minHeight: index === 0 ? '420px' : '380px',
+                      minHeight: index === 0 ? '280px' : '240px',
                       background: isHovered || isExpanded
                         ? `linear-gradient(135deg, rgba(255,255,255,${needsDarkText ? '0.03' : '0.01'}) 0%, transparent 100%)`
                         : 'transparent'
@@ -170,11 +167,11 @@ export default function ProjectsSection({ currentColors }: ProjectsSectionProps)
                     </div>
 
                     {/* Content Container */}
-                    <div className="relative h-full p-6 lg:p-10 flex flex-col justify-between">
+                    <div className="relative h-full p-4 lg:p-6 flex flex-col justify-between">
                       {/* Top Section */}
                       <div>
                         {/* Status & Year Bar */}
-                        <div className="flex items-center justify-between mb-6">
+                        <div className="flex items-center justify-between mb-3">
                           <div className="flex items-center gap-2.5">
                             <div className={`w-1.5 h-1.5 rounded-full ${getStatusColor(project.status)}`} />
                             <span
@@ -195,13 +192,13 @@ export default function ProjectsSection({ currentColors }: ProjectsSectionProps)
                         {/* Project Title */}
                         <h3
                           className={`
-                            ${textColor} mb-4
+                            ${textColor} mb-2
                             transition-all duration-500
                             ${isHovered ? 'translate-x-2' : ''}
                           `}
                           style={{
                             fontWeight: 200,
-                            fontSize: index === 0 ? 'clamp(1.75rem, 4vw, 2.75rem)' : 'clamp(1.5rem, 3.5vw, 2.25rem)',
+                            fontSize: index === 0 ? 'clamp(1.35rem, 3vw, 2rem)' : 'clamp(1.15rem, 2.5vw, 1.65rem)',
                             letterSpacing: '-0.02em',
                             lineHeight: 1.1
                           }}
@@ -218,8 +215,8 @@ export default function ProjectsSection({ currentColors }: ProjectsSectionProps)
                           `}
                           style={{
                             fontWeight: 300,
-                            fontSize: '0.9rem',
-                            lineHeight: 1.6,
+                            fontSize: '0.8rem',
+                            lineHeight: 1.4,
                             maxWidth: '55ch'
                           }}
                         >
@@ -242,14 +239,14 @@ export default function ProjectsSection({ currentColors }: ProjectsSectionProps)
                       </div>
 
                       {/* Bottom Section */}
-                      <div className="mt-6">
+                      <div className="mt-3">
                         {/* Technology Tags */}
-                        <div className="flex flex-wrap gap-2.5 mb-5">
+                        <div className="flex flex-wrap gap-1.5 mb-3">
                           {project.tags.map(tag => (
                             <span
                               key={tag}
                               className={`
-                                px-3 py-1.5
+                                px-2.5 py-1
                                 ${lightTextColor}
                                 border ${borderColor} border-opacity-20
                                 transition-all duration-500
@@ -257,7 +254,7 @@ export default function ProjectsSection({ currentColors }: ProjectsSectionProps)
                               `}
                               style={{
                                 fontWeight: 200,
-                                fontSize: '0.7rem',
+                                fontSize: '0.65rem',
                                 letterSpacing: '0.04em'
                               }}
                             >
@@ -333,7 +330,7 @@ export default function ProjectsSection({ currentColors }: ProjectsSectionProps)
         </div>
 
         {/* Bottom CTA */}
-        <div className="max-w-7xl mx-auto mt-16 text-center">
+        <div className="max-w-7xl mx-auto mt-6 text-center">
           <div className={`${lightTextColor} opacity-40 mb-5`}>
             <span style={{ fontWeight: 200, fontSize: '0.8rem', letterSpacing: '0.05em' }}>
               More experiments & explorations on GitHub

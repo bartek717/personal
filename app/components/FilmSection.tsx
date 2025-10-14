@@ -50,10 +50,7 @@ export default function FilmSection({ currentColors }: FilmSectionProps) {
   const displayedImages = filmImages.slice(0, 8);
 
   return (
-    <section
-      className={`h-screen ${currentColors.background} relative overflow-hidden`}
-      style={currentColors.customGradient ? { background: currentColors.customGradient } : {}}
-    >
+    <section className="h-screen relative overflow-hidden">
       {/* Film sprocket holes pattern on sides */}
       <div className="absolute left-0 top-0 bottom-0 w-12 opacity-[0.1] pointer-events-none">
         <div

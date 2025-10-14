@@ -8,16 +8,16 @@ interface ScrollArrowProps {
 
 export default function ScrollArrow({ currentColors }: ScrollArrowProps) {
   const scrollToNext = () => {
-    const nextSection = document.getElementById('next-section');
-    if (nextSection) {
-      nextSection.scrollIntoView({ behavior: 'smooth' });
+    const essaysSection = document.getElementById('essays');
+    if (essaysSection) {
+      essaysSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
   return (
     <button
       onClick={scrollToNext}
-      className={`absolute bottom-8 left-8 ${currentColors.textColor} hover:opacity-70 transition-opacity`}
+      className={`absolute bottom-8 left-8 ${currentColors.textColor} hover:opacity-70 transition-opacity cursor-pointer`}
       aria-label="Scroll to next section"
     >
       <svg

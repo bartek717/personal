@@ -7,8 +7,8 @@ interface BackgroundGradientProps {
 export default function BackgroundGradient({ currentColors }: BackgroundGradientProps) {
   return (
     <div
-      className={`absolute inset-0 ${currentColors.background}`}
-      style={currentColors.customGradient ? { background: currentColors.customGradient } : {}}
+      className="absolute inset-0"
+      style={{ backgroundColor: currentColors.lightBackground }}
     >
       {/* Original noise pattern for hero section */}
       <div className="absolute inset-0 opacity-30" style={{
@@ -19,7 +19,7 @@ export default function BackgroundGradient({ currentColors }: BackgroundGradient
       <div
         className="absolute inset-0 opacity-20 pointer-events-none"
         style={{
-          background: `radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.1) 100%)`
+          background: `radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.05) 100%)`
         }}
       />
     </div>

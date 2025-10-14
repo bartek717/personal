@@ -13,11 +13,8 @@ export default function Footer({ currentColors }: FooterProps) {
   const borderColor = needsDarkText ? 'border-gray-300' : currentColors.borderColor;
 
   return (
-    <footer
-      className={`${currentColors.background} relative`}
-      style={currentColors.customGradient ? { background: currentColors.customGradient } : {}}
-    >
-      <div className="relative z-10 px-8 lg:px-16 py-12">
+    <footer className="relative">
+      <div className="relative z-10 px-8 lg:px-16 pb-12">
         <div className="max-w-7xl mx-auto">
           <div className={`border-t ${borderColor} border-opacity-20 pt-8`}>
             <div className="text-center">

@@ -20,12 +20,23 @@
 }
 
 html {
-  /* Ensure smooth scrolling */
-  scroll-behavior: smooth;
   /* Prevent overscroll bounce on the entire document */
   overscroll-behavior-y: none;
   overscroll-behavior: none;
   height: 100%;
+}
+
+/* Faster, more responsive scroll snapping */
+.snap-y {
+  scroll-snap-type: y proximity;
+}
+
+.snap-start {
+  scroll-snap-align: start;
+}
+
+.snap-always {
+  scroll-snap-stop: normal;
 }
 
 body {

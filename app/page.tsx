@@ -19,9 +19,9 @@ export default function Home() {
   const currentColors = colorSchemes[currentScheme];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen snap-y snap-mandatory overflow-y-scroll h-screen" style={{ scrollBehavior: 'smooth', scrollSnapType: 'y mandatory' }}>
       {/* Main Homepage Section */}
-      <section className="relative min-h-screen flex flex-col">
+      <section id="hero" className="relative min-h-screen flex flex-col snap-start snap-always">
         {/* Background with Noise */}
         <BackgroundGradient currentColors={currentColors} />
 
@@ -41,20 +41,32 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Essays Section */}
-      <EssaysSection currentColors={currentColors} />
+      {/* Content Sections with Continuous Background */}
+      <div
+        className={`${currentColors.background} relative`}
+        style={currentColors.customGradient ? { background: currentColors.customGradient } : {}}
+      >
+        {/* Essays Section */}
+        <div id="essays" className="snap-start snap-always">
+          <EssaysSection currentColors={currentColors} />
+        </div>
 
-      {/* Film Section */}
-      <FilmSection currentColors={currentColors} />
+        {/* Film Section */}
+        <div id="film" className="snap-start snap-always">
+          <FilmSection currentColors={currentColors} />
+        </div>
 
-      {/* Projects Section */}
-      <ProjectsSection currentColors={currentColors} />
+        {/* Projects Section */}
+        <div id="projects" className="snap-start snap-always">
+          <ProjectsSection currentColors={currentColors} />
+        </div>
 
-      {/* Experience Section */}
-      <ExperienceSection currentColors={currentColors} />
-
-      {/* Footer */}
-      <Footer currentColors={currentColors} />
+        {/* Experience Section with Footer */}
+        <div id="experience" className="snap-start snap-always">
+          <ExperienceSection currentColors={currentColors} />
+          <Footer currentColors={currentColors} />
+        </div>
+      </div>
     </div>
   );
 }

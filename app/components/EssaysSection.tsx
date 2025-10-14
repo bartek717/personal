@@ -55,10 +55,7 @@ export default function EssaysSection({ currentColors }: EssaysSectionProps) {
   const borderColor = needsDarkText ? 'border-gray-300' : currentColors.borderColor;
 
   return (
-    <section
-      className={`min-h-screen ${currentColors.background} relative`}
-      style={currentColors.customGradient ? { background: currentColors.customGradient } : {}}
-    >
+    <section className="min-h-screen relative">
       <div className="relative z-10 px-8 lg:px-16 py-16">
         {/* Header Section */}
         <div className="max-w-7xl mx-auto">
