@@ -77,25 +77,31 @@ export default function EssaysSection({ currentColors }: EssaysSectionProps) {
 
         {/* Essays Grid - Modern Asymmetric Layout */}
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6">
             {essays.map((essay, index) => (
               <article
                 key={essay.id}
                 className={`
                   lg:col-span-12 group cursor-pointer
-                  border-b border-opacity-10
+                  border border-opacity-10
                   transition-all duration-500 ease-out
                   overflow-hidden
-                  ${hoveredId === essay.id ? 'lg:pl-4' : ''}
+                  ${hoveredId === essay.id ? 'border-opacity-20 shadow-lg' : 'shadow-sm'}
                 `}
                 style={{
                   borderColor: currentColors.borderColor,
-                  backgroundColor: hoveredId === essay.id ? `${currentColors.primaryBg}30` : 'transparent'
+                  backgroundColor: hoveredId === essay.id ? `${currentColors.primaryBg}20` : `${currentColors.primaryBg}08`,
+                  borderRadius: '12px',
+                  padding: 'clamp(1.5rem, 3vw, 2.5rem)',
+                  transform: hoveredId === essay.id ? 'translateY(-2px)' : 'translateY(0)',
+                  boxShadow: hoveredId === essay.id
+                    ? `0 8px 24px ${currentColors.primaryBg}20`
+                    : `0 2px 8px ${currentColors.primaryBg}10`
                 }}
                 onMouseEnter={() => setHoveredId(essay.id)}
                 onMouseLeave={() => setHoveredId(null)}
               >
-                <div className="py-6 lg:py-8 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-start">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-start">
                   {/* Left Column - Meta */}
                   <div className="lg:col-span-2 flex lg:flex-col flex-row gap-4 lg:gap-2">
                     <div

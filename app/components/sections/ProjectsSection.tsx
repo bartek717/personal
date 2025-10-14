@@ -20,35 +20,40 @@ interface ProjectsSectionProps {
 const projects: Project[] = [
   {
     id: 1,
-    title: "Project Title One",
-    description: "A comprehensive description of your first project. This should highlight the problem you solved, the technologies used, and the impact it had.",
-    tags: ["React", "TypeScript", "Next.js"],
+    title: "Efficient Fine-Tuning of LLMs using Coreset Selection",
+    description: "Utilized coreset selection methods (KCenterGreedy, Active Learning) to reduce LLM fine-tuning time by 80% while retaining performance. Placed 2nd at ProjectX, the world's largest international undergraduate ML contest.",
+    tags: ["Python", "PyTorch", "Machine Learning", "Coreset Selection", "NLP"],
     year: "2024",
-    link: "https://example.com",
+    link: "https://drive.google.com/file/d/1IfwUNqBIgRo-SQ_JeLR_gn6TTh12475q/view?usp=sharing",
     status: 'live'
   },
   {
     id: 2,
-    title: "Project Title Two",
-    description: "Description of your second project showcasing different skills and technologies. Explain what makes this project unique and interesting.",
-    tags: ["Node.js", "PostgreSQL", "API"],
+    title: "QuSearch - Alumni Search Tool",
+    description: "Alumni search platform for Queen's University students to connect with graduates. Built with Next.js frontend, Flask backend, Supabase database, deployed on Vercel and Railway.",
+    tags: ["Next.js", "Flask", "Supabase", "Vercel", "Railway", "Full-Stack"],
     year: "2024",
-    status: 'in-progress'
+    link: "https://www.qusearch.ca",
+    status: 'live'
   },
   {
     id: 3,
-    title: "Project Title Three",
-    description: "Your third project focusing on a different domain or technical challenge. Describe the technical decisions and outcomes.",
-    tags: ["Python", "Machine Learning", "Data"],
+    title: "Memoria",
+    description: "LLM-powered voice note app to record, transcribe, and chat with your thoughts. Built with React, Node.js, Express.js, and Supabase. Reached 800+ active users and 10,000 page views.",
+    tags: ["React", "Node.js", "Express.js", "Supabase", "LLM", "Voice AI"],
     year: "2023",
-    link: "https://example.com",
-    status: 'live'
+    status: 'archived'
   }
 ];
 
 export default function ProjectsSection({ currentColors }: ProjectsSectionProps) {
   const [hoveredId, setHoveredId] = useState<number | null>(null);
-  const [expandedId, setExpandedId] = useState<number | null>(null);
+
+  const handleProjectClick = (link?: string) => {
+    if (link) {
+      window.open(link, '_blank', 'noopener,noreferrer');
+    }
+  };
 
   const getStatusColor = (status: Project['status']) => {
     switch(status) {
@@ -107,7 +112,6 @@ export default function ProjectsSection({ currentColors }: ProjectsSectionProps)
         <div className="max-w-7xl mx-auto mt-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-6">
             {projects.map((project, index) => {
-              const isExpanded = expandedId === project.id;
               const isHovered = hoveredId === project.id;
 
               // Make first project span full width on desktop
@@ -121,11 +125,10 @@ export default function ProjectsSection({ currentColors }: ProjectsSectionProps)
                     group relative
                     cursor-pointer
                     transition-all duration-700 ease-out
-                    ${isExpanded ? 'lg:col-span-2' : ''}
                   `}
                   onMouseEnter={() => setHoveredId(project.id)}
                   onMouseLeave={() => setHoveredId(null)}
-                  onClick={() => setExpandedId(isExpanded ? null : project.id)}
+                  onClick={() => handleProjectClick(project.link)}
                 >
                   {/* Project Card Container */}
                   <div
@@ -134,15 +137,12 @@ export default function ProjectsSection({ currentColors }: ProjectsSectionProps)
                       border border-opacity-20
                       transition-all duration-700 ease-out
                       ${isHovered ? 'border-opacity-40 shadow-2xl' : ''}
-                      ${isExpanded ? 'border-opacity-50' : ''}
                     `}
                     style={{
                       height: index === 0 ? '320px' : '280px',
                       borderColor: currentColors.borderColor,
-                      backgroundColor: `${currentColors.primaryBg}40`,
-                      backgroundImage: isHovered || isExpanded
-                        ? `linear-gradient(135deg, ${currentColors.primaryBg}60 0%, ${currentColors.primaryBg}30 100%)`
-                        : 'none'
+                      backgroundColor: isHovered ? `${currentColors.primaryBg}20` : `${currentColors.primaryBg}08`,
+                      backgroundImage: 'none'
                     }}
                   >
                     {/* Project Number - Large Format */}
@@ -221,20 +221,6 @@ export default function ProjectsSection({ currentColors }: ProjectsSectionProps)
                         >
                           {project.description}
                         </p>
-
-                        {/* Expanded Details */}
-                        <div
-                          className={`
-                            overflow-hidden
-                            transition-all duration-700 ease-out
-                            ${isExpanded ? 'max-h-40 opacity-100 mt-6' : 'max-h-0 opacity-0'}
-                          `}
-                        >
-                          <div className="opacity-50 text-sm leading-relaxed" style={{ color: currentColors.textSecondary }}>
-                            Additional project details and outcomes would go here when you expand the card.
-                            This could include metrics, technologies in depth, or project outcomes.
-                          </div>
-                        </div>
                       </div>
 
                       {/* Bottom Section */}
@@ -264,7 +250,7 @@ export default function ProjectsSection({ currentColors }: ProjectsSectionProps)
                         </div>
 
                         {/* Action Bar */}
-                        <div className="flex items-center justify-between">
+                        <div className="flex items-center">
                           <div
                             className={`
                               flex items-center gap-2
@@ -293,17 +279,6 @@ export default function ProjectsSection({ currentColors }: ProjectsSectionProps)
                             >
                               →
                             </span>
-                          </div>
-
-                          {/* Expand Indicator */}
-                          <div
-                            className={`
-                              transition-all duration-500
-                              ${isExpanded ? 'rotate-180 opacity-60' : 'opacity-20'}
-                            `}
-                            style={{ fontSize: '1.25rem', color: currentColors.textSecondary }}
-                          >
-                            ↓
                           </div>
                         </div>
                       </div>

@@ -21,45 +21,72 @@ interface ExperienceSectionProps {
 const experiences: Experience[] = [
   {
     id: 1,
-    company: "Company Name",
-    role: "Senior Software Engineer",
-    period: "2023 - Present",
-    location: "San Francisco, CA",
-    description: "Leading development of core platform features and mentoring junior developers. Architecting scalable solutions for high-traffic applications.",
+    company: "Questrade",
+    role: "Technical Product Manager Intern - Future Leaders Program",
+    period: "May 2025 - Aug 2025",
+    location: "Toronto, ON",
+    description: "Led product initiatives across knowledge management, personal finance tools, and investment research for Canada's leading online brokerage.",
     highlights: [
-      "Led migration to microservices architecture",
-      "Improved system performance by 40%",
-      "Mentored team of 5 engineers"
+      "Owned roadmap & launch of a new knowledge base; wrote PRDs, PRFAQs, led BigQuery/NLP on call transcripts to close content gaps, leading to 40% fewer Tier-1 CS tickets, $500,000 saved per year; docs used by 100,000+ per year.",
+      "Supported a new Personal Financial Manager app, running 8 discovery interviews; instrumented Amplitude funnels, and iterated onboarding to drive +20% completion in alpha.",
+      "Surveyed 27 respondents (ages 18-25) on investment-news habits; synthesized findings into 2 opportunity areas and presented recommendations to the C-suite."
     ],
-    tags: ["React", "Node.js", "AWS", "TypeScript"]
+    tags: ["Product Management", "BigQuery", "NLP", "PRD", "Amplitude", "User Research"]
   },
   {
     id: 2,
-    company: "Previous Company",
-    role: "Software Engineer",
-    period: "2021 - 2023",
-    location: "New York, NY",
-    description: "Built and maintained full-stack web applications. Collaborated with product and design teams to deliver user-focused features.",
+    company: "CallSmart",
+    role: "Product & Full-Stack Developer Intern",
+    period: "Apr 2023 - Sep 2023",
+    location: "Toronto, ON",
+    description: "Led product roadmap and development of an AI communications platform for dental clinics, driving significant business impact and operational efficiency.",
     highlights: [
-      "Shipped 15+ major features",
-      "Reduced load times by 50%",
-      "Implemented CI/CD pipeline"
+      "Led product roadmap and full-stack development (Next.js, Supabase) of an AI communications platform adopted by 200+ dental clinics, contributing to $12M per year in potential revenue, and cutting manual follow-ups by 85%.",
+      "Interviewed 4 clinic owners and 11 receptionists, distilled JTBD into PRDs and UI/UX recommendations.",
+      "Created funnels and iterated onboarding, prioritized triage/templates/analytics to increase agent efficiency."
     ],
-    tags: ["JavaScript", "Python", "PostgreSQL", "Docker"]
+    tags: ["Next.js", "Supabase", "Product Management", "Full-Stack", "AI", "User Research"]
   },
   {
     id: 3,
-    company: "First Company",
-    role: "Junior Developer",
-    period: "2019 - 2021",
-    location: "Remote",
-    description: "Started career building web applications and learning best practices. Contributed to multiple client projects and internal tools.",
+    company: "Exavalu",
+    role: "Software Engineering Intern",
+    period: "Feb 2024 - Aug 2024",
+    location: "Toronto, ON",
+    description: "Developed vehicle fleet management features and optimized backend systems for improved cost efficiency and security.",
     highlights: [
-      "Built 10+ client websites",
-      "Learned agile methodologies",
-      "Contributed to open source"
+      "Shipped vehicle fleet management features (Java, Spring Boot, MySQL) for internal ops users.",
+      "Optimized third-party API usage; -$1,500/mo cost and improved latency/throughput; implemented Spring Security."
     ],
-    tags: ["HTML/CSS", "JavaScript", "Git", "REST APIs"]
+    tags: ["Java", "Spring Boot", "MySQL", "Spring Security", "API Optimization"]
+  },
+  {
+    id: 4,
+    company: "Distributive",
+    role: "Software Engineering Intern",
+    period: "Jan 2023 - Jul 2023",
+    location: "Kingston, ON",
+    description: "Enhanced user engagement through interactive frontend features and implemented secure backend authentication systems.",
+    highlights: [
+      "Boosted user engagement by 25% through responsive and interactive features, including parallax scrolling.",
+      "Implemented features using React and TypeScript for optimized code performance and maintainability.",
+      "Deployed a Node.js backend to handle user authentication and security."
+    ],
+    tags: ["React", "TypeScript", "Node.js", "Frontend Development"]
+  },
+  {
+    id: 5,
+    company: "University of Toronto",
+    role: "Research Intern",
+    period: "Jan 2022 - May 2022",
+    location: "Toronto, ON",
+    description: "Collaborated with graduate research lab on mathematics project applying machine learning to pattern recognition problems.",
+    highlights: [
+      "Collaborated with a graduate research lab on a mathematics project; scoped experiments/approach with faculty.",
+      "Constructed a Gaussian Naive Bayes program in Python to classify corrupted number data with 97% accuracy.",
+      "Communicated and presented my work to a panel of 20+ graduate students and faculty members."
+    ],
+    tags: ["Python", "Machine Learning", "Research", "Data Science"]
   }
 ];
 
@@ -103,7 +130,7 @@ export default function ExperienceSection({ currentColors }: ExperienceSectionPr
             />
 
             {/* Experience Items */}
-            <div className="space-y-0">
+            <div className="space-y-2">
               {experiences.map((exp, index) => {
                 const isHovered = hoveredId === exp.id;
                 const isExpanded = expandedId === exp.id;
@@ -120,31 +147,14 @@ export default function ExperienceSection({ currentColors }: ExperienceSectionPr
                     `}
                     style={{
                       borderColor: currentColors.borderColor,
-                      backgroundColor: isHovered ? `${currentColors.primaryBg}25` : 'transparent'
+                      backgroundColor: isHovered ? `${currentColors.primaryBg}20` : `${currentColors.primaryBg}08`
                     }}
                     onMouseEnter={() => setHoveredId(exp.id)}
                     onMouseLeave={() => setHoveredId(null)}
                   >
                     <div className="py-4 lg:py-6 lg:pl-20">
-                      {/* Timeline Dot */}
-                      <div
-                        className={`
-                          absolute left-0 top-1/2 -translate-y-1/2
-                          w-3 h-3 rounded-full
-                          border-2
-                          transition-all duration-300
-                          ${isHovered ? 'scale-150 border-opacity-60' : 'border-opacity-30'}
-                          hidden lg:block
-                        `}
-                        style={{
-                          left: 'calc(2rem - 6px)',
-                          borderColor: currentColors.borderColor,
-                          backgroundColor: currentColors.accentColor
-                        }}
-                      />
-
                       {/* Content Grid */}
-                      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6">
+                      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 items-start">
                         {/* Left Column - Period & Location */}
                         <div className="lg:col-span-3">
                           <div
@@ -164,8 +174,8 @@ export default function ExperienceSection({ currentColors }: ExperienceSectionPr
                           </div>
                         </div>
 
-                        {/* Right Column - Main Content */}
-                        <div className="lg:col-span-9">
+                        {/* Middle Column - Main Content */}
+                        <div className="lg:col-span-7">
                           {/* Company & Role */}
                           <div className="mb-2">
                             <h3
@@ -231,7 +241,7 @@ export default function ExperienceSection({ currentColors }: ExperienceSectionPr
                             </ul>
                           </div>
 
-                          {/* Tags & Actions */}
+                          {/* Tags */}
                           <div className="flex flex-wrap items-center gap-1.5 mt-2">
                             {exp.tags.map(tag => (
                               <span
@@ -251,21 +261,29 @@ export default function ExperienceSection({ currentColors }: ExperienceSectionPr
                                 {tag}
                               </span>
                             ))}
-
-                            {/* Expand Toggle */}
-                            <button
-                              onClick={() => setExpandedId(isExpanded ? null : exp.id)}
-                              className={`
-                                ml-auto
-                                transition-all duration-300
-                                ${isHovered ? 'opacity-60' : 'opacity-30'}
-                                hover:opacity-80
-                              `}
-                              style={{ fontWeight: 200, fontSize: '0.7rem', letterSpacing: '0.05em', color: currentColors.accentColor }}
-                            >
-                              {isExpanded ? '← LESS' : 'MORE →'}
-                            </button>
                           </div>
+                        </div>
+
+                        {/* Right Column - Arrow */}
+                        <div className="lg:col-span-2 flex justify-start lg:justify-end items-start mt-4 lg:mt-0 lg:pr-4">
+                          <button
+                            onClick={() => setExpandedId(isExpanded ? null : exp.id)}
+                            className={`
+                              transition-all duration-500 ease-out
+                              ${isHovered
+                                ? 'translate-x-2 opacity-100'
+                                : 'translate-x-0 opacity-0 lg:opacity-30'
+                              }
+                              hover:opacity-100
+                            `}
+                            style={{
+                              fontWeight: 100,
+                              fontSize: '1.5rem',
+                              color: currentColors.accentColor
+                            }}
+                          >
+                            {isExpanded ? '←' : '→'}
+                          </button>
                         </div>
                       </div>
                     </div>
