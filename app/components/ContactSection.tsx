@@ -20,6 +20,15 @@ export default function ContactSection({ currentColors }: ContactSectionProps) {
         </span>
         <div className="flex gap-6 items-center">
           <a
+            href="https://www.linkedin.com/in/bartek-kowalski-68117b1ab/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-lg font-serif transition-all duration-300 hover:opacity-70"
+            style={{ color: currentColors.accentColor }}
+          >
+            linkedin →
+          </a>
+          <a
             href="https://x.com/bartekkowalski_"
             target="_blank"
             rel="noopener noreferrer"

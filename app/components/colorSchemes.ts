@@ -27,8 +27,8 @@ export const colorSchemes: Record<ColorSchemeKey, ColorScheme> = {
     secondaryBg: '#FBCFE8',      // Light pink
     accentColor: '#3B82F6',      // Blue
     secondaryAccent: '#FDBA74',  // Darker peach
-    textPrimary: '#1F2937',      // Dark gray
-    textSecondary: '#6B7280',    // Medium gray
+    textPrimary: '#000000',      // Black
+    textSecondary: '#1F2937',    // Very dark gray
     borderColor: '#D1D5DB',      // Light gray
     // Legacy
     background: 'bg-gradient-to-b from-orange-100 via-orange-300 via-pink-200 to-blue-600',
@@ -43,8 +43,8 @@ export const colorSchemes: Record<ColorSchemeKey, ColorScheme> = {
     secondaryBg: '#AF8F6F',      // Tan
     accentColor: '#74512D',      // Brown
     secondaryAccent: '#543310',  // Dark brown
-    textPrimary: '#1F2937',      // Dark gray
-    textSecondary: '#6B7280',    // Medium gray
+    textPrimary: '#000000',      // Black
+    textSecondary: '#1F2937',    // Very dark gray
     borderColor: '#D1D5DB',      // Light gray
     // Legacy
     background: 'bg-gradient-to-br',
@@ -60,8 +60,8 @@ export const colorSchemes: Record<ColorSchemeKey, ColorScheme> = {
     secondaryBg: '#7DD3FC',      // Light blue
     accentColor: '#0EA5E9',      // Bright blue
     secondaryAccent: '#0C4A6E',  // Dark blue
-    textPrimary: '#1F2937',      // Dark gray
-    textSecondary: '#6B7280',    // Medium gray
+    textPrimary: '#000000',      // Black
+    textSecondary: '#1F2937',    // Very dark gray
     borderColor: '#BAE6FD',      // Soft blue
     // Legacy
     background: 'bg-gradient-to-br',
@@ -77,8 +77,8 @@ export const colorSchemes: Record<ColorSchemeKey, ColorScheme> = {
     secondaryBg: '#84CC16',      // Lime green
     accentColor: '#365314',      // Forest green
     secondaryAccent: '#1A2E05',  // Very dark green
-    textPrimary: '#1F2937',      // Dark gray
-    textSecondary: '#6B7280',    // Medium gray
+    textPrimary: '#000000',      // Black
+    textSecondary: '#1F2937',    // Very dark gray
     borderColor: '#D9F99D',      // Soft green
     // Legacy
     background: 'bg-gradient-to-br',
@@ -94,8 +94,8 @@ export const colorSchemes: Record<ColorSchemeKey, ColorScheme> = {
     secondaryBg: '#DDD6FE',      // Light purple
     accentColor: '#A78BFA',      // Medium purple
     secondaryAccent: '#6D28D9',  // Dark purple
-    textPrimary: '#1F2937',      // Dark gray
-    textSecondary: '#6B7280',    // Medium gray
+    textPrimary: '#000000',      // Black
+    textSecondary: '#1F2937',    // Very dark gray
     borderColor: '#E9D5FF',      // Soft purple
     // Legacy
     background: 'bg-gradient-to-br',
@@ -111,8 +111,8 @@ export const colorSchemes: Record<ColorSchemeKey, ColorScheme> = {
     secondaryBg: '#8C6A5D',      // Mauve/taupe
     accentColor: '#5F374B',      // Plum
     secondaryAccent: '#430A5D',  // Deep purple
-    textPrimary: '#1F2937',      // Dark gray
-    textSecondary: '#6B7280',    // Medium gray
+    textPrimary: '#000000',      // Black
+    textSecondary: '#1F2937',    // Very dark gray
     borderColor: '#D1D5DB',      // Light gray
     // Legacy
     background: 'bg-gradient-to-br',
@@ -162,8 +162,8 @@ export const colorSchemes: Record<ColorSchemeKey, ColorScheme> = {
     secondaryBg: '#E3E1D9',      // Light warm gray
     accentColor: '#B4B4B8',      // Cool medium gray
     secondaryAccent: '#C7C8CC',  // Light cool gray
-    textPrimary: '#3F3F46',      // Dark gray for text
-    textSecondary: '#71717A',    // Medium gray for secondary text
+    textPrimary: '#000000',      // Black for text
+    textSecondary: '#1F2937',    // Very dark gray for secondary text
     borderColor: '#C7C8CC',      // Light cool gray for borders
     // Legacy
     background: 'bg-gradient-to-br',
