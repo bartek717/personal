@@ -8,7 +8,6 @@ import Header from './components/ui/Header';
 import Footer from './components/ui/Footer';
 import ScrollArrow from './components/ui/ScrollArrow';
 import HeroBio from './components/sections/HeroBio';
-import ContactSection from './components/sections/ContactSection';
 import EssaysSection from './components/sections/EssaysSection';
 import FilmSection from './components/sections/FilmSection';
 import ProjectsSection from './components/sections/ProjectsSection';
@@ -42,7 +41,6 @@ export default function Home() {
           <div className="relative z-10 flex flex-col min-h-full">
             <Header currentColors={currentColors} />
             <HeroBio currentColors={currentColors} />
-            <ContactSection currentColors={currentColors} />
           </div>
 
           {/* Scroll Arrow */}
