@@ -51,9 +51,47 @@ export default function FilmSection({ currentColors }: FilmSectionProps) {
 
   return (
     <section
-      className={`h-screen ${currentColors.background} relative`}
+      className={`h-screen ${currentColors.background} relative overflow-hidden`}
       style={currentColors.customGradient ? { background: currentColors.customGradient } : {}}
     >
+      {/* Film sprocket holes pattern on sides */}
+      <div className="absolute left-0 top-0 bottom-0 w-12 opacity-[0.1] pointer-events-none">
+        <div
+          className="h-full"
+          style={{
+            backgroundImage: `repeating-linear-gradient(
+              0deg,
+              transparent,
+              transparent 20px,
+              ${needsDarkText ? '#000' : '#fff'} 20px,
+              ${needsDarkText ? '#000' : '#fff'} 30px
+            )`
+          }}
+        />
+      </div>
+      <div className="absolute right-0 top-0 bottom-0 w-12 opacity-[0.1] pointer-events-none">
+        <div
+          className="h-full"
+          style={{
+            backgroundImage: `repeating-linear-gradient(
+              0deg,
+              transparent,
+              transparent 20px,
+              ${needsDarkText ? '#000' : '#fff'} 20px,
+              ${needsDarkText ? '#000' : '#fff'} 30px
+            )`
+          }}
+        />
+      </div>
+
+      {/* Subtle grain texture overlay */}
+      <div
+        className="absolute inset-0 opacity-[0.015] pointer-events-none mix-blend-multiply"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+        }}
+      />
+
       <div className="relative z-10 px-8 lg:px-16 py-16 h-full flex flex-col">
         {/* Header Section */}
         <div className="max-w-7xl mx-auto w-full mb-10">
