@@ -6,7 +6,6 @@ import ColorPaletteSelector from './components/ui/ColorPaletteSelector';
 import BackgroundGradient from './components/ui/BackgroundGradient';
 import Header from './components/ui/Header';
 import Footer from './components/ui/Footer';
-import ScrollArrow from './components/ui/ScrollArrow';
 import HeroBio from './components/sections/HeroBio';
 import EssaysSection from './components/sections/EssaysSection';
 import FilmSection from './components/sections/FilmSection';
@@ -42,9 +41,6 @@ export default function Home() {
             <Header currentColors={currentColors} />
             <HeroBio currentColors={currentColors} />
           </div>
-
-          {/* Scroll Arrow */}
-          <ScrollArrow currentColors={currentColors} />
           </section>
         </div>
       </div>
