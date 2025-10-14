@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bartek — Rosette Logo</title>
+  <style>
+    :root{
+      /* Change these two to re‑skin the logo */
+      --logo-start: #60a5fa; /* cobalt */
+      --logo-end:   #0f172a; /* slate-900 */
+      --ink: #0f172a;        /* slate-900 */
+      --ink-dim: #334155;    /* slate-600 */
+      --paper: #ffffff;
+      --paper-dark: #0b1020;
+    }
+    .palette-sunset{ --logo-start:#fde68a; --logo-end:#fca5a5; }
+    .palette-baltic{ --logo-start:#22d3ee; --logo-end:#0ea5e9; } /* teal→sky */
+    .palette-amber{ --logo-start:#f59e0b; --logo-end:#b45309; }
+    .palette-cobalt{ --logo-start:#60a5fa; --logo-end:#0f172a; } /* default: cobalt→slate */
+    .palette-forest{ --logo-start:#34d399; --logo-end:#064e3b; }
+    .palette-carbon{ --logo-start:#94a3b8; --logo-end:#111827; }
+    .palette-nocturne{ --logo-start:#1e3a8a; --logo-end:#020617; }
+
+    html,body{ height:100%; margin:0; font:16px/1.5 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial; background:var(--paper); color:var(--ink);}    
+    .wrap{ max-width:980px; margin:40px auto; padding:24px; }
+    h1{ font-weight:700; letter-spacing:-0.02em; margin:0 0 8px; }
+    p{ color:var(--ink-dim); margin:0 0 16px; }
+
+    .row{ display:grid; grid-template-columns:1fr 1fr; gap:24px; margin:28px 0; }
+    .card{ border:1px solid rgba(2,6,23,0.07); border-radius:16px; padding:18px; box-shadow:0 8px 30px rgba(2,6,23,0.05);} 
+    .dark{ background:var(--paper-dark); color:#e7e9f3; }
+    .dark .card{ border-color:rgba(255,255,255,0.08); box-shadow: 0 8px 30px rgba(255,255,255,0.04);}
+    .dark p{ color:#98a2b3; }
+
+    .brand{ display:flex; align-items:center; gap:14px; }
+    .word{ font-weight:700; letter-spacing:-0.02em; font-size:28px; }
+    .tag{ font-size:13px; opacity:.7; }
+
+    .grid{ display:flex; align-items:center; gap:18px; flex-wrap:wrap; }
+    .swatch{ display:inline-flex; align-items:center; gap:8px; font-size:13px; }
+    .chip{ width:16px; height:16px; border-radius:999px; }
+
+    /* Favicon preview grid */
+    .icons{ display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
+    .ico{ width:48px; height:48px; border-radius:12px; border:1px solid rgba(2,6,23,0.08); display:grid; place-items:center; background:#fff; }
+    .dark .ico{ border-color:rgba(255,255,255,0.12); background:#0e1428; }
+
+    /* Logo sizing helpers */
+    .logo-48 { width:48px; height:48px; }
+    .logo-64 { width:64px; height:64px; }
+    .logo-96 { width:96px; height:96px; }
+    .logo-128{ width:128px; height:128px; }
+  </style>
+</head>
+<body>
+  <!-- Symbol defs: the logo is a soft 8‑petal rosette (original), inspired by minimal/geometric forms you liked in Claude’s mark. -->
+  <svg width="0" height="0" style="position:absolute;">
+    <defs>
+      <linearGradient id="bkGradient" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%"  stop-color="var(--logo-start)"/>
+        <stop offset="100%" stop-color="var(--logo-end)"/>
+      </linearGradient>
+      <filter id="bkSoft" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur in="SourceAlpha" stdDeviation="1.5" result="blur"/>
+        <feOffset dy="0"/>
+        <feComposite in2="blur" operator="over"/>
+      </filter>
+
+      <!-- Logo symbol -->
+      <symbol id="bk-rosette" viewBox="-64 -64 128 128" overflow="visible">
+        <title>Bartek Rosette</title>
+        <desc>Eight rounded petals arranged radially to imply momentum and creativity.</desc>
+        <g transform="rotate(22.5)">
+          <!-- 8 petals -->
+          <rect x="-8" y="-30" width="16" height="60" rx="10" fill="url(#bkGradient)" filter="url(#bkSoft)" />
+          <rect x="-8" y="-30" width="16" height="60" rx="10" fill="url(#bkGradient)" transform="rotate(45)" />
+          <rect x="-8" y="-30" width="16" height="60" rx="10" fill="url(#bkGradient)" transform="rotate(90)" />
+          <rect x="-8" y="-30" width="16" height="60" rx="10" fill="url(#bkGradient)" transform="rotate(135)" />
+          <rect x="-8" y="-30" width="16" height="60" rx="10" fill="url(#bkGradient)" transform="rotate(180)" />
+          <rect x="-8" y="-30" width="16" height="60" rx="10" fill="url(#bkGradient)" transform="rotate(225)" />
+          <rect x="-8" y="-30" width="16" height="60" rx="10" fill="url(#bkGradient)" transform="rotate(270)" />
+          <rect x="-8" y="-30" width="16" height="60" rx="10" fill="url(#bkGradient)" transform="rotate(315)" />
+          <!-- Inner counter to lighten the center -->
+          <circle r="8" fill="white" fill-opacity="0.8" />
+        </g>
+      </symbol>
+      
+      <!-- Monochrome symbol (fills follow CSS currentColor) -->
+      <symbol id="bk-rosette-mono" viewBox="-64 -64 128 128" overflow="visible">
+        <title>Bartek Rosette — Monochrome</title>
+        <desc>Eight rounded petals, single-color, inherits current text color.</desc>
+        <g transform="rotate(22.5)">
+          <rect x="-8" y="-30" width="16" height="60" rx="10" fill="currentColor" />
+          <rect x="-8" y="-30" width="16" height="60" rx="10" fill="currentColor" transform="rotate(45)" />
+          <rect x="-8" y="-30" width="16" height="60" rx="10" fill="currentColor" transform="rotate(90)" />
+          <rect x="-8" y="-30" width="16" height="60" rx="10" fill="currentColor" transform="rotate(135)" />
+          <rect x="-8" y="-30" width="16" height="60" rx="10" fill="currentColor" transform="rotate(180)" />
+          <rect x="-8" y="-30" width="16" height="60" rx="10" fill="currentColor" transform="rotate(225)" />
+          <rect x="-8" y="-30" width="16" height="60" rx="10" fill="currentColor" transform="rotate(270)" />
+          <rect x="-8" y="-30" width="16" height="60" rx="10" fill="currentColor" transform="rotate(315)" />
+          <circle r="8" fill="currentColor" fill-opacity="0.15" />
+        </g>
+      </symbol>
+    </defs>
+  </svg>
+
+  <div class="wrap">
+    <h1>Bartek — Rosette Logo</h1>
+    <p>Original mark with a clean, minimalist geometry and bold neutral gradient. It riffs on what you like about Claude’s logo <em>without copying it</em>.</p>
+
+    <!-- Light theme -->
+    <div class="row">
+      <div class="card">
+        <div class="brand">
+          <svg class="logo-64"><use href="#bk-rosette"/></svg>
+          <div>
+            <div class="word">bartekkowalski</div>
+            <div class="tag">building tech • writing opinions • cultivating culture</div>
+          </div>
+        </div>
+        <div style="height:12px"></div>
+        <div class="grid">
+          <div class="swatch"><span class="chip" style="background:var(--logo-start)"></span> start</div>
+          <div class="swatch"><span class="chip" style="background:var(--logo-end)"></span> end</div>
+        </div>
+        <p style="margin-top:8px; font-size:13px;">Swap palettes by adding <code>palette-cobalt</code>, <code>palette-forest</code>, <code>palette-carbon</code>, or <code>palette-nocturne</code> to the <code>&lt;body&gt;</code> class.</p>
+      </div>
+
+      <!-- Dark theme preview -->
+      <div class="card dark">
+        <div class="brand">
+          <svg class="logo-64"><use href="#bk-rosette"/></svg>
+          <div>
+            <div class="word">bartekkowalski</div>
+            <div class="tag">mój zapał — work in progress</div>
+          </div>
+        </div>
+        <div style="height:12px"></div>
+        <div class="icons">
+          <div class="ico"><svg class="logo-48"><use href="#bk-rosette"/></svg></div>
+          <div class="ico" style="width:64px;height:64px"><svg class="logo-48"><use href="#bk-rosette"/></svg></div>
+          <div class="ico" style="width:96px;height:96px"><svg class="logo-64"><use href="#bk-rosette"/></svg></div>
+        </div>
+        <p style="margin-top:8px; font-size:13px;">Icon sizing previews for favicons / app icons.</p>
+      </div>
+    </div>
+
+    <!-- Mark-only variants -->
+    <div class="row">
+      <div class="card">
+        <h3 style="margin:4px 0 12px">Mark‑only</h3>
+        <div class="icons">
+          <svg class="logo-48"><use href="#bk-rosette"/></svg>
+          <svg class="logo-64"><use href="#bk-rosette"/></svg>
+          <svg class="logo-96"><use href="#bk-rosette"/></svg>
+          <svg class="logo-128"><use href="#bk-rosette"/></svg>
+        </div>
+      </div>
+      <div class="card">
+        <h3 style="margin:4px 0 12px">Monochrome</h3>
+        <div class="icons">
+          <svg class="logo-64" style="filter:grayscale(1) contrast(1.1)"><use href="#bk-rosette"/></svg>
+          <svg class="logo-64" style="filter:grayscale(1) brightness(0.25)"><use href="#bk-rosette"/></svg>
+          <svg class="logo-64" style="filter:grayscale(1) brightness(1.6)"><use href="#bk-rosette"/></svg>
+        </div>
+        <p style="margin-top:8px; font-size:13px;">This is the single‑color rendering; it uses <code>currentColor</code> so you can tint it via CSS.</p>
+      </div>
+    </div>
+
+    <!-- Implementation notes -->
+    <div class="card">
+      <h3 style="margin:4px 0 12px">How to use in your site</h3>
+      <ol>
+        <li>Copy the <strong>&lt;svg&gt; &lt;defs&gt;</strong> block into your app shell (e.g., <code>_app.tsx</code> or your root layout). It defines <code>#bk-rosette</code>.</li>
+        <li>Place the mark anywhere via: <code>&lt;svg width="64" height="64"&gt;&lt;use href="#bk-rosette" /&gt;&lt;/svg&gt;</code>.</li>
+        <li>Change colors by editing <code>--logo-start</code> and <code>--logo-end</code> CSS variables.</li>
+        <li>SVG favicon (modern browsers):
+          <pre><code>&lt;link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='-64 -64 128 128'&gt;&lt;defs&gt;&lt;linearGradient id='g' x1='0' y1='0' x2='1' y2='1'&gt;&lt;stop offset='0%' stop-color='%23fecaca'/&gt;&lt;stop offset='100%' stop-color='%23c7d2fe'/&gt;&lt;/linearGradient&gt;&lt;/defs&gt;&lt;g transform='rotate(22.5)'&gt;{P}&lt;/g&gt;&lt;/svg&gt;" /&gt;</code></pre>
+          Replace <code>{P}</code> with the eight rotated rounded-rect petals, or export the full SVG from above.
+        </li>
+        </ol>
+      <p style="font-size:13px; opacity:.8">Tip: For a Polish nod in the wordmark, consider “<strong>Mój zapał</strong>” above the nav, or just “<strong>zapał</strong>”.</p>
+    </div>
+
+  </div>
+
+  <!-- Toggle palettes quickly (uncomment one): -->
+  <!-- <script>document.body.classList.add('palette-cobalt')</script> -->
+  <!-- <script>document.body.classList.add('palette-forest')</script> -->
+  <!-- <script>document.body.classList.add('palette-carbon')</script> -->
+  <!-- <script>document.body.classList.add('palette-nocturne')</script> -->
+</body>
+</html>
