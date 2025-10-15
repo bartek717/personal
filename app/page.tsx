@@ -50,14 +50,14 @@ export default function Home() {
 
       {/* Content Sections with Unified Background */}
       <div className="relative rounded-[4rem] overflow-hidden mt-8 snap-start px-8 mb-8" style={{ backgroundColor: currentColors.secondaryBg }}>
-        {/* Essays Section */}
-        <div id="essays" className="snap-start snap-always">
-          <EssaysSection currentColors={currentColors} />
-        </div>
-
         {/* Film Section */}
         <div id="film" className="snap-start snap-always">
           <FilmSection currentColors={currentColors} />
+        </div>
+
+        {/* Essays Section */}
+        <div id="essays" className="snap-start snap-always">
+          <EssaysSection currentColors={currentColors} />
         </div>
 
         {/* Projects Section */}

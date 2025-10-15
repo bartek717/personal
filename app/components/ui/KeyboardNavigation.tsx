@@ -10,8 +10,8 @@ export default function KeyboardNavigation() {
 
         const sections = [
           'hero',
-          'essays',
           'film',
+          'essays',
           'projects',
           'experience'
         ];

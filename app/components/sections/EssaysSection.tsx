@@ -10,6 +10,7 @@ interface EssayItem {
   excerpt: string;
   type: 'essay' | 'opinion';
   readTime: string;
+  link?: string;
 }
 
 interface EssaysSectionProps {
@@ -19,32 +20,32 @@ interface EssaysSectionProps {
 const essays: EssayItem[] = [
   {
     id: 1,
-    title: "On the Nature of Digital Creativity",
-    date: "Dec 2024",
-    excerpt: "Exploring the intersection of technology and artistic expression.",
+    title: "The Rise and Potential of Open Source Large Language Models in AI",
+    date: "Jun 2024",
+    excerpt: "Exploring how open-source LLMs are democratizing AI development and reshaping the technological landscape.",
     type: 'essay',
-    readTime: "5 min"
+    readTime: "8 min",
+    link: "https://medium.com/@bartekmkowalski/the-rise-and-potential-of-open-source-large-language-models-in-ai-0d30450f8b3c"
   },
   {
     id: 2,
-    title: "The Paradox of Choice in Modern Software",
-    date: "Nov 2024",
-    excerpt: "Why having too many options might be limiting our potential.",
+    title: "ChatGPT: Is the Education Industry Ready?",
+    date: "Mar 2023",
+    excerpt: "Examining the implications of ChatGPT and generative AI on education systems and learning methodologies.",
     type: 'opinion',
-    readTime: "3 min"
-  },
-  {
-    id: 3,
-    title: "Building in Public: A Personal Journey",
-    date: "Oct 2024",
-    excerpt: "Lessons learned from sharing work before it's perfect.",
-    type: 'essay',
-    readTime: "7 min"
+    readTime: "6 min",
+    link: "https://medium.com/qmind-ai/chatgpt-is-the-education-industry-ready-df8bd7575371"
   }
 ];
 
 export default function EssaysSection({ currentColors }: EssaysSectionProps) {
   const [hoveredId, setHoveredId] = useState<number | null>(null);
+
+  const handleEssayClick = (link?: string) => {
+    if (link) {
+      window.open(link, '_blank', 'noopener,noreferrer');
+    }
+  };
 
   return (
     <section className="min-h-screen relative">
@@ -100,6 +101,7 @@ export default function EssaysSection({ currentColors }: EssaysSectionProps) {
                 }}
                 onMouseEnter={() => setHoveredId(essay.id)}
                 onMouseLeave={() => setHoveredId(null)}
+                onClick={() => handleEssayClick(essay.link)}
               >
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-start">
                   {/* Left Column - Meta */}
