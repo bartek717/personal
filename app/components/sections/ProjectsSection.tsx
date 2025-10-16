@@ -55,11 +55,11 @@ export default function ProjectsSection({ currentColors }: ProjectsSectionProps)
     }
   };
 
-  const getStatusColor = (status: Project['status']) => {
+  const getStatusColor = (status: Project['status'], colors: ColorScheme) => {
     switch(status) {
-      case 'live': return 'bg-green-500';
-      case 'in-progress': return 'bg-yellow-500';
-      case 'archived': return 'bg-gray-400';
+      case 'live': return colors.accentColor;
+      case 'in-progress': return colors.secondaryBg;
+      case 'archived': return colors.borderColor;
     }
   };
 
@@ -134,15 +134,20 @@ export default function ProjectsSection({ currentColors }: ProjectsSectionProps)
                   <div
                     className={`
                       relative overflow-hidden
-                      border border-opacity-20
-                      transition-all duration-700 ease-out
-                      ${isHovered ? 'border-opacity-40 shadow-2xl' : ''}
+                      border rounded-xl
+                      transition-all duration-500 ease-out
                     `}
                     style={{
                       height: index === 0 ? '320px' : '280px',
-                      borderColor: currentColors.borderColor,
-                      backgroundColor: isHovered ? `${currentColors.primaryBg}20` : `${currentColors.primaryBg}08`,
-                      backgroundImage: 'none'
+                      borderColor: isHovered ? `${currentColors.accentColor}60` : `${currentColors.borderColor}30`,
+                      backgroundColor: `${currentColors.primaryBg}70`,
+                      background: isHovered
+                        ? `linear-gradient(135deg, ${currentColors.primaryBg}80 0%, ${currentColors.secondaryBg}15 100%)`
+                        : `${currentColors.primaryBg}70`,
+                      transform: isHovered ? 'translateY(-4px)' : 'translateY(0)',
+                      boxShadow: isHovered
+                        ? `0 12px 24px -8px ${currentColors.secondaryBg}30, 0 6px 12px -4px ${currentColors.accentColor}15`
+                        : `0 2px 8px -4px ${currentColors.borderColor}20`
                     }}
                   >
                     {/* Project Number - Large Format */}
@@ -171,9 +176,12 @@ export default function ProjectsSection({ currentColors }: ProjectsSectionProps)
                         {/* Status & Year Bar */}
                         <div className="flex items-center justify-between mb-3">
                           <div className="flex items-center gap-2.5">
-                            <div className={`w-1.5 h-1.5 rounded-full ${getStatusColor(project.status)}`} />
+                            <div
+                              className="w-1.5 h-1.5 rounded-full"
+                              style={{ backgroundColor: getStatusColor(project.status, currentColors) }}
+                            />
                             <span
-                              className="opacity-50 uppercase"
+                              className="opacity-70 uppercase"
                               style={{ fontWeight: 300, fontSize: '0.6rem', letterSpacing: '0.1em', color: currentColors.textSecondary }}
                             >
                               {getStatusLabel(project.status)}
@@ -227,21 +235,22 @@ export default function ProjectsSection({ currentColors }: ProjectsSectionProps)
                       <div className="mt-3">
                         {/* Technology Tags */}
                         <div className="flex flex-wrap gap-1.5 mb-3">
-                          {project.tags.map(tag => (
+                          {project.tags.map((tag, index) => (
                             <span
                               key={tag}
                               className={`
-                                px-2.5 py-1
-                                border border-opacity-20
+                                px-2.5 py-1 rounded-md
+                                border
                                 transition-all duration-500
-                                ${isHovered ? 'opacity-60 border-opacity-40' : 'opacity-40'}
+                                ${isHovered ? 'border-opacity-60' : 'border-opacity-40'}
                               `}
                               style={{
-                                fontWeight: 200,
+                                fontWeight: 300,
                                 fontSize: '0.65rem',
                                 letterSpacing: '0.04em',
-                                color: currentColors.textSecondary,
-                                borderColor: currentColors.borderColor
+                                backgroundColor: index % 2 === 0 ? `${currentColors.secondaryBg}08` : `${currentColors.accentColor}06`,
+                                borderColor: index % 2 === 0 ? `${currentColors.secondaryBg}40` : `${currentColors.accentColor}40`,
+                                color: currentColors.textPrimary
                               }}
                             >
                               {tag}
@@ -283,18 +292,6 @@ export default function ProjectsSection({ currentColors }: ProjectsSectionProps)
                         </div>
                       </div>
                     </div>
-
-                    {/* Hover Gradient Overlay */}
-                    <div
-                      className={`
-                        absolute inset-0 pointer-events-none
-                        transition-opacity duration-700
-                        ${isHovered ? 'opacity-100' : 'opacity-0'}
-                      `}
-                      style={{
-                        background: `linear-gradient(135deg, transparent 0%, ${currentColors.primaryBg}15 100%)`
-                      }}
-                    />
                   </div>
                 </article>
               );

@@ -83,26 +83,38 @@ export default function EssaysSection({ currentColors }: EssaysSectionProps) {
               <article
                 key={essay.id}
                 className={`
-                  lg:col-span-12 group cursor-pointer
-                  border border-opacity-10
+                  lg:col-span-12 group cursor-pointer relative
+                  border rounded-xl
                   transition-all duration-500 ease-out
                   overflow-hidden
-                  ${hoveredId === essay.id ? 'border-opacity-20 shadow-lg' : 'shadow-sm'}
                 `}
                 style={{
-                  borderColor: currentColors.borderColor,
-                  backgroundColor: hoveredId === essay.id ? `${currentColors.primaryBg}20` : `${currentColors.primaryBg}08`,
-                  borderRadius: '12px',
+                  borderColor: hoveredId === essay.id ? `${currentColors.accentColor}60` : `${currentColors.borderColor}30`,
+                  backgroundColor: `${currentColors.primaryBg}70`,
+                  background: hoveredId === essay.id
+                    ? `linear-gradient(120deg, ${currentColors.primaryBg}80 0%, ${currentColors.secondaryBg}10 100%)`
+                    : `${currentColors.primaryBg}70`,
                   padding: 'clamp(1.5rem, 3vw, 2.5rem)',
-                  transform: hoveredId === essay.id ? 'translateY(-2px)' : 'translateY(0)',
+                  transform: hoveredId === essay.id ? 'translateY(-4px)' : 'translateY(0)',
                   boxShadow: hoveredId === essay.id
-                    ? `0 8px 24px ${currentColors.primaryBg}20`
-                    : `0 2px 8px ${currentColors.primaryBg}10`
+                    ? `0 12px 24px -8px ${currentColors.secondaryBg}30, 0 6px 12px -4px ${currentColors.accentColor}15`
+                    : `0 2px 8px -4px ${currentColors.borderColor}20`
                 }}
                 onMouseEnter={() => setHoveredId(essay.id)}
                 onMouseLeave={() => setHoveredId(null)}
                 onClick={() => handleEssayClick(essay.link)}
               >
+                {/* Accent bar on left */}
+                <div
+                  className={`
+                    absolute left-0 top-0 bottom-0 w-1 transition-all duration-500
+                    ${hoveredId === essay.id ? 'opacity-100' : 'opacity-60'}
+                  `}
+                  style={{
+                    backgroundColor: hoveredId === essay.id ? currentColors.secondaryAccent : currentColors.accentColor,
+                    borderRadius: '0 4px 4px 0'
+                  }}
+                />
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-start">
                   {/* Left Column - Meta */}
                   <div className="lg:col-span-2 flex lg:flex-col flex-row gap-4 lg:gap-2">
@@ -128,14 +140,19 @@ export default function EssaysSection({ currentColors }: EssaysSectionProps) {
                     <div className="mb-1">
                       <span
                         className={`
-                          inline-block text-xs uppercase tracking-wider
+                          inline-block px-2 py-0.5 rounded-md
+                          text-xs uppercase tracking-wider
                           transition-all duration-300
-                          ${hoveredId === essay.id ? 'opacity-70 tracking-widest' : 'opacity-50'}
+                          ${hoveredId === essay.id ? 'opacity-90' : 'opacity-70'}
                         `}
                         style={{
-                          fontWeight: 300,
+                          fontWeight: 400,
                           fontSize: '0.65rem',
-                          color: currentColors.textSecondary
+                          backgroundColor: essay.type === 'essay' ? `${currentColors.accentColor}06` : `${currentColors.secondaryBg}08`,
+                          color: essay.type === 'essay' ? currentColors.accentColor : currentColors.secondaryBg,
+                          borderWidth: '1px',
+                          borderStyle: 'solid',
+                          borderColor: essay.type === 'essay' ? `${currentColors.accentColor}40` : `${currentColors.secondaryBg}40`
                         }}
                       >
                         {essay.type}

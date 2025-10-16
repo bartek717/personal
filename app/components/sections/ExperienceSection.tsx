@@ -140,18 +140,35 @@ export default function ExperienceSection({ currentColors }: ExperienceSectionPr
                     key={exp.id}
                     className={`
                       group relative
-                      border-b border-opacity-10
+                      border rounded-xl
                       transition-all duration-500 ease-out
-                      overflow-hidden
-                      ${isHovered ? 'lg:pl-6' : ''}
+                      overflow-hidden mb-4
                     `}
                     style={{
-                      borderColor: currentColors.borderColor,
-                      backgroundColor: isHovered ? `${currentColors.primaryBg}20` : `${currentColors.primaryBg}08`
+                      borderColor: isHovered ? `${currentColors.accentColor}60` : `${currentColors.borderColor}30`,
+                      backgroundColor: `${currentColors.primaryBg}70`,
+                      backgroundImage: isHovered
+                        ? `linear-gradient(90deg, ${currentColors.primaryBg}80 0%, ${currentColors.secondaryBg}12 100%)`
+                        : 'none',
+                      transform: isHovered ? 'translateY(-4px)' : 'translateY(0)',
+                      boxShadow: isHovered
+                        ? `0 12px 24px -8px ${currentColors.secondaryBg}30, 0 6px 12px -4px ${currentColors.accentColor}15`
+                        : `0 2px 8px -4px ${currentColors.borderColor}20`
                     }}
                     onMouseEnter={() => setHoveredId(exp.id)}
                     onMouseLeave={() => setHoveredId(null)}
                   >
+                    {/* Left accent bar */}
+                    <div
+                      className={`
+                        absolute left-0 top-0 bottom-0 w-1 transition-all duration-500
+                        ${isHovered ? 'opacity-100' : 'opacity-60'}
+                      `}
+                      style={{
+                        backgroundColor: isHovered ? currentColors.secondaryAccent : currentColors.accentColor,
+                        borderRadius: '0 4px 4px 0'
+                      }}
+                    />
                     <div className="py-4 lg:py-6 lg:pl-20">
                       {/* Content Grid */}
                       <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 items-start">
@@ -243,19 +260,29 @@ export default function ExperienceSection({ currentColors }: ExperienceSectionPr
 
                           {/* Tags */}
                           <div className="flex flex-wrap items-center gap-1.5 mt-2">
-                            {exp.tags.map(tag => (
+                            {exp.tags.map((tag, index) => (
                               <span
                                 key={tag}
                                 className={`
-                                  px-2.5 py-0.5
-                                  transition-opacity duration-300
-                                  ${isHovered ? 'opacity-50' : 'opacity-30'}
+                                  px-2.5 py-0.5 rounded-md border
+                                  transition-all duration-300
+                                  ${isHovered ? 'opacity-80' : 'opacity-60'}
                                 `}
                                 style={{
-                                  fontWeight: 200,
+                                  fontWeight: 300,
                                   fontSize: '0.65rem',
                                   letterSpacing: '0.03em',
-                                  color: currentColors.textSecondary
+                                  backgroundColor: index % 3 === 0
+                                    ? `${currentColors.accentColor}05`
+                                    : index % 3 === 1
+                                      ? `${currentColors.secondaryBg}06`
+                                      : `${currentColors.secondaryAccent}04`,
+                                  borderColor: index % 3 === 0
+                                    ? `${currentColors.accentColor}40`
+                                    : index % 3 === 1
+                                      ? `${currentColors.secondaryBg}40`
+                                      : `${currentColors.secondaryAccent}40`,
+                                  color: currentColors.textPrimary
                                 }}
                               >
                                 {tag}
