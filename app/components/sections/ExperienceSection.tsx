@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { type ColorScheme } from '../config/colorSchemes';
+import VerticalColorWave from '../ui/VerticalColorWave';
 
 interface Experience {
   id: number;
@@ -16,6 +17,7 @@ interface Experience {
 
 interface ExperienceSectionProps {
   currentColors: ColorScheme;
+  currentScheme?: string;
   bgOpacity?: number; // Base background opacity (0-100)
   bgOpacityHover?: number; // Hover background opacity (0-100)
 }
@@ -94,11 +96,14 @@ const experiences: Experience[] = [
 
 export default function ExperienceSection({
   currentColors,
+  currentScheme,
   bgOpacity = 25,
   bgOpacityHover = 30
 }: ExperienceSectionProps) {
   const [hoveredId, setHoveredId] = useState<number | null>(null);
   const [expandedId, setExpandedId] = useState<number | null>(null);
+  const isWaveScheme = currentScheme === 'wave';
+  const waveColors = ['#777C6D', '#B7B89F', '#CBCBCB', '#EEEEEE'];
 
   return (
     <section className="relative">
@@ -152,10 +157,11 @@ export default function ExperienceSection({
                     `}
                     style={{
                       borderColor: isHovered ? `${currentColors.accentColor}70` : `${currentColors.secondaryAccent}60`,
-                      backgroundColor: `${currentColors.secondaryAccent}${Math.round(bgOpacity * 2.55).toString(16).padStart(2, '0')}`,
-                      backgroundImage: isHovered
+                      backgroundColor: isWaveScheme ? `${currentColors.primaryBg}` : `${currentColors.secondaryAccent}${Math.round(bgOpacity * 2.55).toString(16).padStart(2, '0')}`,
+                      backgroundImage: isHovered && !isWaveScheme
                         ? `linear-gradient(90deg, ${currentColors.secondaryAccent}${Math.round(bgOpacityHover * 2.55).toString(16).padStart(2, '0')} 0%, ${currentColors.accentColor}18 100%)`
                         : 'none',
+                      background: isWaveScheme ? currentColors.primaryBg : undefined,
                       transform: isHovered ? 'translateY(-4px)' : 'translateY(0)',
                       boxShadow: isHovered
                         ? `0 12px 24px -8px ${currentColors.secondaryAccent}45, 0 6px 12px -4px ${currentColors.accentColor}25`
@@ -164,11 +170,33 @@ export default function ExperienceSection({
                     onMouseEnter={() => setHoveredId(exp.id)}
                     onMouseLeave={() => setHoveredId(null)}
                   >
+                    {/* Vertical Wave Animations for Wave Scheme */}
+                    {isWaveScheme && (
+                      <>
+                        <VerticalColorWave
+                          colors={waveColors}
+                          side="left"
+                          opacity={0.3}
+                          speed={16}
+                          waveWidth={65}
+                          lighter={true}
+                        />
+                        <VerticalColorWave
+                          colors={waveColors}
+                          side="right"
+                          opacity={0.3}
+                          speed={16}
+                          waveWidth={65}
+                          lighter={true}
+                        />
+                      </>
+                    )}
                     {/* Left accent bar */}
                     <div
                       className={`
                         absolute left-0 top-0 bottom-0 w-1 transition-all duration-500
                         ${isHovered ? 'opacity-100' : 'opacity-60'}
+                        ${isWaveScheme ? 'z-20' : ''}
                       `}
                       style={{
                         backgroundColor: isHovered ? currentColors.secondaryAccent : currentColors.accentColor,

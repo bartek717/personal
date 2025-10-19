@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { type ColorScheme } from '../config/colorSchemes';
+import VerticalColorWave from '../ui/VerticalColorWave';
 
 interface Project {
   id: number;
@@ -15,6 +16,7 @@ interface Project {
 
 interface ProjectsSectionProps {
   currentColors: ColorScheme;
+  currentScheme?: string;
   bgOpacity?: number; // Base background opacity (0-100)
   bgOpacityHover?: number; // Hover background opacity (0-100)
 }
@@ -50,10 +52,13 @@ const projects: Project[] = [
 
 export default function ProjectsSection({
   currentColors,
+  currentScheme,
   bgOpacity = 30,
   bgOpacityHover = 35
 }: ProjectsSectionProps) {
   const [hoveredId, setHoveredId] = useState<number | null>(null);
+  const isWaveScheme = currentScheme === 'wave';
+  const waveColors = ['#777C6D', '#B7B89F', '#CBCBCB', '#EEEEEE'];
 
   const handleProjectClick = (link?: string) => {
     if (link) {
@@ -146,16 +151,37 @@ export default function ProjectsSection({
                     style={{
                       height: index === 0 ? '320px' : '280px',
                       borderColor: isHovered ? `${currentColors.accentColor}80` : `${currentColors.secondaryAccent}60`,
-                      backgroundColor: `${currentColors.secondaryAccent}${Math.round(bgOpacity * 2.55).toString(16).padStart(2, '0')}`,
-                      background: isHovered
+                      backgroundColor: isWaveScheme ? `${currentColors.primaryBg}` : `${currentColors.secondaryAccent}${Math.round(bgOpacity * 2.55).toString(16).padStart(2, '0')}`,
+                      background: isHovered && !isWaveScheme
                         ? `linear-gradient(135deg, ${currentColors.secondaryAccent}${Math.round(bgOpacityHover * 2.55).toString(16).padStart(2, '0')} 0%, ${currentColors.accentColor}20 100%)`
-                        : `${currentColors.secondaryAccent}${Math.round(bgOpacity * 2.55).toString(16).padStart(2, '0')}`,
+                        : isWaveScheme ? currentColors.primaryBg : `${currentColors.secondaryAccent}${Math.round(bgOpacity * 2.55).toString(16).padStart(2, '0')}`,
                       transform: isHovered ? 'translateY(-4px)' : 'translateY(0)',
                       boxShadow: isHovered
                         ? `0 12px 24px -8px ${currentColors.secondaryAccent}50, 0 6px 12px -4px ${currentColors.accentColor}30`
                         : `0 2px 8px -4px ${currentColors.secondaryAccent}40`
                     }}
                   >
+                    {/* Vertical Wave Animations for Wave Scheme */}
+                    {isWaveScheme && (
+                      <>
+                        <VerticalColorWave
+                          colors={waveColors}
+                          side="left"
+                          opacity={0.3}
+                          speed={18}
+                          waveWidth={70}
+                          lighter={true}
+                        />
+                        <VerticalColorWave
+                          colors={waveColors}
+                          side="right"
+                          opacity={0.3}
+                          speed={18}
+                          waveWidth={70}
+                          lighter={true}
+                        />
+                      </>
+                    )}
                     {/* Project Number - Large Format */}
                     <div
                       className={`

@@ -66,6 +66,7 @@ export default function Home() {
         <div id="essays" className="snap-start snap-always">
           <EssaysSection
             currentColors={currentColors}
+            currentScheme={currentScheme}
             bgOpacity={sectionOpacities.essays.base}
             bgOpacityHover={sectionOpacities.essays.hover}
           />
@@ -75,6 +76,7 @@ export default function Home() {
         <div id="projects" className="snap-start snap-always">
           <ProjectsSection
             currentColors={currentColors}
+            currentScheme={currentScheme}
             bgOpacity={sectionOpacities.projects.base}
             bgOpacityHover={sectionOpacities.projects.hover}
           />
@@ -84,6 +86,7 @@ export default function Home() {
         <div id="experience" className="snap-start snap-always">
           <ExperienceSection
             currentColors={currentColors}
+            currentScheme={currentScheme}
             bgOpacity={sectionOpacities.experience.base}
             bgOpacityHover={sectionOpacities.experience.hover}
           />

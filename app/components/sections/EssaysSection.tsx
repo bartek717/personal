@@ -2,6 +2,7 @@
 
 import { type ColorScheme } from '../config/colorSchemes';
 import { useState } from 'react';
+import VerticalColorWave from '../ui/VerticalColorWave';
 
 interface EssayItem {
   id: number;
@@ -15,6 +16,7 @@ interface EssayItem {
 
 interface EssaysSectionProps {
   currentColors: ColorScheme;
+  currentScheme?: string;
   bgOpacity?: number; // Base background opacity (0-100)
   bgOpacityHover?: number; // Hover background opacity (0-100)
 }
@@ -42,10 +44,13 @@ const essays: EssayItem[] = [
 
 export default function EssaysSection({
   currentColors,
+  currentScheme,
   bgOpacity = 28,
   bgOpacityHover = 32
 }: EssaysSectionProps) {
   const [hoveredId, setHoveredId] = useState<number | null>(null);
+  const isWaveScheme = currentScheme === 'wave';
+  const waveColors = ['#777C6D', '#B7B89F', '#CBCBCB', '#EEEEEE'];
 
   const handleEssayClick = (link?: string) => {
     if (link) {
@@ -96,10 +101,10 @@ export default function EssaysSection({
                 `}
                 style={{
                   borderColor: hoveredId === essay.id ? `${currentColors.accentColor}80` : `${currentColors.secondaryAccent}60`,
-                  backgroundColor: `${currentColors.secondaryAccent}${Math.round(bgOpacity * 2.55).toString(16).padStart(2, '0')}`,
-                  background: hoveredId === essay.id
+                  backgroundColor: isWaveScheme ? `${currentColors.primaryBg}` : `${currentColors.secondaryAccent}${Math.round(bgOpacity * 2.55).toString(16).padStart(2, '0')}`,
+                  background: hoveredId === essay.id && !isWaveScheme
                     ? `linear-gradient(120deg, ${currentColors.secondaryAccent}${Math.round(bgOpacityHover * 2.55).toString(16).padStart(2, '0')} 0%, ${currentColors.accentColor}18 100%)`
-                    : `${currentColors.secondaryAccent}${Math.round(bgOpacity * 2.55).toString(16).padStart(2, '0')}`,
+                    : isWaveScheme ? currentColors.primaryBg : `${currentColors.secondaryAccent}${Math.round(bgOpacity * 2.55).toString(16).padStart(2, '0')}`,
                   padding: 'clamp(1.5rem, 3vw, 2.5rem)',
                   transform: hoveredId === essay.id ? 'translateY(-4px)' : 'translateY(0)',
                   boxShadow: hoveredId === essay.id
@@ -110,11 +115,33 @@ export default function EssaysSection({
                 onMouseLeave={() => setHoveredId(null)}
                 onClick={() => handleEssayClick(essay.link)}
               >
+                {/* Vertical Wave Animations for Wave Scheme */}
+                {isWaveScheme && (
+                  <>
+                    <VerticalColorWave
+                      colors={waveColors}
+                      side="left"
+                      opacity={0.3}
+                      speed={15}
+                      waveWidth={60}
+                      lighter={true}
+                    />
+                    <VerticalColorWave
+                      colors={waveColors}
+                      side="right"
+                      opacity={0.3}
+                      speed={15}
+                      waveWidth={60}
+                      lighter={true}
+                    />
+                  </>
+                )}
                 {/* Accent bar on left */}
                 <div
                   className={`
                     absolute left-0 top-0 bottom-0 w-1 transition-all duration-500
                     ${hoveredId === essay.id ? 'opacity-100' : 'opacity-60'}
+                    ${isWaveScheme ? 'z-20' : ''}
                   `}
                   style={{
                     backgroundColor: hoveredId === essay.id ? currentColors.secondaryAccent : currentColors.accentColor,
