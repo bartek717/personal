@@ -15,6 +15,8 @@ interface Project {
 
 interface ProjectsSectionProps {
   currentColors: ColorScheme;
+  bgOpacity?: number; // Base background opacity (0-100)
+  bgOpacityHover?: number; // Hover background opacity (0-100)
 }
 
 const projects: Project[] = [
@@ -46,7 +48,11 @@ const projects: Project[] = [
   }
 ];
 
-export default function ProjectsSection({ currentColors }: ProjectsSectionProps) {
+export default function ProjectsSection({
+  currentColors,
+  bgOpacity = 30,
+  bgOpacityHover = 35
+}: ProjectsSectionProps) {
   const [hoveredId, setHoveredId] = useState<number | null>(null);
 
   const handleProjectClick = (link?: string) => {
@@ -139,15 +145,15 @@ export default function ProjectsSection({ currentColors }: ProjectsSectionProps)
                     `}
                     style={{
                       height: index === 0 ? '320px' : '280px',
-                      borderColor: isHovered ? `${currentColors.accentColor}60` : `${currentColors.borderColor}30`,
-                      backgroundColor: `${currentColors.primaryBg}70`,
+                      borderColor: isHovered ? `${currentColors.accentColor}80` : `${currentColors.secondaryAccent}60`,
+                      backgroundColor: `${currentColors.secondaryAccent}${Math.round(bgOpacity * 2.55).toString(16).padStart(2, '0')}`,
                       background: isHovered
-                        ? `linear-gradient(135deg, ${currentColors.primaryBg}80 0%, ${currentColors.secondaryBg}15 100%)`
-                        : `${currentColors.primaryBg}70`,
+                        ? `linear-gradient(135deg, ${currentColors.secondaryAccent}${Math.round(bgOpacityHover * 2.55).toString(16).padStart(2, '0')} 0%, ${currentColors.accentColor}20 100%)`
+                        : `${currentColors.secondaryAccent}${Math.round(bgOpacity * 2.55).toString(16).padStart(2, '0')}`,
                       transform: isHovered ? 'translateY(-4px)' : 'translateY(0)',
                       boxShadow: isHovered
-                        ? `0 12px 24px -8px ${currentColors.secondaryBg}30, 0 6px 12px -4px ${currentColors.accentColor}15`
-                        : `0 2px 8px -4px ${currentColors.borderColor}20`
+                        ? `0 12px 24px -8px ${currentColors.secondaryAccent}50, 0 6px 12px -4px ${currentColors.accentColor}30`
+                        : `0 2px 8px -4px ${currentColors.secondaryAccent}40`
                     }}
                   >
                     {/* Project Number - Large Format */}

@@ -16,6 +16,8 @@ interface Experience {
 
 interface ExperienceSectionProps {
   currentColors: ColorScheme;
+  bgOpacity?: number; // Base background opacity (0-100)
+  bgOpacityHover?: number; // Hover background opacity (0-100)
 }
 
 const experiences: Experience[] = [
@@ -90,7 +92,11 @@ const experiences: Experience[] = [
   }
 ];
 
-export default function ExperienceSection({ currentColors }: ExperienceSectionProps) {
+export default function ExperienceSection({
+  currentColors,
+  bgOpacity = 25,
+  bgOpacityHover = 30
+}: ExperienceSectionProps) {
   const [hoveredId, setHoveredId] = useState<number | null>(null);
   const [expandedId, setExpandedId] = useState<number | null>(null);
 
@@ -145,15 +151,15 @@ export default function ExperienceSection({ currentColors }: ExperienceSectionPr
                       overflow-hidden mb-4
                     `}
                     style={{
-                      borderColor: isHovered ? `${currentColors.accentColor}60` : `${currentColors.borderColor}30`,
-                      backgroundColor: `${currentColors.primaryBg}70`,
+                      borderColor: isHovered ? `${currentColors.accentColor}70` : `${currentColors.secondaryAccent}60`,
+                      backgroundColor: `${currentColors.secondaryAccent}${Math.round(bgOpacity * 2.55).toString(16).padStart(2, '0')}`,
                       backgroundImage: isHovered
-                        ? `linear-gradient(90deg, ${currentColors.primaryBg}80 0%, ${currentColors.secondaryBg}12 100%)`
+                        ? `linear-gradient(90deg, ${currentColors.secondaryAccent}${Math.round(bgOpacityHover * 2.55).toString(16).padStart(2, '0')} 0%, ${currentColors.accentColor}18 100%)`
                         : 'none',
                       transform: isHovered ? 'translateY(-4px)' : 'translateY(0)',
                       boxShadow: isHovered
-                        ? `0 12px 24px -8px ${currentColors.secondaryBg}30, 0 6px 12px -4px ${currentColors.accentColor}15`
-                        : `0 2px 8px -4px ${currentColors.borderColor}20`
+                        ? `0 12px 24px -8px ${currentColors.secondaryAccent}45, 0 6px 12px -4px ${currentColors.accentColor}25`
+                        : `0 2px 8px -4px ${currentColors.secondaryAccent}35`
                     }}
                     onMouseEnter={() => setHoveredId(exp.id)}
                     onMouseLeave={() => setHoveredId(null)}

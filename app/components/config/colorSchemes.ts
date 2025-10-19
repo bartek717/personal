@@ -1,4 +1,4 @@
-export type ColorSchemeKey = 'sage' | 'earth' | 'retro' | 'burgundy' | 'olive';
+export type ColorSchemeKey = 'sage' | 'earth' | 'retro' | 'burgundy' | 'olive' | 'wave';
 
 export interface ColorScheme {
   name: string;
@@ -104,5 +104,22 @@ export const colorSchemes: Record<ColorSchemeKey, ColorScheme> = {
     textColor: 'text-gray-800',
     preview: ['#F1F0E4', '#BCA88D', '#7D8D86', '#3E3F29'],
     lightBackground: '#F1F0E4'
+  },
+  wave: {
+    name: 'Wave',
+    // New complementary colors
+    primaryBg: '#EEEEEE',        // Very light gray (lightest)
+    secondaryBg: '#CBCBCB',      // Light gray
+    accentColor: '#B7B89F',      // Light olive/beige
+    secondaryAccent: '#777C6D',  // Grayish green (darkest)
+    textPrimary: '#000000',      // Pure black for text
+    textSecondary: '#000000',    // Pure black for secondary text
+    borderColor: '#B7B89F',      // Light olive for borders
+    // Legacy
+    background: 'bg-gradient-to-br',
+    customGradient: 'linear-gradient(180deg, #EEEEEE 0%, #CBCBCB 35%, #B7B89F 70%, #777C6D 100%)',
+    textColor: 'text-gray-800',
+    preview: ['#EEEEEE', '#CBCBCB', '#B7B89F', '#777C6D'],
+    lightBackground: '#EEEEEE'
   }
 };

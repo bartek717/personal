@@ -15,6 +15,8 @@ interface EssayItem {
 
 interface EssaysSectionProps {
   currentColors: ColorScheme;
+  bgOpacity?: number; // Base background opacity (0-100)
+  bgOpacityHover?: number; // Hover background opacity (0-100)
 }
 
 const essays: EssayItem[] = [
@@ -38,7 +40,11 @@ const essays: EssayItem[] = [
   }
 ];
 
-export default function EssaysSection({ currentColors }: EssaysSectionProps) {
+export default function EssaysSection({
+  currentColors,
+  bgOpacity = 28,
+  bgOpacityHover = 32
+}: EssaysSectionProps) {
   const [hoveredId, setHoveredId] = useState<number | null>(null);
 
   const handleEssayClick = (link?: string) => {
@@ -89,16 +95,16 @@ export default function EssaysSection({ currentColors }: EssaysSectionProps) {
                   overflow-hidden
                 `}
                 style={{
-                  borderColor: hoveredId === essay.id ? `${currentColors.accentColor}60` : `${currentColors.borderColor}30`,
-                  backgroundColor: `${currentColors.primaryBg}70`,
+                  borderColor: hoveredId === essay.id ? `${currentColors.accentColor}80` : `${currentColors.secondaryAccent}60`,
+                  backgroundColor: `${currentColors.secondaryAccent}${Math.round(bgOpacity * 2.55).toString(16).padStart(2, '0')}`,
                   background: hoveredId === essay.id
-                    ? `linear-gradient(120deg, ${currentColors.primaryBg}80 0%, ${currentColors.secondaryBg}10 100%)`
-                    : `${currentColors.primaryBg}70`,
+                    ? `linear-gradient(120deg, ${currentColors.secondaryAccent}${Math.round(bgOpacityHover * 2.55).toString(16).padStart(2, '0')} 0%, ${currentColors.accentColor}18 100%)`
+                    : `${currentColors.secondaryAccent}${Math.round(bgOpacity * 2.55).toString(16).padStart(2, '0')}`,
                   padding: 'clamp(1.5rem, 3vw, 2.5rem)',
                   transform: hoveredId === essay.id ? 'translateY(-4px)' : 'translateY(0)',
                   boxShadow: hoveredId === essay.id
-                    ? `0 12px 24px -8px ${currentColors.secondaryBg}30, 0 6px 12px -4px ${currentColors.accentColor}15`
-                    : `0 2px 8px -4px ${currentColors.borderColor}20`
+                    ? `0 12px 24px -8px ${currentColors.secondaryAccent}50, 0 6px 12px -4px ${currentColors.accentColor}30`
+                    : `0 2px 8px -4px ${currentColors.secondaryAccent}40`
                 }}
                 onMouseEnter={() => setHoveredId(essay.id)}
                 onMouseLeave={() => setHoveredId(null)}
