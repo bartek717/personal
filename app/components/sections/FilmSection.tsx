@@ -84,7 +84,7 @@ export default function FilmSection({ currentColors }: FilmSectionProps) {
         }}
       />
 
-      <div className="relative z-10 px-4 sm:px-8 lg:px-16 py-8 sm:py-16 h-full flex flex-col">
+      <div className="relative z-10 px-4 sm:px-8 lg:px-16 py-8 sm:py-12 h-full flex flex-col">
         {/* Header Section */}
         <div className="max-w-7xl mx-auto w-full mb-6 sm:mb-10">
           <div className="border-b border-opacity-20 pb-4 sm:pb-6" style={{ borderColor: currentColors.borderColor }}>

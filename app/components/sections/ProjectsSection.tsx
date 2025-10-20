@@ -97,7 +97,7 @@ export default function ProjectsSection({
         />
       </div>
 
-      <div className="relative z-10 px-4 sm:px-8 lg:px-16 py-4 sm:py-6">
+      <div className="relative z-10 px-4 sm:px-8 lg:px-16 py-8 sm:py-12">
         {/* Header Section */}
         <div className="max-w-7xl mx-auto">
           <div className="flex items-end justify-between border-b border-opacity-20" style={{ borderColor: currentColors.borderColor }}>

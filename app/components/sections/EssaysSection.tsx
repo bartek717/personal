@@ -71,7 +71,7 @@ export default function EssaysSection({
 
   return (
     <section className="min-h-screen relative">
-      <div className="relative z-10 px-4 sm:px-8 lg:px-16 py-8 sm:py-12 lg:py-16">
+      <div className="relative z-10 px-4 sm:px-8 lg:px-16 py-8 sm:py-12">
         {/* Header Section */}
         <div className="max-w-7xl mx-auto">
           <div
