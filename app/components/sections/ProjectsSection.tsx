@@ -58,7 +58,9 @@ export default function ProjectsSection({
 }: ProjectsSectionProps) {
   const [hoveredId, setHoveredId] = useState<number | null>(null);
   const isWaveScheme = currentScheme === 'wave';
+  const isSageScheme = currentScheme === 'sage';
   const waveColors = ['#777C6D', '#B7B89F', '#CBCBCB', '#EEEEEE'];
+  const sageColors = ['#ECE3CE', '#739072', '#4F6F52', '#3A4D39'];
 
   const handleProjectClick = (link?: string) => {
     if (link) {
@@ -151,17 +153,17 @@ export default function ProjectsSection({
                     style={{
                       height: index === 0 ? '320px' : '280px',
                       borderColor: isHovered ? `${currentColors.accentColor}80` : `${currentColors.secondaryAccent}60`,
-                      backgroundColor: isWaveScheme ? `${currentColors.primaryBg}` : `${currentColors.secondaryAccent}${Math.round(bgOpacity * 2.55).toString(16).padStart(2, '0')}`,
-                      background: isHovered && !isWaveScheme
+                      backgroundColor: (isWaveScheme || isSageScheme) ? `${currentColors.primaryBg}` : `${currentColors.secondaryAccent}${Math.round(bgOpacity * 2.55).toString(16).padStart(2, '0')}`,
+                      background: isHovered && !isWaveScheme && !isSageScheme
                         ? `linear-gradient(135deg, ${currentColors.secondaryAccent}${Math.round(bgOpacityHover * 2.55).toString(16).padStart(2, '0')} 0%, ${currentColors.accentColor}20 100%)`
-                        : isWaveScheme ? currentColors.primaryBg : `${currentColors.secondaryAccent}${Math.round(bgOpacity * 2.55).toString(16).padStart(2, '0')}`,
+                        : (isWaveScheme || isSageScheme) ? currentColors.primaryBg : `${currentColors.secondaryAccent}${Math.round(bgOpacity * 2.55).toString(16).padStart(2, '0')}`,
                       transform: isHovered ? 'translateY(-4px)' : 'translateY(0)',
                       boxShadow: isHovered
                         ? `0 12px 24px -8px ${currentColors.secondaryAccent}50, 0 6px 12px -4px ${currentColors.accentColor}30`
                         : `0 2px 8px -4px ${currentColors.secondaryAccent}40`
                     }}
                   >
-                    {/* Vertical Wave Animations for Wave Scheme */}
+                    {/* Vertical Wave Animations for Wave or Sage Scheme */}
                     {isWaveScheme && (
                       <>
                         <VerticalColorWave
@@ -179,6 +181,26 @@ export default function ProjectsSection({
                           speed={18}
                           waveWidth={70}
                           lighter={true}
+                        />
+                      </>
+                    )}
+                    {isSageScheme && (
+                      <>
+                        <VerticalColorWave
+                          colors={sageColors}
+                          side="left"
+                          opacity={0.2}
+                          speed={22}
+                          waveWidth={65}
+                          lighter={false}
+                        />
+                        <VerticalColorWave
+                          colors={sageColors}
+                          side="right"
+                          opacity={0.2}
+                          speed={22}
+                          waveWidth={65}
+                          lighter={false}
                         />
                       </>
                     )}

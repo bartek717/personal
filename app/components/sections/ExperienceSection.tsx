@@ -103,7 +103,9 @@ export default function ExperienceSection({
   const [hoveredId, setHoveredId] = useState<number | null>(null);
   const [expandedId, setExpandedId] = useState<number | null>(null);
   const isWaveScheme = currentScheme === 'wave';
+  const isSageScheme = currentScheme === 'sage';
   const waveColors = ['#777C6D', '#B7B89F', '#CBCBCB', '#EEEEEE'];
+  const sageColors = ['#ECE3CE', '#739072', '#4F6F52', '#3A4D39'];
 
   return (
     <section className="relative">
@@ -157,11 +159,11 @@ export default function ExperienceSection({
                     `}
                     style={{
                       borderColor: isHovered ? `${currentColors.accentColor}70` : `${currentColors.secondaryAccent}60`,
-                      backgroundColor: isWaveScheme ? `${currentColors.primaryBg}` : `${currentColors.secondaryAccent}${Math.round(bgOpacity * 2.55).toString(16).padStart(2, '0')}`,
-                      backgroundImage: isHovered && !isWaveScheme
+                      backgroundColor: (isWaveScheme || isSageScheme) ? `${currentColors.primaryBg}` : `${currentColors.secondaryAccent}${Math.round(bgOpacity * 2.55).toString(16).padStart(2, '0')}`,
+                      backgroundImage: isHovered && !isWaveScheme && !isSageScheme
                         ? `linear-gradient(90deg, ${currentColors.secondaryAccent}${Math.round(bgOpacityHover * 2.55).toString(16).padStart(2, '0')} 0%, ${currentColors.accentColor}18 100%)`
                         : 'none',
-                      background: isWaveScheme ? currentColors.primaryBg : undefined,
+                      background: (isWaveScheme || isSageScheme) ? currentColors.primaryBg : undefined,
                       transform: isHovered ? 'translateY(-4px)' : 'translateY(0)',
                       boxShadow: isHovered
                         ? `0 12px 24px -8px ${currentColors.secondaryAccent}45, 0 6px 12px -4px ${currentColors.accentColor}25`
@@ -170,7 +172,7 @@ export default function ExperienceSection({
                     onMouseEnter={() => setHoveredId(exp.id)}
                     onMouseLeave={() => setHoveredId(null)}
                   >
-                    {/* Vertical Wave Animations for Wave Scheme */}
+                    {/* Vertical Wave Animations for Wave or Sage Scheme */}
                     {isWaveScheme && (
                       <>
                         <VerticalColorWave
@@ -191,12 +193,32 @@ export default function ExperienceSection({
                         />
                       </>
                     )}
+                    {isSageScheme && (
+                      <>
+                        <VerticalColorWave
+                          colors={sageColors}
+                          side="left"
+                          opacity={0.22}
+                          speed={18}
+                          waveWidth={60}
+                          lighter={false}
+                        />
+                        <VerticalColorWave
+                          colors={sageColors}
+                          side="right"
+                          opacity={0.22}
+                          speed={18}
+                          waveWidth={60}
+                          lighter={false}
+                        />
+                      </>
+                    )}
                     {/* Left accent bar */}
                     <div
                       className={`
                         absolute left-0 top-0 bottom-0 w-1 transition-all duration-500
                         ${isHovered ? 'opacity-100' : 'opacity-60'}
-                        ${isWaveScheme ? 'z-20' : ''}
+                        ${(isWaveScheme || isSageScheme) ? 'z-20' : ''}
                       `}
                       style={{
                         backgroundColor: isHovered ? currentColors.secondaryAccent : currentColors.accentColor,

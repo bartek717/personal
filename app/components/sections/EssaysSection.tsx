@@ -24,6 +24,15 @@ interface EssaysSectionProps {
 const essays: EssayItem[] = [
   {
     id: 1,
+    title: "When Data Moves, Power Shifts: Canada's Open Banking Moment",
+    date: "Oct 2025",
+    excerpt: "Exploring how Canada's open banking framework is reshaping financial services and shifting power dynamics in the industry.",
+    type: 'opinion',
+    readTime: "5 min",
+    link: "https://medium.com/@bartekmkowalski/when-data-moves-power-shifts-canadas-open-banking-moment-94bc7a934c8b"
+  },
+  {
+    id: 2,
     title: "The Rise and Potential of Open Source Large Language Models in AI",
     date: "Jun 2024",
     excerpt: "Exploring how open-source LLMs are democratizing AI development and reshaping the technological landscape.",
@@ -32,7 +41,7 @@ const essays: EssayItem[] = [
     link: "https://medium.com/@bartekmkowalski/the-rise-and-potential-of-open-source-large-language-models-in-ai-0d30450f8b3c"
   },
   {
-    id: 2,
+    id: 3,
     title: "ChatGPT: Is the Education Industry Ready?",
     date: "Mar 2023",
     excerpt: "Examining the implications of ChatGPT and generative AI on education systems and learning methodologies.",
@@ -50,7 +59,9 @@ export default function EssaysSection({
 }: EssaysSectionProps) {
   const [hoveredId, setHoveredId] = useState<number | null>(null);
   const isWaveScheme = currentScheme === 'wave';
+  const isSageScheme = currentScheme === 'sage';
   const waveColors = ['#777C6D', '#B7B89F', '#CBCBCB', '#EEEEEE'];
+  const sageColors = ['#ECE3CE', '#739072', '#4F6F52', '#3A4D39'];
 
   const handleEssayClick = (link?: string) => {
     if (link) {
@@ -101,10 +112,10 @@ export default function EssaysSection({
                 `}
                 style={{
                   borderColor: hoveredId === essay.id ? `${currentColors.accentColor}80` : `${currentColors.secondaryAccent}60`,
-                  backgroundColor: isWaveScheme ? `${currentColors.primaryBg}` : `${currentColors.secondaryAccent}${Math.round(bgOpacity * 2.55).toString(16).padStart(2, '0')}`,
-                  background: hoveredId === essay.id && !isWaveScheme
+                  backgroundColor: (isWaveScheme || isSageScheme) ? `${currentColors.primaryBg}` : `${currentColors.secondaryAccent}${Math.round(bgOpacity * 2.55).toString(16).padStart(2, '0')}`,
+                  background: hoveredId === essay.id && !isWaveScheme && !isSageScheme
                     ? `linear-gradient(120deg, ${currentColors.secondaryAccent}${Math.round(bgOpacityHover * 2.55).toString(16).padStart(2, '0')} 0%, ${currentColors.accentColor}18 100%)`
-                    : isWaveScheme ? currentColors.primaryBg : `${currentColors.secondaryAccent}${Math.round(bgOpacity * 2.55).toString(16).padStart(2, '0')}`,
+                    : (isWaveScheme || isSageScheme) ? currentColors.primaryBg : `${currentColors.secondaryAccent}${Math.round(bgOpacity * 2.55).toString(16).padStart(2, '0')}`,
                   padding: 'clamp(1.5rem, 3vw, 2.5rem)',
                   transform: hoveredId === essay.id ? 'translateY(-4px)' : 'translateY(0)',
                   boxShadow: hoveredId === essay.id
@@ -115,7 +126,7 @@ export default function EssaysSection({
                 onMouseLeave={() => setHoveredId(null)}
                 onClick={() => handleEssayClick(essay.link)}
               >
-                {/* Vertical Wave Animations for Wave Scheme */}
+                {/* Vertical Wave Animations for Wave or Sage Scheme */}
                 {isWaveScheme && (
                   <>
                     <VerticalColorWave
@@ -136,12 +147,32 @@ export default function EssaysSection({
                     />
                   </>
                 )}
+                {isSageScheme && (
+                  <>
+                    <VerticalColorWave
+                      colors={sageColors}
+                      side="left"
+                      opacity={0.25}
+                      speed={20}
+                      waveWidth={55}
+                      lighter={false}
+                    />
+                    <VerticalColorWave
+                      colors={sageColors}
+                      side="right"
+                      opacity={0.25}
+                      speed={20}
+                      waveWidth={55}
+                      lighter={false}
+                    />
+                  </>
+                )}
                 {/* Accent bar on left */}
                 <div
                   className={`
                     absolute left-0 top-0 bottom-0 w-1 transition-all duration-500
                     ${hoveredId === essay.id ? 'opacity-100' : 'opacity-60'}
-                    ${isWaveScheme ? 'z-20' : ''}
+                    ${(isWaveScheme || isSageScheme) ? 'z-20' : ''}
                   `}
                   style={{
                     backgroundColor: hoveredId === essay.id ? currentColors.secondaryAccent : currentColors.accentColor,

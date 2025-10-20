@@ -14,7 +14,7 @@ import ProjectsSection from './components/sections/ProjectsSection';
 import ExperienceSection from './components/sections/ExperienceSection';
 
 export default function Home() {
-  const [currentScheme, setCurrentScheme] = useState<ColorSchemeKey>('wave');
+  const [currentScheme, setCurrentScheme] = useState<ColorSchemeKey>('sage');
   const currentColors = colorSchemes[currentScheme];
 
   // Section opacity configuration - Adjust these values to control transparency (0-100)

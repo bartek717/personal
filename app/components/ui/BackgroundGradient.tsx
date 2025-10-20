@@ -7,9 +7,11 @@ interface BackgroundGradientProps {
 }
 
 export default function BackgroundGradient({ currentColors, currentScheme }: BackgroundGradientProps) {
-  // Use wave animation for the wave color scheme
+  // Use wave animation for specific color schemes
   const isWaveScheme = currentScheme === 'wave';
+  const isSageScheme = currentScheme === 'sage';
   const waveColors = ['#777C6D', '#B7B89F', '#CBCBCB', '#EEEEEE'];
+  const sageColors = ['#ECE3CE', '#739072', '#4F6F52', '#3A4D39'];
 
   return (
     <div
@@ -22,6 +24,13 @@ export default function BackgroundGradient({ currentColors, currentScheme }: Bac
           opacity={0.8}
           speed={25}
           waveHeight={200}
+        />
+      ) : isSageScheme ? (
+        <ColorWave
+          colors={sageColors}
+          opacity={0.6}
+          speed={30}
+          waveHeight={180}
         />
       ) : (
         /* Subtle noise pattern for texture */
