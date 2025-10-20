@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { type ColorScheme } from '../config/colorSchemes';
 
 interface FilmSectionProps {
@@ -38,7 +39,6 @@ const filmImages = [
 
 export default function FilmSection({ currentColors }: FilmSectionProps) {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const [showGallery, setShowGallery] = useState(false);
 
 
   // Show only 8 images in the preview
@@ -173,16 +173,16 @@ export default function FilmSection({ currentColors }: FilmSectionProps) {
         </div>
 
         {/* Bottom Navigation */}
-        <div className="max-w-7xl mx-auto w-full mt-10 flex justify-between items-center">
+        <div className="max-w-7xl mx-auto w-full mt-10 flex justify-between items-center relative z-20">
           <div className="opacity-50" style={{ color: currentColors.textSecondary }}>
             <span style={{ fontWeight: 200, fontSize: '0.875rem' }}>
               {filmImages.length} photos
             </span>
           </div>
 
-          <button
-            onClick={() => setShowGallery(true)}
-            className="group relative overflow-hidden px-10 py-4 transition-all duration-500 hover:border-opacity-60 cursor-pointer"
+          <Link
+            href="/photos"
+            className="group relative overflow-hidden px-6 sm:px-10 py-3 sm:py-4 transition-all duration-500 hover:border-opacity-60 cursor-pointer inline-block"
             style={{
               fontWeight: 200,
               fontSize: '0.875rem',
@@ -198,7 +198,7 @@ export default function FilmSection({ currentColors }: FilmSectionProps) {
               className="absolute inset-0 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out opacity-5"
               style={{ backgroundColor: currentColors.accentColor }}
             />
-          </button>
+          </Link>
         </div>
 
         {/* Lightbox Modal */}
@@ -222,50 +222,6 @@ export default function FilmSection({ currentColors }: FilmSectionProps) {
               >
                 ×
               </button>
-            </div>
-          </div>
-        )}
-
-        {/* Full Gallery Modal */}
-        {showGallery && (
-          <div className="fixed inset-0 bg-white z-50 overflow-y-auto">
-            <div className="px-8 lg:px-16 py-12">
-              <div className="max-w-7xl mx-auto">
-                <div className="flex items-center justify-between mb-8">
-                  <h3 className="text-2xl" style={{ fontWeight: 100, color: currentColors.textPrimary }}>
-                    All Photos
-                  </h3>
-                  <button
-                    onClick={() => setShowGallery(false)}
-                    className="text-3xl hover:opacity-70 transition-opacity"
-                    style={{ fontWeight: 100, color: currentColors.textPrimary }}
-                  >
-                    ×
-                  </button>
-                </div>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                  {filmImages.map((image, index) => (
-                    <div
-                      key={index}
-                      className="relative aspect-[3/4] cursor-pointer group overflow-hidden"
-                      onClick={() => {
-                        setSelectedImage(image);
-                        setShowGallery(false);
-                      }}
-                    >
-                      <Image
-                        src={`/film/${image}`}
-                        alt={`Film photo ${index + 1}`}
-                        fill
-                        className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-                        sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 20vw"
-                        loading="lazy"
-                      />
-                      <div className={`absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
-                    </div>
-                  ))}
-                </div>
-              </div>
             </div>
           </div>
         )}
