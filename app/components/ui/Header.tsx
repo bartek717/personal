@@ -6,7 +6,7 @@ interface HeaderProps {
 
 export default function Header({ currentColors }: HeaderProps) {
   return (
-    <div className="pt-8 sm:pt-12 px-6 sm:px-12 lg:px-16 pb-8 sm:pb-16">
+    <div className="py-8 sm:py-12 px-6 sm:px-12 lg:px-16">
       <h1
         className="text-2xl sm:text-3xl md:text-4xl font-serif mb-3 sm:mb-4"
         style={{

@@ -25,17 +25,14 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen overflow-y-scroll h-screen sm:snap-y sm:snap-proximity" style={{ scrollBehavior: 'smooth', backgroundColor: currentColors.secondaryBg }}>
+    <div className="min-h-screen overflow-y-scroll h-screen" style={{ scrollBehavior: 'smooth', backgroundColor: currentColors.secondaryBg }}>
       <KeyboardNavigation />
 
-      {/* Hero Wrapper - includes top spacing and snap point */}
-      <div className="sm:snap-start">
-        {/* Top Spacer to show background color */}
-        <div className="h-8 sm:h-12" />
-
+      {/* Hero Wrapper */}
+      <div className="py-8 sm:py-12">
         <div className="px-4 sm:px-6 lg:px-8">
           {/* Main Homepage Section */}
-          <section id="hero" className="relative flex flex-col rounded-[2rem] sm:rounded-[3rem] lg:rounded-[4rem] overflow-hidden" style={{ height: 'calc(100vh - 4rem)' }}>
+          <section id="hero" className="relative flex flex-col rounded-[2rem] sm:rounded-[3rem] lg:rounded-[4rem] overflow-hidden" style={{ height: 'calc(100vh - 6rem)' }}>
           {/* Background with Noise */}
           <BackgroundGradient currentColors={currentColors} currentScheme={currentScheme} />
 
@@ -56,14 +53,14 @@ export default function Home() {
       </div>
 
       {/* Content Sections with Unified Background */}
-      <div className="relative rounded-[2rem] sm:rounded-[3rem] lg:rounded-[4rem] overflow-hidden mt-4 sm:mt-6 lg:mt-8 sm:snap-start px-4 sm:px-6 lg:px-8 mb-4 sm:mb-6 lg:mb-8" style={{ backgroundColor: currentColors.secondaryBg }}>
+      <div className="relative rounded-[2rem] sm:rounded-[3rem] lg:rounded-[4rem] overflow-hidden mt-4 sm:mt-6 lg:mt-8 px-4 sm:px-6 lg:px-8 mb-4 sm:mb-6 lg:mb-8" style={{ backgroundColor: currentColors.secondaryBg }}>
         {/* Film Section */}
-        <div id="film" className="sm:snap-start sm:snap-always">
+        <div id="film">
           <FilmSection currentColors={currentColors} />
         </div>
 
         {/* Essays Section */}
-        <div id="essays" className="sm:snap-start sm:snap-always">
+        <div id="essays">
           <EssaysSection
             currentColors={currentColors}
             currentScheme={currentScheme}
@@ -73,7 +70,7 @@ export default function Home() {
         </div>
 
         {/* Projects Section */}
-        <div id="projects" className="sm:snap-start sm:snap-always">
+        <div id="projects">
           <ProjectsSection
             currentColors={currentColors}
             currentScheme={currentScheme}
@@ -83,7 +80,7 @@ export default function Home() {
         </div>
 
         {/* Experience Section */}
-        <div id="experience" className="sm:snap-start sm:snap-always">
+        <div id="experience">
           <ExperienceSection
             currentColors={currentColors}
             currentScheme={currentScheme}
