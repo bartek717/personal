@@ -35,13 +35,14 @@ export default function ColorPaletteSelector({
   }, [isPaletteOpen]);
 
   return (
-    <div className="absolute top-12 right-16 z-20" ref={paletteRef}>
+    <div className="absolute top-8 sm:top-12 right-6 sm:right-12 lg:right-16 z-20" ref={paletteRef}>
       <button
         onClick={() => setIsPaletteOpen(!isPaletteOpen)}
-        className={`${currentColors.textColor} hover:opacity-80 transition-all duration-200 p-2 rounded-lg hover:bg-white/10`}
+        className={`${currentColors.textColor} hover:opacity-80 transition-all duration-200 rounded-lg hover:bg-white/10`}
         aria-label="Color palette selector"
       >
-        <div className="flex items-center gap-1">
+        {/* Desktop: Show 4 separate circles */}
+        <div className="hidden sm:flex items-center gap-1 p-2">
           {currentColors.preview.map((color, index) => (
             <div
               key={index}
@@ -49,6 +50,16 @@ export default function ColorPaletteSelector({
               style={{ backgroundColor: color }}
             />
           ))}
+        </div>
+
+        {/* Mobile: Show single circle with 4-color quadrants */}
+        <div className="sm:hidden w-8 h-8 rounded-full overflow-hidden border-2 border-gray-800/20 shadow-sm">
+          <div className="grid grid-cols-2 grid-rows-2 w-full h-full">
+            <div style={{ backgroundColor: currentColors.preview[0] }}></div>
+            <div style={{ backgroundColor: currentColors.preview[1] }}></div>
+            <div style={{ backgroundColor: currentColors.preview[2] }}></div>
+            <div style={{ backgroundColor: currentColors.preview[3] }}></div>
+          </div>
         </div>
       </button>
 
