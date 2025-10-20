@@ -45,14 +45,14 @@ export default function PhotosPage() {
         backgroundColor: currentColors.primaryBg,
         borderColor: `${currentColors.borderColor}40`
       }}>
-        <div className="max-w-7xl mx-auto px-8 lg:px-16 py-6 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 py-4 sm:py-6 flex items-center justify-between">
           <div>
-            <h1 className="text-3xl mb-1" style={{ fontWeight: 100, color: currentColors.textPrimary }}>
+            <h1 className="text-2xl sm:text-3xl mb-1" style={{ fontWeight: 100, color: currentColors.textPrimary }}>
               Film Photography
             </h1>
             <p className="opacity-60" style={{
               fontWeight: 200,
-              fontSize: '0.9rem',
+              fontSize: 'clamp(0.75rem, 2vw, 0.9rem)',
               fontStyle: 'italic',
               letterSpacing: '0.05em',
               color: currentColors.textSecondary
@@ -62,10 +62,10 @@ export default function PhotosPage() {
           </div>
           <Link
             href="/"
-            className="group relative overflow-hidden px-8 py-3 transition-all duration-500 hover:border-opacity-60"
+            className="group relative overflow-hidden px-4 sm:px-8 py-2 sm:py-3 transition-all duration-500 hover:border-opacity-60"
             style={{
               fontWeight: 200,
-              fontSize: '0.875rem',
+              fontSize: 'clamp(0.7rem, 2vw, 0.875rem)',
               letterSpacing: '0.05em',
               borderWidth: '0.5px',
               borderColor: currentColors.borderColor,
@@ -83,10 +83,10 @@ export default function PhotosPage() {
       </div>
 
       {/* Photos Grid */}
-      <div className="px-8 lg:px-16 py-12">
+      <div className="px-4 sm:px-8 lg:px-16 py-8 sm:py-12">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-6 opacity-50" style={{ color: currentColors.textSecondary }}>
-            <span style={{ fontWeight: 200, fontSize: '0.875rem' }}>
+          <div className="mb-4 sm:mb-6 opacity-50" style={{ color: currentColors.textSecondary }}>
+            <span style={{ fontWeight: 200, fontSize: 'clamp(0.75rem, 2vw, 0.875rem)' }}>
               {filmImages.length} photos
             </span>
           </div>

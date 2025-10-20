@@ -31,11 +31,11 @@ export default function Home() {
       {/* Hero Wrapper - includes top spacing and snap point */}
       <div className="snap-start">
         {/* Top Spacer to show background color */}
-        <div className="h-12" />
+        <div className="h-8 sm:h-12" />
 
-        <div className="px-8">
+        <div className="px-4 sm:px-6 lg:px-8">
           {/* Main Homepage Section */}
-          <section id="hero" className="relative flex flex-col rounded-[4rem] overflow-hidden" style={{ height: 'calc(100vh - 6rem)' }}>
+          <section id="hero" className="relative flex flex-col rounded-[2rem] sm:rounded-[3rem] lg:rounded-[4rem] overflow-hidden" style={{ height: 'calc(100vh - 4rem)' }}>
           {/* Background with Noise */}
           <BackgroundGradient currentColors={currentColors} currentScheme={currentScheme} />
 
@@ -56,7 +56,7 @@ export default function Home() {
       </div>
 
       {/* Content Sections with Unified Background */}
-      <div className="relative rounded-[4rem] overflow-hidden mt-8 snap-start px-8 mb-8" style={{ backgroundColor: currentColors.secondaryBg }}>
+      <div className="relative rounded-[2rem] sm:rounded-[3rem] lg:rounded-[4rem] overflow-hidden mt-4 sm:mt-6 lg:mt-8 snap-start px-4 sm:px-6 lg:px-8 mb-4 sm:mb-6 lg:mb-8" style={{ backgroundColor: currentColors.secondaryBg }}>
         {/* Film Section */}
         <div id="film" className="snap-start snap-always">
           <FilmSection currentColors={currentColors} />

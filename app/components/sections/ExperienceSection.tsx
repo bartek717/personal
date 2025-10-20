@@ -109,14 +109,14 @@ export default function ExperienceSection({
 
   return (
     <section className="relative">
-      <div className="relative z-10 px-8 lg:px-16 py-6">
+      <div className="relative z-10 px-4 sm:px-8 lg:px-16 py-4 sm:py-6">
         {/* Header Section */}
         <div className="max-w-7xl mx-auto">
           <div className="flex items-end justify-between border-b border-opacity-20" style={{ borderColor: currentColors.borderColor }}>
             <h2
-              className="pb-8"
+              className="pb-4 sm:pb-6 lg:pb-8"
               style={{
-                fontSize: 'clamp(2rem, 4vw, 3rem)',
+                fontSize: 'clamp(1.75rem, 4vw, 3rem)',
                 fontWeight: 100,
                 letterSpacing: '-0.02em',
                 lineHeight: 1,
@@ -225,9 +225,9 @@ export default function ExperienceSection({
                         borderRadius: '0 4px 4px 0'
                       }}
                     />
-                    <div className="py-4 lg:py-6 lg:pl-20">
+                    <div className="py-4 px-4 sm:px-6 lg:py-6 lg:pl-20 lg:pr-6">
                       {/* Content Grid */}
-                      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 items-start">
+                      <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-4 lg:gap-6 items-start">
                         {/* Left Column - Period & Location */}
                         <div className="lg:col-span-3">
                           <div
@@ -381,13 +381,13 @@ export default function ExperienceSection({
         <div className="max-w-7xl mx-auto mt-6 flex justify-end items-center">
 
           <a
-            href="https://drive.google.com/file/d/1iuQtqLn_bgixLeMDdDbBMLOVnINRVgLS/view?usp=sharing"
+            href="https://drive.google.com/file/d/1ZTKj97FJfmFASFrOupabncedQvZrVQmB/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative overflow-hidden px-10 py-4 transition-all duration-500 hover:border-opacity-60 inline-block"
+            className="group relative overflow-hidden px-6 sm:px-10 py-3 sm:py-4 transition-all duration-500 hover:border-opacity-60 inline-block"
             style={{
               fontWeight: 200,
-              fontSize: '0.875rem',
+              fontSize: 'clamp(0.75rem, 2vw, 0.875rem)',
               letterSpacing: '0.05em',
               borderWidth: '0.5px',
               borderColor: currentColors.borderColor,
@@ -395,7 +395,7 @@ export default function ExperienceSection({
               color: currentColors.textPrimary
             }}
           >
-            <span className="relative z-10">DOWNLOAD CV</span>
+            <span className="relative z-10">DOWNLOAD RESUME</span>
             <div
               className="absolute inset-0 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out opacity-5"
               style={{ backgroundColor: currentColors.accentColor }}

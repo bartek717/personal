@@ -71,7 +71,7 @@ export default function EssaysSection({
 
   return (
     <section className="min-h-screen relative">
-      <div className="relative z-10 px-8 lg:px-16 py-16">
+      <div className="relative z-10 px-4 sm:px-8 lg:px-16 py-8 sm:py-12 lg:py-16">
         {/* Header Section */}
         <div className="max-w-7xl mx-auto">
           <div
@@ -79,9 +79,9 @@ export default function EssaysSection({
             style={{ borderColor: currentColors.borderColor }}
           >
             <h2
-              className="pb-8"
+              className="pb-4 sm:pb-6 lg:pb-8"
               style={{
-                fontSize: 'clamp(2rem, 4vw, 3rem)',
+                fontSize: 'clamp(1.75rem, 4vw, 3rem)',
                 fontWeight: 100,
                 letterSpacing: '-0.02em',
                 lineHeight: 1,
@@ -90,8 +90,8 @@ export default function EssaysSection({
             >
               Essays & Opinions
             </h2>
-            <div className="pb-4 opacity-50" style={{ color: currentColors.textSecondary }}>
-              <span style={{ fontWeight: 200, fontSize: '0.875rem' }}>
+            <div className="pb-2 sm:pb-4 opacity-50" style={{ color: currentColors.textSecondary }}>
+              <span style={{ fontWeight: 200, fontSize: 'clamp(0.75rem, 2vw, 0.875rem)' }}>
                 {essays.length} pieces
               </span>
             </div>
@@ -116,7 +116,7 @@ export default function EssaysSection({
                   background: hoveredId === essay.id && !isWaveScheme && !isSageScheme
                     ? `linear-gradient(120deg, ${currentColors.secondaryAccent}${Math.round(bgOpacityHover * 2.55).toString(16).padStart(2, '0')} 0%, ${currentColors.accentColor}18 100%)`
                     : (isWaveScheme || isSageScheme) ? currentColors.primaryBg : `${currentColors.secondaryAccent}${Math.round(bgOpacity * 2.55).toString(16).padStart(2, '0')}`,
-                  padding: 'clamp(1.5rem, 3vw, 2.5rem)',
+                  padding: 'clamp(1rem, 3vw, 2.5rem)',
                   transform: hoveredId === essay.id ? 'translateY(-4px)' : 'translateY(0)',
                   boxShadow: hoveredId === essay.id
                     ? `0 12px 24px -8px ${currentColors.secondaryAccent}50, 0 6px 12px -4px ${currentColors.accentColor}30`
@@ -179,21 +179,21 @@ export default function EssaysSection({
                     borderRadius: '0 4px 4px 0'
                   }}
                 />
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-start">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-4 lg:gap-8 items-start">
                   {/* Left Column - Meta */}
-                  <div className="lg:col-span-2 flex lg:flex-col flex-row gap-4 lg:gap-2">
+                  <div className="lg:col-span-2 flex lg:flex-col flex-row gap-3 sm:gap-4 lg:gap-2">
                     <div
                       className={`transition-opacity duration-300 ${
                         hoveredId === essay.id ? 'opacity-70' : 'opacity-50'
                       }`}
                       style={{ color: currentColors.textSecondary }}
                     >
-                      <span style={{ fontWeight: 200, fontSize: '0.8rem', letterSpacing: '0.05em' }}>
+                      <span style={{ fontWeight: 200, fontSize: 'clamp(0.7rem, 1.5vw, 0.8rem)', letterSpacing: '0.05em' }}>
                         {essay.date}
                       </span>
                     </div>
                     <div className="opacity-40" style={{ color: currentColors.textSecondary }}>
-                      <span style={{ fontWeight: 200, fontSize: '0.8rem' }}>
+                      <span style={{ fontWeight: 200, fontSize: 'clamp(0.7rem, 1.5vw, 0.8rem)' }}>
                         {essay.readTime}
                       </span>
                     </div>
@@ -225,13 +225,13 @@ export default function EssaysSection({
 
                     <h3
                       className={`
-                        mb-3
+                        mb-2 sm:mb-3
                         transition-all duration-300
                         ${hoveredId === essay.id ? 'translate-x-2' : ''}
                       `}
                       style={{
                         fontWeight: 200,
-                        fontSize: 'clamp(1.25rem, 2.5vw, 1.75rem)',
+                        fontSize: 'clamp(1.1rem, 2.5vw, 1.75rem)',
                         letterSpacing: '-0.01em',
                         lineHeight: 1.2,
                         color: currentColors.textPrimary
@@ -247,7 +247,7 @@ export default function EssaysSection({
                       `}
                       style={{
                         fontWeight: 300,
-                        fontSize: '0.95rem',
+                        fontSize: 'clamp(0.85rem, 2vw, 0.95rem)',
                         lineHeight: 1.6,
                         maxWidth: '60ch',
                         color: currentColors.textSecondary
@@ -283,18 +283,18 @@ export default function EssaysSection({
         </div>
 
         {/* Bottom Navigation */}
-        <div className="max-w-7xl mx-auto mt-12 flex justify-between items-center">
-          <div className="opacity-50" style={{ color: currentColors.textSecondary }}>
-            <span style={{ fontWeight: 200, fontSize: '0.875rem' }}>
+        <div className="max-w-7xl mx-auto mt-8 sm:mt-12 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <div className="opacity-50 order-2 sm:order-1" style={{ color: currentColors.textSecondary }}>
+            <span style={{ fontWeight: 200, fontSize: 'clamp(0.75rem, 2vw, 0.875rem)' }}>
               {essays.length} pieces
             </span>
           </div>
 
           <button
-            className="group relative overflow-hidden px-10 py-4 transition-all duration-500 hover:border-opacity-60 cursor-pointer"
+            className="group relative overflow-hidden px-6 sm:px-10 py-3 sm:py-4 transition-all duration-500 hover:border-opacity-60 cursor-pointer order-1 sm:order-2"
             style={{
               fontWeight: 200,
-              fontSize: '0.875rem',
+              fontSize: 'clamp(0.75rem, 2vw, 0.875rem)',
               letterSpacing: '0.05em',
               borderWidth: '0.5px',
               borderColor: currentColors.borderColor,

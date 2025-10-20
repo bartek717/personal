@@ -97,14 +97,14 @@ export default function ProjectsSection({
         />
       </div>
 
-      <div className="relative z-10 px-8 lg:px-16 py-6">
+      <div className="relative z-10 px-4 sm:px-8 lg:px-16 py-4 sm:py-6">
         {/* Header Section */}
         <div className="max-w-7xl mx-auto">
           <div className="flex items-end justify-between border-b border-opacity-20" style={{ borderColor: currentColors.borderColor }}>
             <h2
-              className="pb-8"
+              className="pb-4 sm:pb-6 lg:pb-8"
               style={{
-                fontSize: 'clamp(2rem, 4vw, 3rem)',
+                fontSize: 'clamp(1.75rem, 4vw, 3rem)',
                 fontWeight: 100,
                 letterSpacing: '-0.02em',
                 lineHeight: 1,
@@ -362,10 +362,10 @@ export default function ProjectsSection({
           </div>
 
           <button
-            className="group relative overflow-hidden px-10 py-4 transition-all duration-500 hover:border-opacity-60 cursor-pointer"
+            className="group relative overflow-hidden px-6 sm:px-10 py-3 sm:py-4 transition-all duration-500 hover:border-opacity-60 cursor-pointer"
             style={{
               fontWeight: 200,
-              fontSize: '0.875rem',
+              fontSize: 'clamp(0.75rem, 2vw, 0.875rem)',
               letterSpacing: '0.05em',
               borderWidth: '0.5px',
               borderColor: currentColors.borderColor,

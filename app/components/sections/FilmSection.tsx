@@ -45,9 +45,9 @@ export default function FilmSection({ currentColors }: FilmSectionProps) {
   const displayedImages = filmImages.slice(0, 8);
 
   return (
-    <section className="h-screen relative overflow-hidden">
-      {/* Film sprocket holes pattern on sides */}
-      <div className="absolute left-0 top-0 bottom-0 w-12 opacity-[0.1] pointer-events-none">
+    <section className="min-h-screen sm:h-screen relative overflow-hidden py-8 sm:py-0">
+      {/* Film sprocket holes pattern on sides - hidden on mobile */}
+      <div className="hidden sm:block absolute left-0 top-0 bottom-0 w-12 opacity-[0.1] pointer-events-none">
         <div
           className="h-full"
           style={{
@@ -61,7 +61,7 @@ export default function FilmSection({ currentColors }: FilmSectionProps) {
           }}
         />
       </div>
-      <div className="absolute right-0 top-0 bottom-0 w-12 opacity-[0.1] pointer-events-none">
+      <div className="hidden sm:block absolute right-0 top-0 bottom-0 w-12 opacity-[0.1] pointer-events-none">
         <div
           className="h-full"
           style={{
@@ -84,14 +84,14 @@ export default function FilmSection({ currentColors }: FilmSectionProps) {
         }}
       />
 
-      <div className="relative z-10 px-8 lg:px-16 py-16 h-full flex flex-col">
+      <div className="relative z-10 px-4 sm:px-8 lg:px-16 py-8 sm:py-16 h-full flex flex-col">
         {/* Header Section */}
-        <div className="max-w-7xl mx-auto w-full mb-10">
-          <div className="border-b border-opacity-20 pb-6" style={{ borderColor: currentColors.borderColor }}>
+        <div className="max-w-7xl mx-auto w-full mb-6 sm:mb-10">
+          <div className="border-b border-opacity-20 pb-4 sm:pb-6" style={{ borderColor: currentColors.borderColor }}>
             <h2
               className="mb-1"
               style={{
-                fontSize: 'clamp(2rem, 4vw, 3rem)',
+                fontSize: 'clamp(1.75rem, 4vw, 3rem)',
                 fontWeight: 100,
                 letterSpacing: '-0.02em',
                 lineHeight: 1,
@@ -104,7 +104,7 @@ export default function FilmSection({ currentColors }: FilmSectionProps) {
               className="opacity-60"
               style={{
                 fontWeight: 200,
-                fontSize: '0.9rem',
+                fontSize: 'clamp(0.75rem, 2vw, 0.9rem)',
                 fontStyle: 'italic',
                 letterSpacing: '0.05em',
                 color: currentColors.textSecondary
@@ -117,18 +117,18 @@ export default function FilmSection({ currentColors }: FilmSectionProps) {
 
         {/* Film Grid - Editorial Asymmetric Layout */}
         <div className="max-w-6xl mx-auto w-full flex-1 flex items-center">
-          <div className="w-full grid grid-cols-6 gap-3 auto-rows-[100px] lg:auto-rows-[120px]">
+          <div className="w-full grid grid-cols-4 sm:grid-cols-6 gap-2 sm:gap-3 auto-rows-[80px] sm:auto-rows-[100px] lg:auto-rows-[120px]">
             {displayedImages.map((image, index) => {
-              // Create a pattern that fills a 6-column grid perfectly
+              // Create a pattern that fills both 4-column (mobile) and 6-column (desktop) grid
               const gridClasses = [
-                'col-span-2 row-span-2',  // 1: Large square (cols 1-2)
-                'col-span-2 row-span-1',  // 2: Wide (cols 3-4, row 1)
-                'col-span-2 row-span-2',  // 3: Large square (cols 5-6)
-                'col-span-2 row-span-1',  // 4: Wide (cols 3-4, row 2)
-                'col-span-3 row-span-1',  // 5: Half width (cols 1-3, row 3)
-                'col-span-3 row-span-1',  // 6: Half width (cols 4-6, row 3)
-                'col-span-1 row-span-1',  // 7: Small (col 1, row 4)
-                'col-span-5 row-span-1',  // 8: Very wide (cols 2-6, row 4)
+                'col-span-2 row-span-2',  // 1: Large square
+                'col-span-2 row-span-1',  // 2: Wide
+                'col-span-2 row-span-2 sm:col-span-2',  // 3: Large square
+                'col-span-2 row-span-1 sm:col-span-2',  // 4: Wide
+                'col-span-2 row-span-1 sm:col-span-3',  // 5: Half width
+                'col-span-2 row-span-1 sm:col-span-3',  // 6: Half width
+                'col-span-1 row-span-1 sm:col-span-1',  // 7: Small
+                'col-span-3 row-span-1 sm:col-span-5',  // 8: Very wide
               ];
 
               return (
@@ -173,19 +173,19 @@ export default function FilmSection({ currentColors }: FilmSectionProps) {
         </div>
 
         {/* Bottom Navigation */}
-        <div className="max-w-7xl mx-auto w-full mt-10 flex justify-between items-center relative z-20">
-          <div className="opacity-50" style={{ color: currentColors.textSecondary }}>
-            <span style={{ fontWeight: 200, fontSize: '0.875rem' }}>
+        <div className="max-w-7xl mx-auto w-full mt-6 sm:mt-10 flex flex-col sm:flex-row justify-between items-center gap-4 relative z-20">
+          <div className="opacity-50 order-2 sm:order-1" style={{ color: currentColors.textSecondary }}>
+            <span style={{ fontWeight: 200, fontSize: 'clamp(0.75rem, 2vw, 0.875rem)' }}>
               {filmImages.length} photos
             </span>
           </div>
 
           <Link
             href="/photos"
-            className="group relative overflow-hidden px-6 sm:px-10 py-3 sm:py-4 transition-all duration-500 hover:border-opacity-60 cursor-pointer inline-block"
+            className="group relative overflow-hidden px-6 sm:px-10 py-3 sm:py-4 transition-all duration-500 hover:border-opacity-60 cursor-pointer inline-block order-1 sm:order-2"
             style={{
               fontWeight: 200,
-              fontSize: '0.875rem',
+              fontSize: 'clamp(0.75rem, 2vw, 0.875rem)',
               letterSpacing: '0.05em',
               borderWidth: '0.5px',
               borderColor: currentColors.borderColor,
