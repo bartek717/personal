@@ -25,11 +25,11 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen snap-y snap-mandatory overflow-y-scroll h-screen" style={{ scrollBehavior: 'smooth', scrollSnapType: 'y mandatory', backgroundColor: currentColors.secondaryBg }}>
+    <div className="min-h-screen overflow-y-scroll h-screen sm:snap-y sm:snap-proximity" style={{ scrollBehavior: 'smooth', backgroundColor: currentColors.secondaryBg }}>
       <KeyboardNavigation />
 
       {/* Hero Wrapper - includes top spacing and snap point */}
-      <div className="snap-start">
+      <div className="sm:snap-start">
         {/* Top Spacer to show background color */}
         <div className="h-8 sm:h-12" />
 
@@ -56,14 +56,14 @@ export default function Home() {
       </div>
 
       {/* Content Sections with Unified Background */}
-      <div className="relative rounded-[2rem] sm:rounded-[3rem] lg:rounded-[4rem] overflow-hidden mt-4 sm:mt-6 lg:mt-8 snap-start px-4 sm:px-6 lg:px-8 mb-4 sm:mb-6 lg:mb-8" style={{ backgroundColor: currentColors.secondaryBg }}>
+      <div className="relative rounded-[2rem] sm:rounded-[3rem] lg:rounded-[4rem] overflow-hidden mt-4 sm:mt-6 lg:mt-8 sm:snap-start px-4 sm:px-6 lg:px-8 mb-4 sm:mb-6 lg:mb-8" style={{ backgroundColor: currentColors.secondaryBg }}>
         {/* Film Section */}
-        <div id="film" className="snap-start snap-always">
+        <div id="film" className="sm:snap-start sm:snap-always">
           <FilmSection currentColors={currentColors} />
         </div>
 
         {/* Essays Section */}
-        <div id="essays" className="snap-start snap-always">
+        <div id="essays" className="sm:snap-start sm:snap-always">
           <EssaysSection
             currentColors={currentColors}
             currentScheme={currentScheme}
@@ -73,7 +73,7 @@ export default function Home() {
         </div>
 
         {/* Projects Section */}
-        <div id="projects" className="snap-start snap-always">
+        <div id="projects" className="sm:snap-start sm:snap-always">
           <ProjectsSection
             currentColors={currentColors}
             currentScheme={currentScheme}
@@ -83,7 +83,7 @@ export default function Home() {
         </div>
 
         {/* Experience Section */}
-        <div id="experience" className="snap-start snap-always">
+        <div id="experience" className="sm:snap-start sm:snap-always">
           <ExperienceSection
             currentColors={currentColors}
             currentScheme={currentScheme}
