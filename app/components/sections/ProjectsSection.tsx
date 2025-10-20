@@ -275,8 +275,8 @@ export default function ProjectsSection({
                           `}
                           style={{
                             fontWeight: 300,
-                            fontSize: '0.8rem',
-                            lineHeight: 1.4,
+                            fontSize: 'clamp(0.9rem, 1.8vw, 1rem)',
+                            lineHeight: 1.5,
                             maxWidth: '55ch',
                             color: currentColors.textSecondary
                           }}

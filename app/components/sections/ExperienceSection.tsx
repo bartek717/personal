@@ -236,12 +236,12 @@ export default function ExperienceSection({
                             }`}
                             style={{ color: currentColors.textSecondary }}
                           >
-                            <span style={{ fontWeight: 200, fontSize: '0.8rem', letterSpacing: '0.05em' }}>
+                            <span style={{ fontWeight: 200, fontSize: 'clamp(0.85rem, 1.8vw, 0.95rem)', letterSpacing: '0.05em' }}>
                               {exp.period}
                             </span>
                           </div>
                           <div className="opacity-40" style={{ color: currentColors.textSecondary }}>
-                            <span style={{ fontWeight: 200, fontSize: '0.75rem' }}>
+                            <span style={{ fontWeight: 200, fontSize: 'clamp(0.8rem, 1.8vw, 0.9rem)' }}>
                               {exp.location}
                             </span>
                           </div>
@@ -269,7 +269,7 @@ export default function ExperienceSection({
                             </h3>
                             <div
                               className="opacity-60"
-                              style={{ fontWeight: 300, fontSize: '0.8rem', color: currentColors.textSecondary }}
+                              style={{ fontWeight: 300, fontSize: 'clamp(0.85rem, 1.8vw, 0.95rem)', color: currentColors.textSecondary }}
                             >
                               {exp.company}
                             </div>
@@ -284,8 +284,8 @@ export default function ExperienceSection({
                             `}
                             style={{
                               fontWeight: 300,
-                              fontSize: '0.8rem',
-                              lineHeight: 1.4,
+                              fontSize: 'clamp(0.9rem, 1.8vw, 1rem)',
+                              lineHeight: 1.5,
                               maxWidth: '70ch',
                               color: currentColors.textSecondary
                             }}
