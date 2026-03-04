@@ -24,29 +24,37 @@ interface ProjectsSectionProps {
 const projects: Project[] = [
   {
     id: 1,
-    title: "Efficient Fine-Tuning of LLMs using Coreset Selection",
-    description: "Utilized coreset selection methods (KCenterGreedy, Active Learning) to reduce LLM fine-tuning time by 80% while retaining performance. Placed 2nd at ProjectX, the world's largest international undergraduate ML contest.",
-    tags: ["Python", "PyTorch", "Machine Learning", "Coreset Selection", "NLP"],
+    title: "Efficacy of K-Center Greedy Coresets",
+    description: "Used coreset selection (K-Center Greedy, Active Learning) to cut LLM fine-tuning time by 80%; placed 2nd at the largest undergraduate ML competition.",
+    tags: ["Python", "Machine Learning", "Coresets", "Active Learning"],
     year: "2024",
     link: "https://drive.google.com/file/d/1IfwUNqBIgRo-SQ_JeLR_gn6TTh12475q/view?usp=sharing",
     status: 'live'
   },
   {
     id: 2,
-    title: "QuSearch - Alumni Search Tool",
-    description: "Alumni search platform for Queen's University students to connect with graduates. Built with Next.js frontend, Flask backend, Supabase database, deployed on Vercel and Railway.",
-    tags: ["Next.js", "Flask", "Supabase", "Vercel", "Railway", "Full-Stack"],
+    title: "QuSearch",
+    description: "Built an alumni search tool for Queen's University students with 500+ users, enabling natural language networking.",
+    tags: ["Next.js", "Supabase", "TypeScript"],
     year: "2024",
     link: "https://www.qusearch.ca",
     status: 'live'
   },
   {
     id: 3,
+    title: "Course Central",
+    description: "Built a Next.js app for course, GPA, enrollment, and review tracking; reached 4,300 users and 40,000 page views.",
+    tags: ["React", "Next.js", "TypeScript", "Python", "Selenium", "MongoDB"],
+    year: "2024",
+    status: 'live'
+  },
+  {
+    id: 4,
     title: "Memoria",
-    description: "LLM-powered voice note app to record, transcribe, and chat with your thoughts. Built with React, Node.js, Express.js, and Supabase. Reached 800+ active users and 10,000 page views.",
+    description: "Record, transcribe, and chat with thoughts (LLM-powered); reached 800+ active users and 10,000 page views.",
     tags: ["React", "Node.js", "Express.js", "Supabase", "LLM", "Voice AI"],
     year: "2023",
-    status: 'archived'
+    status: 'live'
   }
 ];
 

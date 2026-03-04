@@ -32,7 +32,7 @@ export default function HeroBio({ currentColors }: HeroBioProps) {
             color: currentColors.textSecondary
           }}
         >
-          I build technology, write evidence-backed opinions, and cultivate culture through meetups, projects, and everyday practice. Currently @ Queens.
+          Technical Product Manager and product engineer building at the intersection of product, engineering, and user research. Currently at Queen&apos;s University.
         </p>
       </div>
 

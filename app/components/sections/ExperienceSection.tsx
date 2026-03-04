@@ -26,26 +26,26 @@ const experiences: Experience[] = [
   {
     id: 1,
     company: "Questrade",
-    role: "Technical Product Manager Intern - Future Leaders Program",
+    role: "Associate, QuestX (New Products & Innovation)",
     period: "May 2025 - Aug 2025",
     location: "Toronto, ON",
-    description: "Led product initiatives across knowledge management, personal finance tools, and investment research for Canada's leading online brokerage.",
+    description: "Led cross-functional product and innovation initiatives spanning knowledge systems, new product discovery, and enterprise AI adoption.",
     highlights: [
-      "Owned roadmap & launch of a new knowledge base; wrote PRDs, PRFAQs, led BigQuery/NLP on call transcripts to close content gaps, leading to 40% fewer Tier-1 CS tickets, $500,000 saved per year; docs used by 100,000+ per year.",
-      "Supported a new Personal Financial Manager app, running 8 discovery interviews; instrumented Amplitude funnels, and iterated onboarding to drive +20% completion in alpha.",
-      "Surveyed 27 respondents (ages 18-25) on investment-news habits; synthesized findings into 2 opportunity areas and presented recommendations to the C-suite."
+      "Drove roadmap and launch for a new knowledge base across Product, Engineering, and Support; authored PRDs/PRFAQs, led BigQuery + NLP transcript analysis, and managed rollout/training, resulting in 40% fewer Tier-1 tickets and $500K/year savings.",
+      "Coordinated discovery and alpha delivery for a new Questbank product: ran 23 user interviews, instrumented Amplitude funnels, managed iteration planning with Engineering and Design, and led key design decisions.",
+      "Interim Chief of Staff (CCO & CTO): led cross-functional execution for AI adoption (scope, timeline, risks, stakeholders); shipped internal tool rollout (Cursor + GitBook) to 1,200+ users with training, documentation, and change management."
     ],
-    tags: ["Product Management", "BigQuery", "NLP", "PRD", "Amplitude", "User Research"]
+    tags: ["Product Management", "BigQuery", "NLP", "PRDs", "Amplitude", "AI Adoption"]
   },
   {
     id: 2,
     company: "CallSmart",
-    role: "Product & Full-Stack Developer Intern",
+    role: "Founding Product Engineer",
     period: "Apr 2023 - Sep 2023",
     location: "Toronto, ON",
     description: "Led product roadmap and development of an AI communications platform for dental clinics, driving significant business impact and operational efficiency.",
     highlights: [
-      "Led product roadmap and full-stack development (Next.js, Supabase) of an AI communications platform adopted by 200+ dental clinics, contributing to $12M per year in potential revenue, and cutting manual follow-ups by 85%.",
+      "Led product roadmap and full-stack development (Next.js, Supabase) of an AI communications platform adopted by 200+ dental clinics, contributing to $12M per year in revenue retention, and cutting manual follow-ups by 85%.",
       "Interviewed 4 clinic owners and 11 receptionists, distilled JTBD into PRDs and UI/UX recommendations.",
       "Created funnels and iterated onboarding, prioritized triage/templates/analytics to increase agent efficiency."
     ],
@@ -144,7 +144,7 @@ export default function ExperienceSection({
 
             {/* Experience Items */}
             <div className="space-y-2">
-              {experiences.map((exp, index) => {
+              {experiences.map((exp) => {
                 const isHovered = hoveredId === exp.id;
                 const isExpanded = expandedId === exp.id;
 

@@ -14,10 +14,10 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Bartek Kowalski",
-  description: "I build technology, write evidence-backed opinions, and cultivate culture through meetups, projects, and everyday practice.",
+  description: "Technical Product Manager and product engineer building products at the intersection of product, engineering, and user research.",
   openGraph: {
     title: "Bartek Kowalski",
-    description: "I build technology, write evidence-backed opinions, and cultivate culture through meetups, projects, and everyday practice.",
+    description: "Technical Product Manager and product engineer building products at the intersection of product, engineering, and user research.",
     url: "https://bartekkowalski.com",
     siteName: "Bartek Kowalski",
     images: [
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Bartek Kowalski",
-    description: "I build technology, write evidence-backed opinions, and cultivate culture through meetups, projects, and everyday practice.",
+    description: "Technical Product Manager and product engineer building products at the intersection of product, engineering, and user research.",
     images: ["/og_img.JPG"],
   },
 };
