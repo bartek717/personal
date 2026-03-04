@@ -101,7 +101,7 @@ export default function EssaysSection({
         {/* Essays Grid - Modern Asymmetric Layout */}
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6">
-            {essays.map((essay, index) => (
+            {essays.map((essay) => (
               <article
                 key={essay.id}
                 className={`

@@ -1,6 +1,5 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 
 interface ColorWaveProps {
   colors: string[];
@@ -15,14 +14,6 @@ export default function ColorWave({
   speed = 20,
   waveHeight = 150
 }: ColorWaveProps) {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return null;
-
   return (
     <div className="absolute inset-0 overflow-hidden">
       <style jsx>{`

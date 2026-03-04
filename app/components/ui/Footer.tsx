@@ -10,7 +10,6 @@ export default function Footer({ currentColors }: FooterProps) {
   const needsDarkText = currentColors.textColor === 'text-gray-800';
   const textColor = needsDarkText ? 'text-gray-900' : currentColors.textColor;
   const lightTextColor = needsDarkText ? 'text-gray-600' : currentColors.textColor;
-  const borderColor = needsDarkText ? 'border-gray-300' : currentColors.borderColor;
 
   return (
     <footer className="relative">

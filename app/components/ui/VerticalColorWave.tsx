@@ -1,6 +1,5 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 
 interface VerticalColorWaveProps {
   colors?: string[];
@@ -19,14 +18,6 @@ export default function VerticalColorWave({
   side = 'left',
   lighter = false
 }: VerticalColorWaveProps) {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return null;
-
   // Create lighter shades by mixing with white
   const adjustedColors = lighter
     ? colors.map(color => {
